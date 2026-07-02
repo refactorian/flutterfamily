@@ -1,0 +1,4 @@
+Contact: https://github.com/refactorian/flutterfamily/discussions
+Canonical: https://flutterfamily.com/.well-known/security.txt
+Expires: 2027-07-02T00:00:00.000Z
+Preferred-Languages: en
