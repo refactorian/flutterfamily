@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Flutter Family',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'A community for Flutter developers',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -44,7 +44,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/refactorian/flutterfamily/edit/main/',
         },
         blog: {
           showReadingTime: true,
@@ -75,9 +75,9 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'My Site',
+      title: 'Flutter Family',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Flutter Family Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -89,7 +89,7 @@ const config: Config = {
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/refactorian/flutterfamily',
           label: 'GitHub',
           position: 'right',
         },
@@ -111,16 +111,12 @@ const config: Config = {
           title: 'Community',
           items: [
             {
+              label: 'GitHub Discussions',
+              href: 'https://github.com/refactorian/flutterfamily/discussions',
+            },
+            {
               label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              href: 'https://stackoverflow.com/questions/tagged/flutter',
             },
           ],
         },
@@ -133,12 +129,12 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/refactorian/flutterfamily',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Flutter Family. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
