@@ -69,3 +69,16 @@
 [data-theme='dark'] .prism-code {
   background-color: #0D1525 !important;
 }
+
+/* ─── Mobile: center navbar brand ─────────────────────────── */
+@media (max-width: 996px) {
+  .navbar__inner {
+    position: relative;
+  }
+
+  .navbar__inner .navbar__brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
