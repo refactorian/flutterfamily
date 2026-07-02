@@ -41,6 +41,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          routeBasePath: 'dart',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -85,13 +86,14 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Dart',
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/refactorian/flutterfamily',
           label: 'GitHub',
           position: 'right',
+          className: 'header-github-link',
         },
       ],
     },
@@ -102,8 +104,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Dart Tutorial',
+              to: '/dart/',
             },
           ],
         },
