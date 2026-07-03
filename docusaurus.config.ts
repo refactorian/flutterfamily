@@ -40,6 +40,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+          path: './dart',
           sidebarPath: './sidebars.ts',
           routeBasePath: 'dart',
           // Please change this to your repo.
