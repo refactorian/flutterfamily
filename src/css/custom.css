@@ -70,6 +70,12 @@
   background-color: #0D1525 !important;
 }
 
+/* Hero in dark mode */
+[data-theme='dark'] .hero {
+  background-color: #0D1525 !important;
+  color: #FFFFFF;
+}
+
 /* ─── Mobile: center navbar brand ─────────────────────────── */
 @media (max-width: 996px) {
   .navbar__inner {
