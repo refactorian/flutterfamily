@@ -1,6 +1,6 @@
 ---
 sidebar_position: 13
-title: Pattern Matching
+title: Pattern Matching (Dart 3)
 description: Patterns, switch expressions, guard clauses, and exhaustiveness checking in Dart 3.
 ---
 

@@ -4,65 +4,80 @@ title: Classes & OOP
 description: Classes, objects, inheritance, interfaces, abstract classes, sealed classes, and object equality in Dart.
 ---
 
+Dart is a **pure OOP language** — everything is an object. But Dart's class system is deliberately lean: single inheritance, implicit interfaces, and modifiers introduced in Dart 3 that let you be precise about how your types may be used.
+
 ---
 
 ## Defining a Class
 
 ```dart
-class Dog {
-  // Instance variables (fields)
-  String name;
-  String breed;
-  int age;
+class BankAccount {
+  // Fields
+  final String owner;
+  double _balance;          // private to the library
 
   // Constructor
-  Dog(this.name, this.breed, this.age);
+  BankAccount(this.owner, [this._balance = 0.0]);
 
-  // Instance methods
-  void bark() => print('$name says: Woof!');
+  // Getter — computed property
+  double get balance => _balance;
 
-  String describe() => '$name is a $age-year-old $breed.';
+  // Methods
+  void deposit(double amount) {
+    if (amount <= 0) throw ArgumentError('Amount must be positive');
+    _balance += amount;
+  }
 
-  // Override toString (from Object)
+  bool withdraw(double amount) {
+    if (amount > _balance) return false;
+    _balance -= amount;
+    return true;
+  }
+
   @override
-  String toString() => 'Dog($name, $breed, $age)';
+  String toString() => 'BankAccount($owner, \$$_balance)';
 }
 
-// Usage
-var rex = Dog('Rex', 'Labrador', 3);
-rex.bark();            // Rex says: Woof!
-print(rex.describe()); // Rex is a 3-year-old Labrador.
-print(rex);            // Dog(Rex, Labrador, 3)
+var acc = BankAccount('Alice', 500.0);
+acc.deposit(100);
+print(acc.balance);  // 600.0
+print(acc);          // BankAccount(Alice, $600.0)
 ```
 
 ---
 
-## Instance Variables
+## Instance Variables — Access & Visibility
 
 ```dart
 class Person {
-  // Public (default in Dart — no public keyword)
-  String name;
+  // ── Public ────────────────────────────────────────────────────────
+  String name;                   // readable + writable externally
 
-  // Private to the library (prefix with _)
-  int _age;  // accessible within the same file/library
+  // ── Private to the library (file) ────────────────────────────────
+  int _age;                      // _ prefix = private convention
+  // Accessible within the same .dart file, not from other files
 
-  // Final — set once in constructor
-  final String id;
+  // ── Final — assigned once (in constructor / initializer) ─────────
+  final String id;               // can't be reassigned after init
 
-  // Late — initialized later (must be set before use)
-  late String email;
+  // ── Late — guaranteed non-null, assigned before first use ─────────
+  late String email;             // set before accessing or LateInitializationError
+
+  // ── Late final — lazy, computed once ─────────────────────────────
+  late final String initials = name.split(' ').map((w) => w[0]).join();
 
   Person(this.name, this._age, this.id);
 
-  int get age => _age;  // expose privately stored value
+  // Expose private state safely
+  int get age => _age;
+  set age(int v) {
+    if (v < 0 || v > 150) throw RangeError.range(v, 0, 150, 'age');
+    _age = v;
+  }
 }
-
-var p = Person('Alice', 30, 'user_1');
-print(p.name);   // Alice
 ```
 
-> In Dart, `_` makes something private to the **library** (file), not the class.
+> **Dart privacy is library-level, not class-level.** Two classes in the same file can freely access each other's `_` members.
 
 ---
 
@@ -70,72 +85,71 @@ print(p.name);   // Alice
 
 ```dart
 class Animal {
-  String name;
+  final String name;
   Animal(this.name);
 
   void breathe() => print('$name breathes');
-  void speak() => print('...');
+  String get sound => '...';
+
+  void speak() => print('$name says: ${sound}');
 
   @override
   String toString() => 'Animal($name)';
 }
 
 class Dog extends Animal {
-  String breed;
+  final String breed;
 
-  // Call super constructor
   Dog(String name, this.breed) : super(name);
 
   @override
-  void speak() => print('$name says: Woof!');
+  String get sound => 'Woof';
 
-  // New method
-  void fetch() => print('$name fetches the ball!');
+  void fetch(String item) => print('$name fetches the $item!');
 }
 
-class Cat extends Animal {
-  Cat(String name) : super(name);
+class GuideDog extends Dog {
+  final String owner;
+
+  GuideDog(String name, this.owner) : super(name, 'Labrador');
 
   @override
-  void speak() => print('$name says: Meow!');
+  String get sound => 'Woof (softly)';
+
+  void guide() => print('$name guides $owner safely');
 }
 
 void main() {
-  var dog = Dog('Rex', 'Labrador');
-  dog.breathe();  // Rex breathes (inherited)
-  dog.speak();    // Rex says: Woof! (overridden)
-  dog.fetch();    // Rex fetches the ball!
+  var guide = GuideDog('Buddy', 'Alice');
+  guide.speak();        // Buddy says: Woof (softly)   ← overridden 2 levels up
+  guide.breathe();      // Buddy breathes               ← inherited from Animal
+  guide.fetch('ball');  // Buddy fetches the ball!      ← inherited from Dog
+  guide.guide();        // Buddy guides Alice safely    ← own method
 
-  // Polymorphism
-  List<Animal> animals = [Dog('Rex', 'Lab'), Cat('Whiskers')];
-  for (var a in animals) {
-    a.speak();  // dynamic dispatch
-  }
+  // Type hierarchy
+  print(guide is GuideDog); // true
+  print(guide is Dog);      // true  ← is-a relationships chain up
+  print(guide is Animal);   // true
 }
 ```
 
-### The `super` Keyword
+### `super` — calling up the hierarchy
 
 ```dart
-class Vehicle {
-  String brand;
-  int speed;
-
-  Vehicle(this.brand, this.speed);
-
-  void describe() => print('$brand at $speed km/h');
+class Shape {
+  final String color;
+  Shape(this.color);
+  void draw() => print('Drawing a $color shape');
 }
 
-class ElectricCar extends Vehicle {
-  int batteryLevel;
-
-  ElectricCar(String brand, int speed, this.batteryLevel)
-      : super(brand, speed);  // call super constructor
+class Circle extends Shape {
+  final double radius;
+  Circle(String color, this.radius) : super(color);  // super constructor
 
   @override
-  void describe() {
-    super.describe();  // call super method
-    print('Battery: $batteryLevel%');
+  void draw() {
+    super.draw();                        // call parent's draw()
+    print('  (it is a circle with r=$radius)');
   }
 }
 ```
@@ -144,113 +158,145 @@ class ElectricCar extends Vehicle {
 
 ## Abstract Classes
 
-Abstract classes cannot be instantiated — they define a contract.
+Abstract classes define **contracts** — what a type *must* do, not how:
 
 ```dart
-abstract class Shape {
-  // Abstract method — subclasses MUST implement
-  double get area;
-  double get perimeter;
+abstract class Repository<T, ID> {
+  // Abstract — subclasses must implement
+  Future<T?> findById(ID id);
+  Future<List<T>> findAll();
+  Future<T> save(T entity);
+  Future<void> deleteById(ID id);
 
-  // Concrete method — subclasses inherit
-  void printInfo() {
-    print('Area: ${area.toStringAsFixed(2)}, Perimeter: ${perimeter.toStringAsFixed(2)}');
+  // Concrete — provided to all subclasses for free
+  Future<bool> exists(ID id) async => await findById(id) != null;
+
+  Future<List<T>> saveAll(List<T> entities) =>
+      Future.wait(entities.map(save));
+}
+
+// Multiple concrete implementations of the same contract
+class ApiUserRepository extends Repository<User, int> {
+  final http.Client _client;
+  ApiUserRepository(this._client);
+
+  @override
+  Future<User?> findById(int id) async {
+    final resp = await _client.get(Uri.parse('/users/$id'));
+    if (resp.statusCode == 404) return null;
+    return User.fromJson(jsonDecode(resp.body));
+  }
+  // ...
+}
+
+class InMemoryUserRepository extends Repository<User, int> {
+  final _store = <int, User>{};
+
+  @override
+  Future<User?> findById(int id) async => _store[id];
+
+  @override
+  Future<T> save(User entity) async {
+    _store[entity.id] = entity;
+    return entity;
+  }
+  // ...
+}
+```
+
+---
+
+## Interfaces — `implements`
+
+In Dart, **every class implicitly defines an interface**. No `interface` keyword needed:
+
+```dart
+// Define interfaces as abstract classes
+abstract class Printable  { void print_();  }
+abstract class Exportable { Future<void> exportTo(String path); }
+abstract class Searchable { List<String> search(String query); }
+
+// Implement multiple interfaces
+class Document implements Printable, Exportable, Searchable {
+  final String title;
+  final String content;
+  Document(this.title, this.content);
+
+  @override void print_() => print('=== $title ===\n$content');
+
+  @override Future<void> exportTo(String path) async {
+    await File(path).writeAsString('$title\n$content');
+  }
+
+  @override List<String> search(String query) =>
+      content.split('\n').where((l) => l.contains(query)).toList();
+}
+
+// Polymorphism through interfaces
+void printAll(List<Printable> items) {
+  for (final item in items) item.print_();
+}
+```
+
+### `extends` vs `implements` vs `with` — decision guide
+
+```
+You want to...                               Use...
+─────────────────────────────────────────────────────────────────
+Reuse a parent's implementation               extends
+Guarantee your class has a certain API        implements
+Share behaviour across unrelated classes      with (mixin)
+Do all three for the same class               extends + implements + with
+```
+
+```dart
+// All three at once (legal and useful)
+class SuperClass extends Base with LoggableMixin implements Serializable {
+  // ...
+}
+```
+
+---
+
+## Composition Over Inheritance
+
+Inheritance is often overused. **Composition** is more flexible:
+
+```dart
+// ❌ Inheritance — rigid, breaks encapsulation
+class Stack<T> extends List<T> {
+  // exposes add(), remove(), sort()... we don't want those on a stack!
+}
+
+// ✅ Composition — precise, controlled
+class Stack<T> {
+  final _items = <T>[];       // List is an implementation detail
+
+  void push(T item) => _items.add(item);
+  T pop() => _items.removeLast();
+  T peek() => _items.last;
+  bool get isEmpty => _items.isEmpty;
+  int get size => _items.length;
+}
+
+// Another example — prefer having over being
+class Logger { void log(String msg) => print('[LOG] $msg'); }
+class ApiService { void call() {} }
+
+// ❌ Inherit Logger just to get logging
+class BadUserService extends Logger { }
+
+// ✅ Inject Logger as a dependency
+class UserService {
+  final ApiService _api;
+  final Logger _log;
+  UserService(this._api, this._log);
+
+  Future<User> getUser(int id) async {
+    _log.log('Fetching user $id');
+    return _api.call();
   }
 }
-
-class Circle extends Shape {
-  final double radius;
-  Circle(this.radius);
-
-  @override
-  double get area => 3.14159 * radius * radius;
-
-  @override
-  double get perimeter => 2 * 3.14159 * radius;
-}
-
-class Rectangle extends Shape {
-  final double width, height;
-  Rectangle(this.width, this.height);
-
-  @override
-  double get area => width * height;
-
-  @override
-  double get perimeter => 2 * (width + height);
-}
-
-// var s = Shape(); // ❌ cannot instantiate abstract class
-var c = Circle(5);
-c.printInfo(); // Area: 78.54, Perimeter: 31.42
-```
-
----
-
-## Interfaces (implements)
-
-Dart has no `interface` keyword. **Every class implicitly defines an interface.**
-
-```dart
-// "Interface" via abstract class
-abstract class Flyable {
-  void fly();
-  int get altitude;
-}
-
-abstract class Swimmable {
-  void swim();
-  int get depth;
-}
-
-// A class can implement multiple interfaces
-class Duck extends Animal implements Flyable, Swimmable {
-  Duck(String name) : super(name);
-
-  @override
-  void fly() => print('$name flaps wings!');
-
-  @override
-  int get altitude => 10;
-
-  @override
-  void swim() => print('$name paddles!');
-
-  @override
-  int get depth => 1;
-}
-
-// Using interface type
-Flyable flyer = Duck('Donald');
-flyer.fly();
-```
-
----
-
-## Sealed Classes (Dart 3)
-
-Sealed classes can only be extended/implemented in the **same library**. Perfect for exhaustive pattern matching.
-
-```dart
-sealed class Result<T> {}
-
-class Success<T> extends Result<T> {
-  final T value;
-  Success(this.value);
-}
-
-class Failure<T> extends Result<T> {
-  final String error;
-  Failure(this.error);
-}
-
-// Exhaustive switch — no default needed!
-String describe<T>(Result<T> result) => switch (result) {
-  Success(value: var v) => 'Success: $v',
-  Failure(error: var e) => 'Error: $e',
-};
-
-// Add a new subclass → compiler error at switch site → can't miss it!
 ```
 
 ---
@@ -258,72 +304,208 @@ String describe<T>(Result<T> result) => switch (result) {
 ## Object Equality
 
 ```dart
-class Point {
-  final int x, y;
-  const Point(this.x, this.y);
+class Money {
+  final int cents;
+  final String currency;
+  const Money(this.cents, this.currency);
 
-  // Override == operator
+  // == checks value, not identity
   @override
   bool operator ==(Object other) =>
-      other is Point && x == other.x && y == other.y;
+      other is Money && cents == other.cents && currency == other.currency;
 
-  // Must override hashCode if overriding ==
+  // hashCode MUST be consistent with ==
+  // Equal objects must have equal hashCodes
   @override
-  int get hashCode => Object.hash(x, y);
+  int get hashCode => Object.hash(cents, currency);
+  // Older style: cents.hashCode ^ currency.hashCode
 
   @override
-  String toString() => 'Point($x, $y)';
+  String toString() => '${(cents / 100).toStringAsFixed(2)} $currency';
 }
 
-var p1 = Point(1, 2);
-var p2 = Point(1, 2);
-var p3 = Point(3, 4);
+void main() {
+  final a = Money(999, 'USD');
+  final b = Money(999, 'USD');
+  final c = Money(500, 'USD');
 
-print(p1 == p2);           // true  (same values)
-print(p1 == p3);           // false
-print(identical(p1, p2));  // false (different objects)
+  print(a == b);            // true  — same value
+  print(identical(a, b));   // false — different objects
+  print(a == c);            // false
 
-// Can be used as Map keys or Set members since hashCode is consistent
-var set = {p1, p2, p3};
-print(set.length); // 2  (p1 and p2 are considered equal)
+  // Safe as Map keys and Set members
+  final prices = {a: 'item 1', b: 'item 2'};  // only 1 entry — a and b are equal
+  print(prices.length);     // 1
+
+  final set = {a, b, c};
+  print(set.length);        // 2  — a and b deduplicated
+}
+```
+
+---
+
+## Sealed Classes (Dart 3)
+
+Sealed classes restrict subclassing to the **same library**, enabling exhaustive switch:
+
+```dart
+// lib/result.dart
+sealed class Result<T> {
+  const Result();
+
+  // Convenience methods on the sealed base
+  bool get isOk  => this is Ok<T>;
+  bool get isErr => this is Err<T>;
+
+  T getOrElse(T fallback) => switch (this) {
+    Ok(value: var v) => v,
+    Err()            => fallback,
+  };
+
+  Result<R> map<R>(R Function(T) transform) => switch (this) {
+    Ok(value: var v) => Ok(transform(v)),
+    Err(message: var m) => Err(m),
+  };
+}
+
+final class Ok<T>  extends Result<T> {
+  final T value;
+  const Ok(this.value);
+}
+
+final class Err<T> extends Result<T> {
+  final String message;
+  const Err(this.message);
+}
+
+// Usage — exhaustive, compiler-enforced
+Future<Result<User>> fetchUser(int id) async {
+  try {
+    return Ok(await api.getUser(id));
+  } catch (e) {
+    return Err('Failed: $e');
+  }
+}
+
+void display(Result<User> result) {
+  switch (result) {
+    case Ok(value: var user):
+      print('Welcome, ${user.name}!');
+    case Err(message: var msg):
+      print('Error: $msg');
+    // No default needed — sealed class is exhaustive
+  }
+}
 ```
 
 ---
 
 ## Class Modifiers (Dart 3)
 
+Use modifiers to express **design intent** and enforce API boundaries:
+
 ```dart
-// abstract — can't be instantiated
-abstract class A {}
+// abstract — cannot be instantiated directly
+abstract class Validator<T> {
+  bool validate(T value);
+  String get errorMessage;
+}
 
-// final — can't be extended or implemented outside library
-final class B {}
+// final — cannot be extended OR implemented outside this library
+// Great for value types you don't want tampered with
+final class Email {
+  final String value;
+  Email._(this.value);
+  factory Email(String s) {
+    if (!s.contains('@')) throw FormatException('Invalid email: $s');
+    return Email._(s);
+  }
+}
 
-// sealed — can only be subclassed in same library
-sealed class C {}
+// base — can be extended but NOT implemented
+// Guarantees your mixin / super-class logic always runs
+base class Service {
+  void log(String msg) => print('[${runtimeType}] $msg');
+  // Subclasses inherit log(), but can't be stubbed out entirely
+}
 
-// base — can be extended but not implemented
-base class D {}
+// interface — can be implemented but NOT extended
+// Lets you swap implementations without inheriting behaviour
+interface class DataSource {
+  List<Map> query(String sql) => throw UnimplementedError();
+}
 
-// interface — can be implemented but not extended
-interface class E {}
+// sealed — only subclassable within the same library
+// Perfect for algebraic data types / discriminated unions
+sealed class Token {}
+final class NumberToken extends Token { final double value; NumberToken(this.value); }
+final class OpToken    extends Token { final String op;    OpToken(this.op); }
+final class EofToken   extends Token { const EofToken(); }
 
-// mixin class — can be used as mixin or class
-mixin class F {}
+// mixin class — usable both as a mixin and as a standalone class
+mixin class Observable {
+  final _listeners = <void Function()>[];
+  void addListener(void Function() fn) => _listeners.add(fn);
+  void notifyListeners() { for (final fn in _listeners) fn(); }
+}
+```
+
+### Modifier decision table
+
+| Modifier | Extend? | Implement? | Instantiate? | Use When |
+|----------|---------|-----------|-------------|----------|
+| *(none)* | ✅ | ✅ | ✅ | General purpose class |
+| `abstract` | ✅ | ✅ | ❌ | Base class / contract |
+| `final` | ❌ | ❌ | ✅ | Value type, security boundary |
+| `base` | ✅ | ❌ | ✅ | Shared logic that must run |
+| `interface` | ❌ | ✅ | ✅ | Pure API contract |
+| `sealed` | ✅ (same lib) | ✅ (same lib) | ❌ | Discriminated union / ADT |
+| `mixin class` | ✅ | ✅ | ✅ | Behaviour that can be mixed or instantiated |
+
+---
+
+## `Object` and Its Members
+
+Every Dart object inherits from `Object`:
+
+```dart
+// The Object interface — inherited by everything
+abstract class Object {
+  bool operator ==(Object other);   // override for value equality
+  int get hashCode;                 // override alongside ==
+  String toString();                // override for readable output
+  Type get runtimeType;             // the actual runtime type
+  dynamic noSuchMethod(Invocation); // called on missing member
+}
+
+// runtimeType at runtime
+Object x = 'hello';
+print(x.runtimeType); // String — the actual type, not the declared type
+
+// Distinguish value equality from identity
+var a = [1, 2, 3];
+var b = a;
+var c = [1, 2, 3];
+print(a == b);          // true  — same object
+print(a == c);          // false — different objects (List doesn't override ==)
+print(identical(a, b)); // true  — same reference
+print(identical(a, c)); // false
 ```
 
 ---
 
 ## Summary
 
-| Concept | Syntax |
-|---------|--------|
-| Define class | `class Name { ... }` |
-| Extend class | `class Child extends Parent` |
-| Implement interface | `class Impl implements Interface` |
-| Abstract class | `abstract class Name` |
-| Sealed class (Dart 3) | `sealed class Name` |
-| Override method | `@override void method()` |
-| Call super | `super.method()` |
-| Private member | `_memberName` |
-| Override equality | `operator ==` + `hashCode` |
+| Concept | Syntax | Key Point |
+|---------|--------|-----------|
+| Class | `class Foo { }` | Everything is an object |
+| Private | `_name` | Library-level, not class-level |
+| Extend | `class B extends A` | Single inheritance, `super` available |
+| Implement | `class B implements A` | Must re-implement entire public API |
+| Abstract | `abstract class A` | Can't instantiate, defines contract |
+| Sealed | `sealed class A` | Subclass only in same library |
+| Final class | `final class A` | No extending or implementing |
+| Base class | `base class A` | Extend yes, implement no |
+| Interface class | `interface class A` | Implement yes, extend no |
+| Equality | `operator ==` + `hashCode` | Always override together |
+| Composition | Field + delegation | Prefer over deep inheritance |
