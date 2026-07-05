@@ -4,310 +4,449 @@ title: Variables & Types
 description: var, final, const, type system, type inference, and built-in types in Dart.
 ---
 
+Dart's type system is **sound** — the compiler guarantees that a variable of type `String` always holds a `String`. This catches entire categories of bugs before your code ever runs.
+
 ---
 
-## Declaring Variables
-
-Dart gives you several ways to declare variables:
+## Variable Declaration Keywords
 
 ```dart
-// var — type inferred, mutable
-var name = 'Alice';
-var age = 30;
-var height = 5.9;
+// var — mutable, type inferred from initializer
+var name    = 'Alice';    // inferred: String
+var count   = 0;          // inferred: int
+var ratio   = 3.14;       // inferred: double
+var active  = true;       // inferred: bool
+var items   = [1, 2, 3];  // inferred: List<int>
 
-// Explicit type — same as above but more verbose
-String name = 'Alice';
-int age = 30;
-double height = 5.9;
+// Explicit type annotation — same as var, but self-documenting
+String  name   = 'Alice';
+int     count  = 0;
+double  ratio  = 3.14;
+List<int> ids  = [];
 
-// final — set once, cannot be reassigned
-final city = 'Dhaka';
-final int maxRetries = 3;
+// final — assigned once, cannot be reassigned (runtime value OK)
+final city      = 'Dhaka';
+final timestamp = DateTime.now();    // ✅ runtime value
+final items     = <String>[];        // list ref is final, contents mutable
 
-// const — compile-time constant
-const pi = 3.14159;
+// const — compile-time constant (value must be known at compile time)
+const pi      = 3.14159265358979;
 const appName = 'MyApp';
+const timeout = Duration(seconds: 30);
+// const now = DateTime.now(); // ❌ not a compile-time constant
 
-// late — initialized later (but before use)
-late String lazyValue;
-lazyValue = 'initialized when needed';
-print(lazyValue); // OK
+// late — non-nullable, initialized before first use
+late String email;                   // set manually before reading
+late final String initials;          // set once, then immutable
+late final int expensiveResult = _compute(); // lazy — computed on first access
 ```
 
-### var vs final vs const
+### The `var` vs `final` vs `const` Decision
 
 ```dart
-// var: can be reassigned
-var x = 10;
-x = 20;  // ✅ fine
+//  Ask yourself:
+//
+//  Will this ever be reassigned?
+//  ├── No  →  Will its value be known at compile time?
+//  │          ├── Yes  →  const
+//  │          └── No   →  final
+//  └── Yes →  var  (or explicit type)
 
-// final: set once at runtime
-final y = DateTime.now();  // runtime value — OK
-// y = DateTime.now();     // ❌ compile error
+// ✅ Prefer final over var — signals intent
+final url  = 'https://api.example.com';   // never reassigned
+var  retry = 0;                            // incremented in loop
 
-// const: set once at compile time
-const z = 42;              // must be a compile-time constant
-// const now = DateTime.now(); // ❌ compile error — not a compile-time constant
+// const propagates deeply — both the reference AND contents are frozen
+const config = {'host': 'localhost', 'port': 8080};
+// config['host'] = 'other'; // ❌ UnsupportedError at runtime
 
-// const propagates to its contents
-const list = [1, 2, 3];   // list AND its elements are immutable
-final list2 = [1, 2, 3];  // list2 cannot be reassigned, but items can be added
+// final reference, mutable contents
+final cache = <String, int>{};
+cache['key'] = 42;  // ✅ mutating the map is fine
+// cache = {};       // ❌ can't reassign the reference
 ```
 
 ---
 
-## Built-in Types
+## Numbers
 
-### Numbers
+### int
 
 ```dart
-// int — whole numbers (64-bit)
-int score = 100;
-int hex = 0xFF;       // hexadecimal
-int binary = 0b1010;  // binary
-int million = 1_000_000; // underscores for readability (Dart 2.12+)
+// 64-bit signed integer on all platforms
+int score   = 100;
+int negScore = -42;
+int hex     = 0xFF;          // 255 — hexadecimal literal
+int octal   = 0o77;          // 63  — octal literal (Dart 3+)
+int binary  = 0b1010_1010;   // 170 — binary with separator
+int million = 1_000_000;     // underscores improve readability
 
-// double — floating point (64-bit IEEE 754)
-double pi = 3.14159;
-double scientific = 1.5e4;  // 15000.0
-double negExp = 2.5e-3;     // 0.0025
+// Arithmetic
+print(10 ~/ 3);   // 3  — integer division (unique Dart operator)
+print(10 % 3);    // 1  — modulo / remainder
+print(2.pow(10)); // doesn't exist — use dart:math pow()
+import 'dart:math';
+print(pow(2, 10)); // 1024
 
-// num — supertype of both int and double
-num value = 42;
-value = 3.14;  // OK — num can hold either
-
-// Conversions
-int a = 5;
-double b = a.toDouble();  // 5.0
-double c = 3.7;
-int d = c.toInt();        // 3 (truncates, does NOT round)
-int e = c.round();        // 4
-int f = c.ceil();         // 4
-int g = c.floor();        // 3
-
-// Useful int/double properties
-print(42.isEven);       // true
-print(7.isOdd);         // true
-print((-5).abs());      // 5
-print(3.14.isFinite);   // true
-print(double.infinity); // Infinity
-print(double.nan);      // NaN
+// int properties & methods
+print(42.isEven);           // true
+print(7.isOdd);             // true
+print((-5).abs());          // 5
+print(255.toRadixString(16)); // ff
+print(255.toRadixString(2));  // 11111111
+print(int.parse('42'));        // 42
+print(int.parse('FF', radix: 16)); // 255
+print(int.tryParse('abc'));    // null — safe parse
 ```
 
-### Strings
+### double
 
 ```dart
-// Single or double quotes — both work, be consistent
-var s1 = 'hello';
-var s2 = "world";
+double pi         = 3.14159265358979;
+double scientific = 1.5e4;   // 15000.0
+double negExp     = 2.5e-3;  // 0.0025
+double inf        = double.infinity;
+double nan        = double.nan;
 
-// Raw strings (no escape processing)
-var path = r'C:\Users\name\file.txt';
-var regex = r'\d+\.\d+';
+// Special values
+print(double.infinity.isInfinite);  // true
+print(double.nan.isNaN);            // true
+print((1.0).isFinite);              // true
 
-// Multi-line strings (triple quotes)
-var poem = '''
-Roses are red,
-Violets are blue,
-Dart is awesome,
-And Flutter is too!
+// Rounding
+double n = 3.7;
+print(n.round());       // 4   — nearest integer
+print(n.ceil());        // 4   — round up
+print(n.floor());       // 3   — round down
+print(n.truncate());    // 3   — toward zero (same as toInt())
+print(n.toInt());       // 3   — truncates, never rounds
+
+// Formatting — always use toStringAsFixed for display
+print(3.14159.toStringAsFixed(2));  // 3.14
+print(12345.6789.toStringAsFixed(1)); // 12345.7
+
+// Precision warning — floating point is not exact
+print(0.1 + 0.2);               // 0.30000000000000004 !!
+print(0.1 + 0.2 == 0.3);        // false !!
+print((0.1 + 0.2 - 0.3).abs() < 1e-10); // ✅ correct comparison
+```
+
+### num — the common supertype
+
+```dart
+num x = 42;     // holds int
+x = 3.14;       // holds double — both are fine
+print(x is int);     // false (it's a double now)
+print(x is double);  // true
+
+// Useful when a function should accept both
+num add(num a, num b) => a + b;
+print(add(3, 4));     // 7   (int)
+print(add(3.5, 4.5)); // 8.0 (double)
+```
+
+---
+
+## Strings
+
+### Creation & Literals
+
+```dart
+// Single or double quotes — pick one and be consistent
+var s1 = 'hello, world';
+var s2 = "hello, world";   // identical
+
+// Escape sequences
+print('Tab:\there');           // Tab:	here
+print('Newline:\nhere');        // Newline: (new line) here
+print('Quote: \'hi\'');        // Quote: 'hi'
+print('Backslash: \\');        // Backslash: \
+print('Unicode: \u{1F600}');   // Unicode: 😀
+print('Hex: \x41');            // Hex: A
+
+// Raw strings — backslashes are literal
+var path  = r'C:\Users\Alice\Documents';    // no escape processing
+var regex = r'^\d{3}-\d{4}$';              // regex stays readable
+
+// Multi-line strings
+var json = '''
+{
+  "name": "Alice",
+  "age": 30
+}
 ''';
 
-// String interpolation
-var name = 'Dart';
-var version = 3;
-print('Hello, $name!');                // Hello, Dart!
-print('Version: ${version + 1}');     // Version: 4
-print('Uppercase: ${name.toUpperCase()}'); // Uppercase: DART
+var sql = """
+  SELECT *
+  FROM users
+  WHERE active = true
+""";
 
-// Adjacent string literals are concatenated at compile time
-var longString = 'Hello, '
-    'this is a '
-    'long string.';
+// Adjacent literals — compile-time concatenation (no + needed)
+var message = 'Hello, '
+    'this is a very long '
+    'message split across lines.';
+```
 
-// String methods
+### String Interpolation
+
+```dart
+var name  = 'Dart';
+var major = 3;
+var list  = [1, 2, 3];
+
+// Simple variable
+print('Hello, $name!');                  // Hello, Dart!
+
+// Expression (use ${})
+print('Next version: ${major + 1}');    // Next version: 4
+print('Upper: ${name.toUpperCase()}');  // Upper: DART
+print('Length: ${list.length}');        // Length: 3
+print('Sum: ${list.reduce((a,b)=>a+b)}'); // Sum: 6
+
+// Nested interpolation
+var items = ['a', 'b', 'c'];
+print('Items: ${items.join(', ')}');    // Items: a, b, c
+
+// Objects — uses toString()
+var now = DateTime(2024, 1, 15);
+print('Date: $now');                    // Date: 2024-01-15 00:00:00.000
+```
+
+### Essential String Methods
+
+```dart
 var s = '  Hello, World!  ';
-print(s.trim());              // 'Hello, World!'
-print(s.trimLeft());          // 'Hello, World!  '
-print(s.toLowerCase());       // '  hello, world!  '
-print(s.toUpperCase());       // '  HELLO, WORLD!  '
-print(s.contains('World'));   // true
-print(s.replaceAll('l', 'r')); // '  Herro, Worrd!  '
-print(s.split(', '));         // ['  Hello', 'World!  ']
-print(s.startsWith('  H'));   // true
-print(s.endsWith('!  '));     // true
-print(s.indexOf('World'));    // 8
-print(s.length);              // 17
-print(s[0]);                  // ' ' (character access)
-print(s.substring(2, 7));     // 'Hello'
-print(s.isEmpty);             // false
-print(''.isEmpty);            // true
-print('  '.trim().isEmpty);   // true
 
-// String building (efficient for many concatenations)
-var buffer = StringBuffer();
-buffer.write('Hello');
-buffer.write(', ');
-buffer.writeln('World!');
-print(buffer.toString()); // Hello, World!\n
+// Whitespace
+s.trim()               // 'Hello, World!'
+s.trimLeft()           // 'Hello, World!  '
+s.trimRight()          // '  Hello, World!'
+
+// Case
+s.toLowerCase()        // '  hello, world!  '
+s.toUpperCase()        // '  HELLO, WORLD!  '
+
+// Searching
+s.contains('World')    // true
+s.startsWith('  H')    // true
+s.endsWith('!  ')      // true
+s.indexOf('World')     // 8   (first occurrence)
+s.lastIndexOf('l')     // 10  (last occurrence)
+s.indexOf('xyz')       // -1  (not found)
+
+// Slicing & splitting
+s.substring(2, 7)      // 'Hello'
+s.split(', ')          // ['  Hello', 'World!  ']
+s.split('')            // list of individual characters
+s.characters           // grapheme-aware iteration (package:characters)
+
+// Replacing
+s.replaceAll('l', 'r')           // '  Herro, Worrd!  '
+s.replaceFirst('l', 'r')         // '  Herro, World!  '
+s.replaceAllMapped(RegExp(r'\w+'), (m) => m.group(0)!.toUpperCase())
+
+// Testing
+s.isEmpty                        // false
+''.isEmpty                       // true
+'  '.trim().isEmpty              // true — blank check
+s.length                         // 17 (code units, not graphemes)
+s.codeUnitAt(2)                  // 72 ('H')
+s[2]                             // 'H'
+
+// Parsing
+int.parse('42')                  // 42
+int.tryParse('abc')              // null
+double.parse('3.14')             // 3.14
+double.tryParse('xyz')           // null
+bool.tryParse('true')            // true (Dart 3.3+)
+
+// Checking
+RegExp(r'^\d+$').hasMatch('123') // true — all digits
 ```
 
-### Booleans
+### StringBuffer — Efficient Building
 
 ```dart
-bool isActive = true;
-bool isDone = false;
+// String concatenation in a loop is O(n²) — avoid it
+// Bad:
+var result = '';
+for (var i = 0; i < 1000; i++) result += 'item$i,'; // very slow
 
-// Boolean expressions
-print(true && false);   // false
-print(true || false);   // true
-print(!true);           // false
+// Good: StringBuffer is O(n)
+final buf = StringBuffer();
+buf.write('Name: ');
+buf.write('Alice');
+buf.writeln();            // adds newline
+buf.writeAll(['a', 'b', 'c'], ', '); // joins with separator
+buf.writeln('Done');
 
-// Dart is strict — no truthy/falsy like JavaScript!
-// if (1) {}       // ❌ compile error
-// if ('hello') {} // ❌ compile error
-// if (null) {}    // ❌ compile error
-if (1 == 1) {}   // ✅ must be an actual bool
-```
+print(buf.toString());
+// Name: Alice
+// a, b, c
+// Done
 
-### Symbols
-
-```dart
-// Symbols represent operator or identifier names
-Symbol s = #hello;
-Symbol operator = #operator;
-
-// Mostly used with reflection / mirrors — rare in everyday code
+print(buf.length);  // character count
+buf.clear();        // reset
 ```
 
 ---
 
-## Type Inference
-
-Dart's type inference is powerful — `var` is not "untyped":
+## Booleans
 
 ```dart
-var x = 42;        // Dart infers: int
-var s = 'hello';   // Dart infers: String
-var list = [1, 2, 3]; // Dart infers: List<int>
-var map = {'a': 1};   // Dart infers: Map<String, int>
+bool yes = true;
+bool no  = false;
 
-// The inferred type is fixed
+// Dart is strictly typed — no JavaScript-style truthiness
+// if (1)        {} // ❌ compile error
+// if ('string') {} // ❌ compile error
+// if (null)     {} // ❌ compile error
+// if ([])       {} // ❌ compile error
+
+// Must use actual bool expressions
+if (list.isNotEmpty) {}   // ✅
+if (count > 0) {}         // ✅
+if (name != null) {}      // ✅
+if (flag)        {}       // ✅ — flag is already bool
+```
+
+---
+
+## The Type Hierarchy
+
+```
+Object?                  ← top type — everything including null
+├── Object               ← non-null base of all types
+│   ├── num
+│   │   ├── int
+│   │   └── double
+│   ├── String
+│   ├── bool
+│   ├── List<E>
+│   ├── Set<E>
+│   ├── Map<K,V>
+│   ├── Function
+│   ├── Record
+│   └── ... (your classes)
+├── Null                 ← only 'null' has this type
+└── Never                ← bottom type — no values, never returns
+```
+
+### `Object?` vs `Object` vs `dynamic` vs `Never`
+
+```dart
+// Object? — literally anything: any value OR null
+Object? anything = 42;
+anything = 'hello';
+anything = null;
+anything = [1, 2, 3];
+// Can only call: toString(), hashCode, ==, runtimeType
+
+// Object — anything except null
+Object nonNull = 42;
+nonNull = 'hello';
+// nonNull = null;  // ❌ compile error
+
+// dynamic — opts OUT of type checking entirely
+dynamic escape = 42;
+escape = 'hello';
+escape.anyMethod();   // ✅ compiles, might crash at runtime
+escape.whatever;      // no IDE help, no compile error
+
+// Never — the bottom type, no valid value exists
+// A function returning Never NEVER returns normally
+Never alwaysThrows(String msg) => throw ArgumentError(msg);
+Never alwaysLoops() { while(true) {} }
+
+// Never is useful for exhaustiveness
+String classify(bool b) => switch (b) {
+  true  => 'yes',
+  false => 'no',
+  // Never reached — but if b were dynamic, Never would signal that
+};
+```
+
+---
+
+## Type Inference in Depth
+
+```dart
+// Dart infers from the initializer
+var x = 42;         // int
+var y = 3.14;       // double
+var z = x + y;      // double (int + double = double)
+var w = 'hello';    // String
+var b = x > 0;      // bool
+
+// Inference works with generics too
+var list = [1, 2, 3];        // List<int>
+var map  = {'a': 1, 'b': 2}; // Map<String, int>
+var set  = {1.0, 2.0};       // Set<double>
+
+// Mixed lists — infers common supertype
+var mixed  = [1, 2.0];       // List<num>
+var mixed2 = [1, 'hello'];   // List<Object>
+var mixed3 = [1, null];      // List<int?>
+
+// The inferred type is FIXED after inference
 var count = 0;
-// count = 'hello';  // ❌ compile error — count is int
+// count = 'three'; // ❌ compile error — count is int, not String
 
-// Use dynamic to opt out of type checking (avoid when possible)
-dynamic anything = 42;
-anything = 'now a string';  // OK at runtime, but no compile-time checks
-anything.nonExistentMethod(); // ❌ runtime error — not caught at compile time!
+// Inference flows through expressions
+final doubled = list.map((n) => n * 2); // Iterable<int> — inferred!
+final first   = list.first;             // int — inferred!
+
+// When inference needs help — use explicit type
+final empty  = <String>[];              // must say String, can't infer from []
+final result = <int, List<String>>{};   // complex — be explicit
 ```
 
 ---
 
-## Type Checking & Casting
+## Type Promotion
+
+Dart's flow analysis automatically narrows types within conditional blocks:
 
 ```dart
-Object obj = 'Hello';
+Object value = 'hello';
 
-// is — check type
-print(obj is String);  // true
-print(obj is int);     // false
+// After is check — promoted to String
+if (value is String) {
+  print(value.length);       // ✅ value is String here
+  print(value.toUpperCase()); // ✅
+}
+// Back to Object here
 
-// is! — check NOT type
-print(obj is! int);    // true
-
-// as — cast (throws if wrong type)
-String str = obj as String;
-// int num = obj as int;  // ❌ throws CastError at runtime
-
-// Smart casts — after is check, Dart auto-casts in scope
-if (obj is String) {
-  print(obj.length);  // no cast needed — Dart knows it's String here
+// After null check — nullable promoted to non-nullable
+String? name = getName();
+if (name != null) {
+  print(name.length); // ✅ name is String (non-nullable) here
 }
 
-// Pattern-based type check (Dart 3)
-switch (obj) {
-  case String s:
-    print('String: ${s.length}');
-  case int n:
-    print('Number: $n');
-}
-```
-
----
-
-## The `Object` and `dynamic` Types
-
-```dart
-// Object — base class of everything (except null)
-Object a = 42;
-Object b = 'hello';
-Object c = [1, 2, 3];
-
-// Can only use Object's methods (toString, hashCode, ==, runtimeType)
-print(a.toString());   // '42'
-print(a.runtimeType);  // int
-
-// dynamic — no type checking at all (escape hatch)
-dynamic d = 42;
-d = 'changed';
-d = [1, 2, 3];
-print(d.length);  // OK at runtime — but no IDE help, no compile checks
-
-// Never — the bottom type (function that never returns)
-Never throwError(String msg) => throw Exception(msg);
-```
-
----
-
-## Type Aliases (typedef)
-
-```dart
-// Simple type alias
-typedef Name = String;
-typedef Age = int;
-
-Name firstName = 'Alice';
-Age userAge = 30;
-
-// Function type alias
-typedef Comparator<T> = int Function(T a, T b);
-typedef Callback = void Function(String event);
-typedef JsonMap = Map<String, dynamic>;
-
-// Usage
-Callback onEvent = (event) => print('Event: $event');
-JsonMap data = {'key': 'value', 'count': 42};
-
-// Modern record alias (Dart 3)
-typedef Point = (double x, double y);
-Point origin = (0.0, 0.0);
-```
-
----
-
-## Constants in Depth
-
-```dart
-// const creates deeply immutable objects
-const coordinates = [10, 20, 30]; // list is immutable!
-// coordinates.add(40); // ❌ throws UnsupportedError at runtime
-// coordinates[0] = 99; // ❌ throws UnsupportedError at runtime
-
-// final list is reassign-proof but mutably contents
-final mutableList = [10, 20, 30];
-mutableList.add(40);   // ✅ OK
-// mutableList = [];   // ❌ can't reassign
-
-// const in class
-class Circle {
-  static const double pi = 3.14159;
-  final double radius;
-  const Circle(this.radius); // const constructor
+// Early return promotes for the rest of the function
+String process(String? input) {
+  if (input == null) return 'empty';
+  // input is String from here — no ! needed
+  return input.trim().toUpperCase();
 }
 
-const c = Circle(5.0); // creates a compile-time constant object
+// Promotion does NOT work on class fields (thread-safety)
+class Foo {
+  String? name;
+
+  void show() {
+    if (name != null) {
+      // name might be set to null by another thread between check and use
+      print(name!.length); // ← need ! for fields (Dart won't promote them)
+    }
+    // Workaround: capture to local variable first
+    final local = name;
+    if (local != null) {
+      print(local.length); // ✅ local variable IS promoted
+    }
+  }
+}
 ```
 
 ---
@@ -315,32 +454,84 @@ const c = Circle(5.0); // creates a compile-time constant object
 ## Runes & Unicode
 
 ```dart
-// Dart strings are sequences of UTF-16 code units
-// Runes expose the full Unicode code points
+// Dart strings are UTF-16 code unit sequences
+// Most characters are 1 code unit; emoji are often 2 (surrogate pairs)
 
-var heart = '♥';
-print(heart.runes.toList());  // [9829]
-print(heart.codeUnitAt(0));   // 9829
+var hello = 'Hello';
+print(hello.length);           // 5  — code units
 
-// Emoji can be > 1 code unit
 var emoji = '😀';
-print(emoji.length);          // 2 (it's a surrogate pair!)
-print(emoji.runes.length);    // 1 (one code point)
+print(emoji.length);           // 2  — surrogate pair (2 code units)
+print(emoji.runes.length);     // 1  — one Unicode code point
 
-// Creating from code point
-var arrow = String.fromCharCode(0x2192); // →
+// Runes — Unicode code points
+for (var rune in '🎯Dart'.runes) {
+  print('U+${rune.toRadixString(16).toUpperCase().padLeft(4,'0')}');
+}
+// U+1F3AF
+// U+0044  (D)
+// U+0061  (a)  etc.
+
+// Create string from code points
+var arrow  = String.fromCharCode(0x2192);     // →
 var smiley = String.fromCharCodes([0x1F600]); // 😀
+var dart   = String.fromCharCodes([68, 97, 114, 116]); // Dart
+
+// Safe Unicode-aware iteration: use package:characters
+// import 'package:characters/characters.dart';
+// '😀hello'.characters.length  // 6 (not 7)
+// '😀hello'.characters.first   // '😀'
+```
+
+---
+
+## `typedef` — Type Aliases
+
+```dart
+// Simple aliases — improve readability
+typedef UserId    = int;
+typedef ProductId = String;
+typedef JsonMap   = Map<String, dynamic>;
+
+UserId    uid = 42;
+ProductId pid = 'sku-001';
+JsonMap   data = {'key': 'value'};
+
+// Function type aliases
+typedef Comparator<T>     = int Function(T a, T b);
+typedef Predicate<T>      = bool Function(T value);
+typedef Transformer<T, R> = R Function(T input);
+typedef VoidCallback      = void Function();
+typedef AsyncCallback     = Future<void> Function();
+
+Predicate<int> isPositive = (n) => n > 0;
+Transformer<String, int> strlen = (s) => s.length;
+
+// Record type aliases (Dart 3)
+typedef Point    = (double x, double y);
+typedef Named<T> = ({String label, T value});
+
+Point   origin = (0.0, 0.0);
+Named<int> entry = (label: 'score', value: 100);
 ```
 
 ---
 
 ## Summary
 
-| Keyword | Use Case | Reassignable? | When set? |
-|---------|----------|---------------|-----------|
-| `var` | General use, type inferred | ✅ Yes | Anytime |
-| `String`, `int` | Explicit typed variable | ✅ Yes | Anytime |
-| `final` | Set once | ❌ No | Runtime |
-| `const` | Compile-time constant | ❌ No | Compile time |
-| `late` | Lazy init / non-null set later | ✅ (if not final) | Before first use |
-| `dynamic` | Opt out of type system | ✅ Yes | Anytime |
+| Keyword | Reassignable? | Value Timing | Null? |
+|---------|:---:|---|:---:|
+| `var` | ✅ | Runtime | Only if `?` |
+| `final` | ❌ | Runtime | Only if `?` |
+| `const` | ❌ | Compile time | ❌ Never |
+| `late` | ✅* | Before first read | ❌ Never |
+| `dynamic` | ✅ | Runtime | ✅ Yes |
+
+| Type | Meaning |
+|------|---------|
+| `String` | Non-nullable String |
+| `String?` | Nullable String (String or null) |
+| `Object` | Any non-null value |
+| `Object?` | Any value including null |
+| `dynamic` | Any value, no type checking |
+| `Never` | Function that never returns normally |
