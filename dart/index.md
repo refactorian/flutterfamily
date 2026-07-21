@@ -20,7 +20,7 @@ Welcome! This tutorial is organized into focused pages so you can jump to any to
 | [02 — Variables & Types](./variables-and-types.md) | var, final, const, type system, type inference |
 | [03 — Operators](./operators.md) | Arithmetic, logical, bitwise, cascade, spread |
 | [04 — Functions](./functions.md) | Named, anonymous, arrow, optional/named params, closures |
-| [05 — Collections](./collections.md) | List, Set, Map, spread, collection-if/for |
+| [05 — Collections](./collections/index.md) | List, Set, Map, Queue, Iterable, spread, collection-if/for, and immutable collections |
 | [06 — Control Flow](./control-flow.md) | if/else, switch, loops, break/continue, assert |
 | [07 — Classes & OOP](./classes-and-oop.md) | Classes, objects, inheritance, interfaces, abstract |
 | [08 — Constructors](./constructors.md) | Default, named, factory, redirecting, const constructors |
