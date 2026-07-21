@@ -320,7 +320,3 @@ Explore every collection type in depth:
 | [Common Patterns](./patterns) | Grouping, sorting, chunking… |
 | [Common Mistakes](./mistakes) | Pitfalls to avoid |
 | [Best Practices](./best-practices) | Professional recommendations |
-
----
-
-**Next:** [Iterable\<E\>](./iterable)

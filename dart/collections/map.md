@@ -690,9 +690,3 @@ int score = scores['Alice'] ?? 0;    // ✅ with default value
 - **Type your maps explicitly**: `Map<String, dynamic>` is better than `Map`.
 - **For read-only maps, use `Map.unmodifiable()`** or `const {}`.
 - **Avoid using mutable objects as keys** — their `hashCode` can change.
-
----
-
-**Previous:** [Set\<E\>](./set)  
-**Next:** [Queue\<E\>](./queue)  
-**Related:** [HashMap\<K,V\>](./hashmap) · [LinkedHashMap\<K,V\>](./linked-hashmap) · [SplayTreeMap\<K,V\>](./splay-tree-map) · [Common Patterns](./patterns)

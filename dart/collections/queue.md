@@ -568,9 +568,3 @@ if (q.isNotEmpty) print(q.first);
 | Index access | ❌ | O(1) | ❌ |
 | Node references | ❌ | ❌ | ✅ |
 | Import | dart:collection | core | dart:collection |
-
----
-
-**Previous:** [Map\<K,V\>](./map)  
-**Next:** [DoubleLinkedQueue\<E\>](./double-linked-queue)  
-**Related:** [LinkedList\<E\>](./linked-list) · [Common Patterns](./patterns) · [Performance & Complexity](./performance)

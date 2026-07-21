@@ -576,9 +576,3 @@ print(a.containsAll(b) && b.containsAll(a)); // true
 | Index access | ❌ | ✅ | ❌ | ❌ |
 | `contains()` | O(1) | O(n) | O(1) | O(log n) |
 | Import | core | core | dart:collection | dart:collection |
-
----
-
-**Previous:** [List\<E\>](./list)  
-**Next:** [Map\<K,V\>](./map)  
-**Related:** [HashSet\<E\>](./hashset) · [LinkedHashSet\<E\>](./linked-hashset) · [SplayTreeSet\<E\>](./splay-tree-set) · [Collection Equality](./equality)

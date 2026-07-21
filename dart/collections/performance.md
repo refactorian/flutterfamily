@@ -64,9 +64,3 @@ final concreteList = lazyIterable.toList();
 
 ### Gotcha 3: Map / Set Hash Collisions
 If `hashCode` is poorly implemented (e.g., returning constant `1`), operations degrade from O(1) to O(n).
-
----
-
-**Previous:** [Choosing the Right Collection](./choosing)  
-**Next:** [Common Collection Patterns](./patterns)  
-**Related:** [Choosing the Right Collection](./choosing) · [Best Practices](./best-practices)

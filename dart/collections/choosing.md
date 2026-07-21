@@ -75,9 +75,3 @@ flowchart TD
 > - Need key-value lookup? Use **`Map`** (default `{}`).
 > - Need unique items? Use **`Set`** (default `{}`).
 > - Reach for specialized collections in `dart:collection` (`Queue`, `HashMap`, `SplayTreeMap`, `LinkedList`) when performance requirements or sorted constraints demand them.
-
----
-
-**Previous:** [Collection Equality](./equality)  
-**Next:** [Performance & Complexity](./performance)  
-**Related:** [Performance & Complexity](./performance) · [Collections Overview](./)

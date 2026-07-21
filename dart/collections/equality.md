@@ -144,9 +144,3 @@ void main() {
 | `SetEquality()` | Unordered element equality | Comparing `Set<String>` |
 | `MapEquality()` | Key-value pair equality | Comparing simple JSON maps |
 | `DeepCollectionEquality()` | Recursive deep equality | Comparing complex nested API responses |
-
----
-
-**Previous:** [Collection Utilities](./utilities)  
-**Next:** [Choosing the Right Collection](./choosing)  
-**Related:** [Common Mistakes](./mistakes) · [Best Practices](./best-practices)

@@ -188,9 +188,3 @@ void main() {
 | Group elements | `groupBy` or `putIfAbsent` |
 | Split into batches | Sublist chunking |
 | Combine 2 lists into pairs | Custom `zip` generator or `IterableZip` |
-
----
-
-**Previous:** [Collection Operators](./operators)  
-**Next:** [Collection Equality](./equality)  
-**Related:** [Iterable\<E\>](./iterable) · [Common Patterns](./patterns)

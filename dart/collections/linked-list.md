@@ -486,9 +486,3 @@ while (current != null) {
 | Element restriction | Must extend `LinkedListEntry` | No restriction | No restriction |
 | Index access | O(n) | O(n) | O(1) |
 | Import | dart:collection | dart:collection | core |
-
----
-
-**Previous:** [DoubleLinkedQueue\<E\>](./double-linked-queue)  
-**Next:** [HashMap\<K,V\>](./hashmap)  
-**Related:** [Queue\<E\>](./queue) · [DoubleLinkedQueue\<E\>](./double-linked-queue) · [Performance & Complexity](./performance)

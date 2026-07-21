@@ -320,9 +320,3 @@ var hs = HashSet.of(['a', 'b', 'c']); // ✅ explicit HashSet
 - **Always override `hashCode` and `==` together** in custom key classes.
 - **Use custom `equals`/`hashCode` constructors** for non-standard equality.
 - **Prefer the default `Set` (`LinkedHashSet`)** for most cases — only reach for `HashSet` when you need the performance edge.
-
----
-
-**Previous:** [SplayTreeMap\<K,V\>](./splay-tree-map)  
-**Next:** [LinkedHashSet\<E\>](./linked-hashset)  
-**Related:** [Set\<E\>](./set) · [LinkedHashSet\<E\>](./linked-hashset) · [SplayTreeSet\<E\>](./splay-tree-set)

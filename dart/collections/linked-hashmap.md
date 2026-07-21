@@ -376,9 +376,3 @@ print(map.keys.last); // 'a' — now at end
 - **Exploit insertion-order for LRU caches** — remove and re-insert the accessed key to move it to the "most recent" end.
 - **When serializing to JSON**, use `LinkedHashMap` to control field order.
 - **Switch to `HashMap`** only when you've profiled and determined that iteration order overhead is a bottleneck.
-
----
-
-**Previous:** [HashMap\<K,V\>](./hashmap)  
-**Next:** [SplayTreeMap\<K,V\>](./splay-tree-map)  
-**Related:** [HashMap\<K,V\>](./hashmap) · [Map\<K,V\>](./map) · [Choosing the Right Collection](./choosing)

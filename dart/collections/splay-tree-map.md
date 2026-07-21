@@ -439,9 +439,3 @@ var map = SplayTreeMap<MyClass, int>((a, b) => a.id.compareTo(b.id));
 - **Always provide a `compare` function** unless your keys implement `Comparable` (like `int`, `String`, `DateTime`).
 - **Use `firstKey()` / `lastKey()`** for O(log n) min/max — much better than converting keys to a list and sorting.
 - **Pair with `firstKeyAfter` / `lastKeyBefore`** for efficient range queries without materializing all keys.
-
----
-
-**Previous:** [LinkedHashMap\<K,V\>](./linked-hashmap)  
-**Next:** [HashSet\<E\>](./hashset)  
-**Related:** [SplayTreeSet\<E\>](./splay-tree-set) · [HashMap\<K,V\>](./hashmap) · [Performance & Complexity](./performance)

@@ -360,9 +360,3 @@ class Store {
 - **Always use `List.unmodifiable()` in value objects** that must never change.
 - **Use `final` for collection variables** that won't be reassigned, even if contents change.
 - **Document immutability intent** with a comment when using `UnmodifiableListView`.
-
----
-
-**Previous:** [SplayTreeSet\<E\>](./splay-tree-set)  
-**Next:** [Collection Literals](./literals)  
-**Related:** [Best Practices](./best-practices) · [Common Mistakes](./mistakes) · [Choosing the Right Collection](./choosing)

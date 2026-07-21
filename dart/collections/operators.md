@@ -178,9 +178,3 @@ void main() {
 - Use `..` to apply multiple mutations fluently.
 - Combine **Records** with `List` and `Map` for quick structured data without class boilerplate.
 - Leverage **Dart 3 pattern matching** (`[a, ...rest]`) for elegant collection parsing and validation.
-
----
-
-**Previous:** [Collection Literals](./literals)  
-**Next:** [Collection Utilities](./utilities)  
-**Related:** [Collection Utilities](./utilities) · [Common Patterns](./patterns)

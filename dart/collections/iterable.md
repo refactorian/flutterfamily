@@ -645,9 +645,3 @@ print(empty.firstWhere((_) => true, orElse: () => -1)); // -1
 | `sync*` / `yield` | Create lazy Iterables with generator syntax |
 | `toList()` / `toSet()` | Materialize to a concrete collection |
 | `Iterator<E>` | The low-level protocol; `for-in` is sugar for it |
-
----
-
-**Previous:** [Collections Overview](./)  
-**Next:** [List\<E\>](./list)  
-**Related:** [Collection Utilities](./utilities) · [Common Patterns](./patterns) · [Performance & Complexity](./performance)

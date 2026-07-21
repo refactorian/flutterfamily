@@ -124,8 +124,3 @@ for (final item in dynamicCategories) {
 | Prefer `isEmpty` over `length == 0` | Avoids $O(n)$ traversal on lazy sequences |
 | Use `Set` for frequent `contains()` checks | Drops lookup complexity from $O(n)$ to $O(1)$ |
 | Use declarative `if`/`for`/`...` in collection literals | Produces clean, readable code |
-
----
-
-**Previous:** [Common Mistakes](./mistakes)  
-**Related:** [Unmodifiable Collections](./unmodifiable) · [Performance & Complexity](./performance)

@@ -399,9 +399,3 @@ entry?.element = 999; // changes value in place, no reordering
 - **Use the default `Queue()`** (which is `ListQueue`) for simple FIFO/LIFO patterns — it's faster and uses less memory.
 - **Store `DoubleLinkedQueueEntry` references** in a `Map` alongside the queue for O(1) indexed access (as shown in the LRU cache example).
 - **Don't access detached entries** — always check if the entry is still part of the queue.
-
----
-
-**Previous:** [Queue\<E\>](./queue)  
-**Next:** [LinkedList\<E\>](./linked-list)  
-**Related:** [Queue\<E\>](./queue) · [LinkedList\<E\>](./linked-list) · [Performance & Complexity](./performance)

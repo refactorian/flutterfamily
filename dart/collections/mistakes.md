@@ -141,16 +141,10 @@ if (scores.containsKey('Bob')) {
 
 ---
 
-## Summary Checklist
+## Summary
 
-- [ ] Am I mutating a list inside a `for-in` loop? (Use `removeWhere`)
-- [ ] Did I write `{}` expecting a `Set`? (Use `<T>{}`)
-- [ ] Am I using `List.contains` inside a tight loop? (Convert to `Set`)
-- [ ] Did I create nested objects with `List.filled`? (Use `List.generate`)
-- [ ] Am I comparing collections with `==`? (Use `package:collection`)
-
----
-
-**Previous:** [Common Collection Patterns](./patterns)  
-**Next:** [Best Practices](./best-practices)  
-**Related:** [Collection Equality](./equality) · [Performance & Complexity](./performance)
+- Am I mutating a list inside a `for-in` loop? (Use `removeWhere`)
+- Did I write `{}` expecting a `Set`? (Use `<T>{}`)
+- Am I using `List.contains` inside a tight loop? (Convert to `Set`)
+- Did I create nested objects with `List.filled`? (Use `List.generate`)
+- Am I comparing collections with `==`? (Use `package:collection`)

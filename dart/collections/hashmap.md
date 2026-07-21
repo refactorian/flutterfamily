@@ -407,9 +407,3 @@ class GoodKey {
 - **Use `HashMap` with custom `equals`/`hashCode`** for flexible key types (case-insensitive strings, records, etc.).
 - **Avoid using mutable objects as keys** — if the key mutates after insertion, the hash changes and the entry becomes unreachable.
 - **Use `HashMap.identity()`** when you deliberately want reference equality for keys.
-
----
-
-**Previous:** [LinkedList\<E\>](./linked-list)  
-**Next:** [LinkedHashMap\<K,V\>](./linked-hashmap)  
-**Related:** [Map\<K,V\>](./map) · [LinkedHashMap\<K,V\>](./linked-hashmap) · [SplayTreeMap\<K,V\>](./splay-tree-map)

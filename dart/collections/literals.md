@@ -448,9 +448,3 @@ var list = [
 - **Use `collection for`** instead of `List.generate` for readable transformations.
 - **Use `...?` (null-aware spread)** instead of a null check before spreading.
 - **Use `const` literals** for compile-time constant collections.
-
----
-
-**Previous:** [Unmodifiable Collections](./unmodifiable)  
-**Next:** [Collection Operators](./operators)  
-**Related:** [Collection Operators](./operators) · [List\<E\>](./list) · [Common Patterns](./patterns)

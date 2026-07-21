@@ -152,9 +152,3 @@ List<T> dfs<T>(T start, Map<T, List<T>> adjacencyList) {
 ## Summary
 
 These common patterns form the foundation for complex algorithms and production application features in Dart and Flutter.
-
----
-
-**Previous:** [Performance & Complexity](./performance)  
-**Next:** [Common Mistakes](./mistakes)  
-**Related:** [Collection Utilities](./utilities) · [Choosing the Right Collection](./choosing)

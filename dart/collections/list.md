@@ -884,9 +884,3 @@ if (empty.isNotEmpty) print(empty.first);
 - All constructors serve different use cases: `filled`, `generate`, `of`, `unmodifiable`.
 - O(1) for indexed access and `add()`; O(n) for insert/remove in the middle.
 - Combine with `map()`, `where()`, `sort()`, and spread for powerful data pipelines.
-
----
-
-**Previous:** [Iterable\<E\>](./iterable)  
-**Next:** [Set\<E\>](./set)  
-**Related:** [Collection Literals](./literals) · [Common Patterns](./patterns) · [Performance & Complexity](./performance)

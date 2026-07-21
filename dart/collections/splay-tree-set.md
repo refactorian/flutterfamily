@@ -421,9 +421,3 @@ var s = SplayTreeSet<int>((a, b) => 0); // treats all equal → broken!
 - **Ensure your comparator is a total order** (antisymmetric, transitive, and total).
 - **Pair `firstAfter` / `lastBefore` with iteration** for efficient range queries.
 - **Use `first` / `last`** as O(log n) min/max — much faster than sorting a list.
-
----
-
-**Previous:** [LinkedHashSet\<E\>](./linked-hashset)  
-**Next:** [Unmodifiable Collections](./unmodifiable)  
-**Related:** [Set\<E\>](./set) · [SplayTreeMap\<K,V\>](./splay-tree-map) · [Choosing the Right Collection](./choosing)

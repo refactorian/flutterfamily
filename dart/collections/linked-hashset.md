@@ -385,9 +385,3 @@ print(s.toList()); // [b, c, a]
 - **Exploit insertion order** for features like search history, recently viewed, and ordered tags.
 - **Switch to `HashSet`** only when you've profiled and need the raw speed.
 - **Switch to `SplayTreeSet`** when you need elements in sorted order.
-
----
-
-**Previous:** [HashSet\<E\>](./hashset)  
-**Next:** [SplayTreeSet\<E\>](./splay-tree-set)  
-**Related:** [Set\<E\>](./set) · [HashSet\<E\>](./hashset) · [SplayTreeSet\<E\>](./splay-tree-set)
