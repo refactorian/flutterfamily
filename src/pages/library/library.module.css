@@ -1,0 +1,171 @@
+/* ─── Header & Category Tabs ────────────────────────────────────────────── */
+.headerContainer {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.tabWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.tabContainer {
+    display: inline-flex;
+    background-color: var(--ifm-color-emphasis-100);
+    padding: 4px;
+    border-radius: 12px;
+    border: 1px solid var(--ifm-toc-border-color);
+}
+
+[data-theme='dark'] .tabContainer {
+    background-color: var(--ifm-background-surface-color);
+}
+
+.tabButton {
+    background: transparent;
+    border: none;
+    padding: 0.6rem 1.6rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ifm-color-content);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.tabButtonActive {
+    background-color: var(--ifm-color-primary);
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(1, 117, 194, 0.3);
+}
+
+/* ─── Search Bar & Tag Filters Section ───────────────────────────────────── */
+.filterSection {
+    max-width: 800px;
+    margin: 0 auto 2.5rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--ifm-toc-border-color);
+    background-color: var(--ifm-background-surface-color);
+    color: var(--ifm-color-content);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.searchInput:focus {
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 0 0 2px rgba(1, 117, 194, 0.2);
+}
+
+.tagGroup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.tagButton {
+    background: transparent;
+    border: 1px solid var(--ifm-toc-border-color);
+    padding: 0.35rem 0.85rem;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    color: var(--ifm-color-content);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tagButtonActive {
+    background-color: var(--ifm-color-primary);
+    color: #ffffff;
+    border-color: var(--ifm-color-primary);
+}
+
+/* ─── Item Cards Grid & Full-Card Link Wrapper ──────────────────────────── */
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Wrapper to make the entire card a clean clickable link */
+.cardLinkWrapper {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+}
+
+.itemCard {
+    background-color: var(--ifm-card-background-color);
+    border: 1px solid var(--ifm-toc-border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Elevate and highlight card on hover */
+.cardLinkWrapper:hover .itemCard {
+    transform: translateY(-4px);
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.cardImage {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.cardBody {
+    padding: 1.25rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTitle {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    color: var(--ifm-color-content);
+}
+
+.cardDescription {
+    font-size: 0.9rem;
+    color: var(--ifm-color-content-secondary);
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+
+.cardFooter {
+    padding: 0 1.25rem 1.25rem 1.25rem;
+}
+
+/* Visual Button inside the clickable card wrapper */
+.detailsButton {
+    display: block;
+    text-align: center;
+    padding: 0.6rem;
+    border-radius: 8px;
+    background-color: var(--ifm-color-primary);
+    color: #ffffff !important;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.cardLinkWrapper:hover .detailsButton {
+    background-color: var(--ifm-color-primary-dark);
+}

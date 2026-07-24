@@ -75,6 +75,18 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'library',
+        path: 'library',
+        routeBasePath: 'library',
+        sidebarPath: false,
+      },
+    ],
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/flutter-family-social-card.jpg',
@@ -94,7 +106,17 @@ const config: Config = {
           position: 'left',
           label: 'Dart',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
+        {
+          to: '/blog',
+          label: 'Blog',
+          position: 'left',
+        },
+        {
+          to: '/library',
+          label: 'Library',
+          position: 'left',
+          activeBaseRegex: `/library/`,
+        },
         {
           href: 'https://github.com/refactorian/flutterfamily',
           label: 'GitHub',
