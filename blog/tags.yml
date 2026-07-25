@@ -1,19 +1,289 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+dart:
+  label: Dart
+  permalink: /dart
+  description: Deep dives into Dart language features, type systems, and async programming.
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+flutter:
+  label: Flutter
+  permalink: /flutter
+  description: Tutorials, architecture tips, and UI best practices for Flutter developers.
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+devtools:
+  label: DevTools
+  permalink: /devtools
+  description: Learn how to profile, debug, inspect, and optimize Flutter applications using Flutter DevTools, including performance analysis, memory profiling, CPU inspection, widget inspection, and network monitoring.
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+architecture:
+  label: Architecture
+  permalink: /architecture
+  description: Clean architecture, state management patterns, and app structure.
+
+performance:
+  label: Performance
+  permalink: /performance
+  description: Profiling, memory management, and rendering optimization techniques.
+
+optimization:
+  label: Optimization
+  permalink: /optimization
+  description: Techniques and best practices for improving application performance, reducing resource usage, optimizing rendering, memory, networking, startup time, and overall efficiency in Flutter and Dart applications.
+
+state-management:
+  label: State Management
+  permalink: /state-management
+  description: Managing application state using Provider, Riverpod, Bloc, Cubit, and other Flutter state management solutions.
+
+clean-architecture:
+  label: Clean Architecture
+  permalink: /clean-architecture
+  description: Building maintainable Flutter applications using Clean Architecture principles and layered design.
+
+riverpod:
+  label: Riverpod
+  permalink: /riverpod
+  description: Modern Flutter state management with Riverpod, providers, dependency injection, and async state.
+
+provider:
+  label: Provider
+  permalink: /provider
+  description: State management using the Provider package for Flutter applications.
+
+bloc:
+  label: BLoC
+  permalink: /bloc
+  description: Business Logic Component (BLoC) and Cubit architecture for scalable Flutter applications.
+
+cubit:
+  label: Cubit
+  permalink: /cubit
+  description: Lightweight state management using Cubit from the flutter_bloc ecosystem.
+
+dependency-injection:
+  label: Dependency Injection
+  permalink: /dependency-injection
+  description: Decoupling application components using dependency injection and inversion of control.
+
+repository-pattern:
+  label: Repository Pattern
+  permalink: /repository-pattern
+  description: Abstracting data access through repository implementations for maintainable applications.
+
+design-patterns:
+  label: Design Patterns
+  permalink: /design-patterns
+  description: Common software design patterns for Flutter and Dart development.
+
+mobile:
+  label: Mobile Development
+  permalink: /mobile-development
+  description: Cross-platform mobile development with Flutter and Dart.
+
+software-engineering:
+  label: Software Engineering
+  permalink: /software-engineering
+  description: Engineering principles, maintainability, scalability, and software craftsmanship.
+
+testing:
+  label: Testing
+  permalink: /testing
+  description: Unit testing, widget testing, integration testing, and test-driven development in Flutter.
+
+async:
+  label: Async Programming
+  permalink: /async
+  description: Futures, Streams, isolates, concurrency, and asynchronous programming in Dart.
+
+ui:
+  label: UI
+  permalink: /ui
+  description: Building responsive, beautiful, and reusable Flutter user interfaces.
+
+ux:
+  label: User Experience
+  permalink: /ux
+  description: Designing intuitive, performant, and user-friendly Flutter applications.
+
+best-practices:
+  label: Best Practices
+  permalink: /best-practices
+  description: Production-ready coding standards, architecture, and development best practices.
+
+enterprise:
+  label: Enterprise
+  permalink: /enterprise
+  description: Enterprise-scale Flutter architecture, workflows, and large application development.
+
+scalability:
+  label: Scalability
+  permalink: /scalability
+  description: Techniques for building scalable, maintainable, and modular Flutter applications.
+
+dart3:
+  label: Dart 3
+  permalink: /dart3
+  description: Explore the latest language features introduced in Dart 3, including records, pattern matching, sealed classes, switch expressions, and class modifiers.
+
+language-features:
+  label: Language Features
+  permalink: /language-features
+  description: Modern Dart language capabilities, syntax improvements, and core programming concepts.
+
+records:
+  label: Records
+  permalink: /records
+  description: Learn how to use Dart records to return multiple values, improve readability, and reduce boilerplate.
+
+pattern-matching:
+  label: Pattern Matching
+  permalink: /pattern-matching
+  description: Master Dart's powerful pattern matching, destructuring, object patterns, list patterns, and switch expressions.
+
+sealed-classes:
+  label: Sealed Classes
+  permalink: /sealed-classes
+  description: Build safer applications using sealed classes, exhaustive pattern matching, and finite state modeling.
+
+class-modifiers:
+  label: Class Modifiers
+  permalink: /class-modifiers
+  description: Learn how sealed, base, interface, final, and mixin class modifiers improve API design and type safety.
+
+object-oriented-programming:
+  label: Object-Oriented Programming
+  permalink: /object-oriented-programming
+  description: Object-oriented programming concepts and best practices in Dart and Flutter.
+
+functional-programming:
+  label: Functional Programming
+  permalink: /functional-programming
+  description: Functional programming techniques including immutable data, pattern matching, expressions, and declarative programming.
+
+type-safety:
+  label: Type Safety
+  permalink: /type-safety
+  description: Build more reliable applications with Dart's static type system and compile-time safety.
+
+immutability:
+  label: Immutability
+  permalink: /immutability
+  description: Learn immutable programming techniques for predictable and maintainable Flutter applications.
+
+switch-expressions:
+  label: Switch Expressions
+  permalink: /switch-expressions
+  description: Modern switch expressions and exhaustive branching introduced in Dart 3.
+
+compiler:
+  label: Compiler
+  permalink: /compiler
+  description: Understand Dart compiler features, static analysis, optimization, and compile-time checking.
+
+language-design:
+  label: Language Design
+  permalink: /language-design
+  description: Explore the evolution and design principles behind the Dart programming language.
+
+modern-dart:
+  label: Modern Dart
+  permalink: /modern-dart
+  description: Modern Dart programming practices using the latest language features and APIs.
+
+custom-painter:
+  label: Custom Painter
+  permalink: /custom-painter
+  description: Learn how to build custom graphics, animations, and visual components using Flutter's CustomPainter API.
+
+canvas:
+  label: Canvas
+  permalink: /canvas
+  description: Drawing primitives, transformations, clipping, and rendering techniques using Flutter's Canvas API.
+
+graphics:
+  label: Graphics
+  permalink: /graphics
+  description: Computer graphics, rendering techniques, visual effects, and custom drawing in Flutter.
+
+rendering:
+  label: Rendering
+  permalink: /rendering
+  description: Explore Flutter's rendering pipeline, painting system, compositing, rasterization, and GPU rendering.
+
+drawing:
+  label: Drawing
+  permalink: /drawing
+  description: Drawing shapes, paths, curves, text, and images using Flutter's graphics APIs.
+
+custom-widgets:
+  label: Custom Widgets
+  permalink: /custom-widgets
+  description: Build reusable and highly customized Flutter widgets with advanced rendering techniques.
+
+animation:
+  label: Animation
+  permalink: /animation
+  description: Create smooth animations, transitions, motion effects, and interactive experiences in Flutter.
+
+game-development:
+  label: Game Development
+  permalink: /game-development
+  description: Build 2D games, interactive graphics, and game mechanics using Flutter and Dart.
+
+skia:
+  label: Skia
+  permalink: /skia
+  description: Understand the Skia graphics engine that powers Flutter's rendering system.
+
+paint-api:
+  label: Paint API
+  permalink: /paint-api
+  description: Learn how to customize colors, strokes, gradients, shaders, and rendering behavior with Flutter's Paint API.
+
+paths:
+  label: Paths
+  permalink: /paths
+  description: Draw complex shapes, curves, and vector graphics using Flutter's Path API.
+
+shaders:
+  label: Shaders
+  permalink: /shaders
+  description: Apply gradients, fragment shaders, and advanced visual effects to Flutter applications.
+
+gradients:
+  label: Gradients
+  permalink: /gradients
+  description: Create linear, radial, and sweep gradients for modern Flutter user interfaces.
+
+visualization:
+  label: Data Visualization
+  permalink: /data-visualization
+  description: Build charts, graphs, dashboards, maps, and other visual representations of data.
+
+charts:
+  label: Charts
+  permalink: /charts
+  description: Create high-performance charts, graphs, and interactive visualizations using Flutter.
+
+renderbox:
+  label: RenderBox
+  permalink: /renderbox
+  description: Understand Flutter's RenderBox model, layout system, and low-level rendering architecture.
+
+hit-testing:
+  label: Hit Testing
+  permalink: /hit-testing
+  description: Handle user interaction with custom-painted widgets through Flutter's hit testing system.
+
+transformations:
+  label: Transformations
+  permalink: /transformations
+  description: Apply translation, rotation, scaling, and matrix transformations to custom graphics.
+
+visual-effects:
+  label: Visual Effects
+  permalink: /visual-effects
+  description: Build shadows, blurs, gradients, particle systems, and other advanced graphical effects.
+
+creative-coding:
+  label: Creative Coding
+  permalink: /creative-coding
+  description: Explore generative art, interactive graphics, and creative programming techniques with Flutter.
