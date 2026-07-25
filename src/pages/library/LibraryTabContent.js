@@ -100,12 +100,6 @@ export default function LibraryTabContent({ items = [], tags = {} }) {
                                         ))}
                                     </div>
                                 </div>
-                                <div className={styles.cardFooter}>
-                                    {/* Visual Button inside the full clickable card */}
-                                    <span className={styles.detailsButton}>
-                                        View Documentation & Code &rarr;
-                                    </span>
-                                </div>
                             </div>
                         </Link>
                     ))}
