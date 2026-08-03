@@ -13,7 +13,7 @@ export const SCREENS_DATA = [
         title: 'Email Login Screen',
         description: 'Modern email & password login with animated entry, form validation, password toggle, and social login buttons.',
         tags: ['auth'],
-        image: 'https://placehold.co/600x350/0D1525/0175C2?text=Email+Login',
+        image: '/img/library/screens/email_login_screen.webp',
         docUrl: '/library/screens/login-screen',
     },
     {
@@ -21,7 +21,7 @@ export const SCREENS_DATA = [
         title: 'Phone & OTP Login',
         description: 'Two-step phone authentication with country code picker, SMS verification, and animated 6-digit OTP boxes with auto-advance.',
         tags: ['auth'],
-        image: 'https://placehold.co/600x350/0D1525/0175C2?text=Phone+OTP+Login',
+        image: '/img/library/screens/phone_otp_login_screen.webp',
         docUrl: '/library/screens/phone-otp-login-screen',
     },
     {
@@ -29,7 +29,7 @@ export const SCREENS_DATA = [
         title: 'Sign Up / Registration',
         description: 'Multi-field registration with staggered entry animations, live password strength meter, and terms acceptance checkbox.',
         tags: ['auth'],
-        image: 'https://placehold.co/600x350/0D1525/0175C2?text=Sign+Up',
+        image: '/img/library/screens/sign_up_screen.webp',
         docUrl: '/library/screens/sign-up-screen',
     },
     {
@@ -37,7 +37,7 @@ export const SCREENS_DATA = [
         title: 'Forgot Password',
         description: 'Two-step password recovery flow: email entry → animated success confirmation, with resend capability.',
         tags: ['auth'],
-        image: 'https://placehold.co/600x350/0D1525/0175C2?text=Forgot+Password',
+        image: '/img/library/screens/forgot_password_screen.webp',
         docUrl: '/library/screens/forgot-password-screen',
     },
     {
@@ -45,7 +45,7 @@ export const SCREENS_DATA = [
         title: 'Onboarding Slides',
         description: 'Three-page onboarding flow with PageView, animated page indicator dots, elastic icon entrance, and per-page accent colors.',
         tags: ['auth'],
-        image: 'https://placehold.co/600x350/0D1525/0175C2?text=Onboarding',
+        image: '/img/library/screens/onboarding_screen_1.webp',
         docUrl: '/library/screens/onboarding-screen',
     },
     {
@@ -53,7 +53,7 @@ export const SCREENS_DATA = [
         title: 'Splash / Launch Screen',
         description: 'Animated app launch screen with gradient background, logo pulse animation, tagline slide-up, and async initialization flow.',
         tags: ['auth'],
-        image: 'https://placehold.co/600x350/0F0C29/FFFFFF?text=Splash+Screen',
+        image: '/img/library/screens/splash_screen_1.webp',
         docUrl: '/library/screens/splash-screen',
     },
     {
@@ -61,7 +61,7 @@ export const SCREENS_DATA = [
         title: 'Subscription & Paywall Screen',
         description: 'App paywall with monthly/yearly billing toggle, best-value discount badge, popular tier cards, feature checklists, and trial CTA.',
         tags: ['auth', 'ecommerce'],
-        image: 'https://placehold.co/600x350/0D1525/0175C2?text=Paywall+Pricing',
+        image: '/img/library/screens/paywall_screen_1.webp',
         docUrl: '/library/screens/subscription-pricing-screen',
     },
 
@@ -71,7 +71,7 @@ export const SCREENS_DATA = [
         title: 'User Profile Screen',
         description: 'Collapsing SliverAppBar with gradient header, avatar camera overlay, stats row, and inline edit mode toggle.',
         tags: ['profile'],
-        image: 'https://placehold.co/600x350/0D1525/8b5cf6?text=User+Profile',
+        image: '/img/library/screens/user_profile_screen_1.webp',
         docUrl: '/library/screens/user-profile-screen',
     },
     {
@@ -79,7 +79,7 @@ export const SCREENS_DATA = [
         title: 'Edit Profile & Security Screen',
         description: 'Profile edit screen with camera avatar picker, input fields, notification switches, password security, and account deletion dialog.',
         tags: ['profile'],
-        image: 'https://placehold.co/600x350/0D1525/8b5cf6?text=Edit+Profile',
+        image: '/img/library/screens/user_edit_profile_screen_1.webp',
         docUrl: '/library/screens/edit-profile-screen',
     },
     {
@@ -87,7 +87,7 @@ export const SCREENS_DATA = [
         title: 'App Settings Screen',
         description: 'Sectioned settings list with dark mode toggle, notification switches, language picker bottom sheet, and sign-out dialog.',
         tags: ['profile'],
-        image: 'https://placehold.co/600x350/0D1525/8b5cf6?text=Settings',
+        image: '/img/library/screens/settings_screen_1.webp',
         docUrl: '/library/screens/settings-screen',
     },
 
@@ -97,7 +97,7 @@ export const SCREENS_DATA = [
         title: 'Home Dashboard',
         description: 'Floating SliverAppBar, quick-action grid, horizontal category chip filter, featured banner, and scrollable content feed.',
         tags: ['dashboard'],
-        image: 'https://placehold.co/600x350/0D1525/10b981?text=Home+Dashboard',
+        image: '/img/library/screens/home_dashboard_screen_1.webp',
         docUrl: '/library/screens/home-dashboard-screen',
     },
     {
@@ -105,7 +105,7 @@ export const SCREENS_DATA = [
         title: 'Analytics Dashboard',
         description: 'KPI metric cards, animated custom bar chart via CustomPainter, date-range chip selector, and recent activity feed.',
         tags: ['dashboard'],
-        image: 'https://placehold.co/600x350/0D1525/10b981?text=Analytics',
+        image: '/img/library/screens/analytics_dashboard_screen_1.webp',
         docUrl: '/library/screens/analytics-dashboard-screen',
     },
     {
@@ -113,7 +113,7 @@ export const SCREENS_DATA = [
         title: 'Digital Wallet & Transactions',
         description: 'Banking & wallet dashboard with credit card carousel, quick action buttons (Send/Request), balance toggle, and transaction history.',
         tags: ['dashboard', 'ecommerce'],
-        image: 'https://placehold.co/600x350/0D1525/10b981?text=Digital+Wallet',
+        image: '/img/library/screens/wallet_transaction_screen_1.webp',
         docUrl: '/library/screens/wallet-transactions-screen',
     },
 
@@ -123,7 +123,7 @@ export const SCREENS_DATA = [
         title: 'Product Detail Screen',
         description: 'Image gallery carousel, color/size selectors, quantity stepper, expandable description, and sticky Add-to-Cart bottom bar.',
         tags: ['ecommerce'],
-        image: 'https://placehold.co/600x350/0D1525/f59e0b?text=Product+Detail',
+        image: '/img/library/screens/product_details_screen_1.webp',
         docUrl: '/library/screens/product-detail-screen',
     },
     {
@@ -131,7 +131,7 @@ export const SCREENS_DATA = [
         title: 'Shopping Cart',
         description: 'AnimatedList with swipe-to-delete, inline quantity stepper, promo code validation, and live order summary with tax calculation.',
         tags: ['ecommerce'],
-        image: 'https://placehold.co/600x350/0D1525/f59e0b?text=Shopping+Cart',
+        image: '/img/library/screens/shopping_cart_screen_1.webp',
         docUrl: '/library/screens/cart-screen',
     },
     {
@@ -139,7 +139,7 @@ export const SCREENS_DATA = [
         title: 'Checkout & Payment Screen',
         description: 'Checkout workflow with payment method selectors (Card, Apple Pay, PayPal), credit card form, shipping address, and order total.',
         tags: ['ecommerce'],
-        image: 'https://placehold.co/600x350/0D1525/f59e0b?text=Checkout+Payment',
+        image: '/img/library/screens/checkout_payment_screen_1.webp',
         docUrl: '/library/screens/checkout-payment-screen',
     },
     {
@@ -147,7 +147,7 @@ export const SCREENS_DATA = [
         title: 'Order Tracking Screen',
         description: 'Animated vertical step timeline, gradient order info card, map grid placeholder, delivery address, and courier contact button.',
         tags: ['ecommerce'],
-        image: 'https://placehold.co/600x350/0D1525/f59e0b?text=Order+Tracking',
+        image: '/img/library/screens/order_tracking_screen_1.webp',
         docUrl: '/library/screens/order-tracking-screen',
     },
     {
@@ -155,7 +155,7 @@ export const SCREENS_DATA = [
         title: 'Search & Advanced Filter Screen',
         description: 'Product discovery screen with debounced search input, category chips, RangeSlider price range, star rating selector, and results grid.',
         tags: ['ecommerce', 'dashboard'],
-        image: 'https://placehold.co/600x350/0D1525/f59e0b?text=Search+Filter',
+        image: '/img/library/screens/search_filter_screen_1.webp',
         docUrl: '/library/screens/search-filter-screen',
     },
 
@@ -165,7 +165,7 @@ export const SCREENS_DATA = [
         title: 'Chat / Messaging Screen',
         description: 'Message bubbles with timestamps and read receipts, animated typing indicator, keyboard-aware scroll, and voice/send button toggle.',
         tags: ['social'],
-        image: 'https://placehold.co/600x350/0D1525/ec4899?text=Chat+Screen',
+        image: '/img/library/screens/chat_screen_1.webp',
         docUrl: '/library/screens/chat-screen',
     },
     {
@@ -173,7 +173,7 @@ export const SCREENS_DATA = [
         title: 'Notifications Center Screen',
         description: 'Notifications feed with unread dot indicators, swipe-to-dismiss background, category filter chips (Orders, Promos), and mark as read.',
         tags: ['social', 'profile'],
-        image: 'https://placehold.co/600x350/0D1525/ec4899?text=Notifications',
+        image: '/img/library/screens/notification_center_screen_1.webp',
         docUrl: '/library/screens/notifications-center-screen',
     },
 ];
