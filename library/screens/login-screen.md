@@ -52,13 +52,10 @@ class _EmailLoginScreenState extends State<EmailLoginScreen>
       parent: _fadeController,
       curve: Curves.easeOut,
     );
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, 0.25),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: _fadeController,
-      curve: Curves.easeOutCubic,
-    ));
+    _slideAnimation =
+        Tween<Offset>(begin: const Offset(0, 0.25), end: Offset.zero).animate(
+          CurvedAnimation(parent: _fadeController, curve: Curves.easeOutCubic),
+        );
     _fadeController.forward();
   }
 
@@ -124,14 +121,17 @@ class _EmailLoginScreenState extends State<EmailLoginScreen>
                           borderRadius: BorderRadius.circular(12),
                         ),
                         filled: true,
-                        fillColor: cs.surfaceContainerHighest.withOpacity(0.4),
+                        fillColor: cs.surfaceContainerHighest.withValues(
+                          alpha: 0.4,
+                        ),
                       ),
                       validator: (v) {
                         if (v == null || v.trim().isEmpty) {
                           return 'Email is required';
                         }
-                        final emailRegex =
-                            RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                        final emailRegex = RegExp(
+                          r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                        );
                         if (!emailRegex.hasMatch(v.trim())) {
                           return 'Enter a valid email address';
                         }
@@ -159,13 +159,16 @@ class _EmailLoginScreenState extends State<EmailLoginScreen>
                                 : Icons.visibility_off_outlined,
                           ),
                           onPressed: () => setState(
-                              () => _obscurePassword = !_obscurePassword),
+                            () => _obscurePassword = !_obscurePassword,
+                          ),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
                         filled: true,
-                        fillColor: cs.surfaceContainerHighest.withOpacity(0.4),
+                        fillColor: cs.surfaceContainerHighest.withValues(
+                          alpha: 0.4,
+                        ),
                       ),
                       validator: (v) {
                         if (v == null || v.isEmpty) {
@@ -183,9 +186,7 @@ class _EmailLoginScreenState extends State<EmailLoginScreen>
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                        onPressed: () {
-                          // TODO: navigate to ForgotPasswordScreen
-                        },
+                        onPressed: () {},
                         child: const Text('Forgot password?'),
                       ),
                     ),
@@ -247,7 +248,9 @@ class _EmailLoginScreenState extends State<EmailLoginScreen>
                           child: _SocialButton(
                             label: 'Google',
                             icon: Icons.g_mobiledata_rounded,
-                            onPressed: () {/* Google auth */},
+                            onPressed: () {
+                              /* Google auth */
+                            },
                           ),
                         ),
                         const SizedBox(width: 12),
@@ -255,7 +258,9 @@ class _EmailLoginScreenState extends State<EmailLoginScreen>
                           child: _SocialButton(
                             label: 'Apple',
                             icon: Icons.apple,
-                            onPressed: () {/* Apple auth */},
+                            onPressed: () {
+                              /* Apple auth */
+                            },
                           ),
                         ),
                       ],
@@ -274,7 +279,9 @@ class _EmailLoginScreenState extends State<EmailLoginScreen>
                             ),
                           ),
                           GestureDetector(
-                            onTap: () {/* Navigate to SignUpScreen */},
+                            onTap: () {
+                              /* Navigate to SignUpScreen */
+                            },
                             child: Text(
                               'Sign Up',
                               style: TextStyle(
@@ -317,9 +324,7 @@ class _SocialButton extends StatelessWidget {
       label: Text(label),
       style: OutlinedButton.styleFrom(
         padding: const EdgeInsets.symmetric(vertical: 14),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         side: BorderSide(color: cs.outline),
       ),
     );

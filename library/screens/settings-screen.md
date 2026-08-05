@@ -60,9 +60,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
             child: Text(
               'Select Language',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
           ..._languages.map(
@@ -90,7 +90,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       builder: (context) => AlertDialog(
         title: const Text('Sign Out'),
         content: const Text(
-            'Are you sure you want to sign out of your account?'),
+          'Are you sure you want to sign out of your account?',
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -99,11 +100,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
           FilledButton(
             onPressed: () {
               Navigator.pop(context);
-              // TODO: Sign out logic
             },
-            style: FilledButton.styleFrom(
-              backgroundColor: Colors.red,
-            ),
+            style: FilledButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Sign Out'),
           ),
         ],
@@ -130,7 +128,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
           _ProfileTile(
             name: 'Alex Johnson',
             email: 'alex@example.com',
-            onTap: () {/* Navigate to profile */},
+            onTap: () {
+              /* Navigate to profile */
+            },
           ),
 
           const SizedBox(height: 8),
@@ -181,12 +181,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
           _NavigationTile(
             icon: Icons.lock_reset_rounded,
             title: 'Change Password',
-            onTap: () {/* Navigate to change password */},
+            onTap: () {
+              /* Navigate to change password */
+            },
           ),
           _NavigationTile(
             icon: Icons.privacy_tip_outlined,
             title: 'Privacy Policy',
-            onTap: () {/* Open privacy policy */},
+            onTap: () {
+              /* Open privacy policy */
+            },
           ),
 
           const SizedBox(height: 8),
@@ -202,12 +206,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
           _NavigationTile(
             icon: Icons.star_outline_rounded,
             title: 'Rate this App',
-            onTap: () {/* Open app store */},
+            onTap: () {
+              /* Open app store */
+            },
           ),
           _NavigationTile(
             icon: Icons.help_outline_rounded,
             title: 'Help & Support',
-            onTap: () {/* Open support */},
+            onTap: () {
+              /* Open support */
+            },
           ),
 
           const SizedBox(height: 24),
@@ -220,7 +228,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               icon: const Icon(Icons.logout_rounded, color: Colors.red),
               label: const Text(
                 'Sign Out',
-                style: TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               style: OutlinedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 14),
@@ -308,9 +319,7 @@ class _NavigationTile extends StatelessWidget {
       leading: Icon(icon),
       title: Text(title),
       subtitle: subtitle != null ? Text(subtitle!) : null,
-      trailing: onTap != null
-          ? const Icon(Icons.chevron_right_rounded)
-          : null,
+      trailing: onTap != null ? const Icon(Icons.chevron_right_rounded) : null,
       onTap: onTap,
     );
   }
@@ -335,10 +344,7 @@ class _ProfileTile extends StatelessWidget {
         backgroundColor: cs.primaryContainer,
         child: Text(
           name[0],
-          style: TextStyle(
-            color: cs.primary,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(color: cs.primary, fontWeight: FontWeight.bold),
         ),
       ),
       title: Text(name, style: const TextStyle(fontWeight: FontWeight.w600)),

@@ -45,10 +45,12 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
 
     // Make status bar transparent
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+      ),
+    );
 
     // Logo animation
     _logoController = AnimationController(
@@ -60,8 +62,9 @@ class _SplashScreenState extends State<SplashScreen>
     );
     _logoFade = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
-          parent: _logoController,
-          curve: const Interval(0, 0.6, curve: Curves.easeOut)),
+        parent: _logoController,
+        curve: const Interval(0, 0.6, curve: Curves.easeOut),
+      ),
     );
 
     // Tagline animation (delayed)
@@ -69,12 +72,13 @@ class _SplashScreenState extends State<SplashScreen>
       vsync: this,
       duration: const Duration(milliseconds: 600),
     );
-    _taglineSlide = Tween<Offset>(
-      begin: const Offset(0, 0.5),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(parent: _taglineController, curve: Curves.easeOutCubic),
-    );
+    _taglineSlide = Tween<Offset>(begin: const Offset(0, 0.5), end: Offset.zero)
+        .animate(
+          CurvedAnimation(
+            parent: _taglineController,
+            curve: Curves.easeOutCubic,
+          ),
+        );
     _taglineFade = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(parent: _taglineController, curve: Curves.easeOut),
     );
@@ -105,11 +109,11 @@ class _SplashScreenState extends State<SplashScreen>
     final isLoggedIn = await _checkAuthState();
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) => isLoggedIn
+        pageBuilder: (_, _, _) => isLoggedIn
             ? const _PlaceholderHome()
             : const _PlaceholderOnboarding(),
         transitionDuration: const Duration(milliseconds: 600),
-        transitionsBuilder: (_, animation, __, child) {
+        transitionsBuilder: (_, animation, _, child) {
           return FadeTransition(opacity: animation, child: child);
         },
       ),
@@ -178,10 +182,10 @@ class _SplashScreenState extends State<SplashScreen>
                             width: 100,
                             height: 100,
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.12),
+                              color: Colors.white.withValues(alpha: 0.12),
                               borderRadius: BorderRadius.circular(28),
                               border: Border.all(
-                                color: Colors.white.withOpacity(0.2),
+                                color: Colors.white.withValues(alpha: 0.2),
                               ),
                             ),
                             child: const Icon(
@@ -217,7 +221,7 @@ class _SplashScreenState extends State<SplashScreen>
                           child: Text(
                             'Your world, your way.',
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.6),
+                              color: Colors.white.withValues(alpha: 0.6),
                               fontSize: 16,
                               letterSpacing: 0.5,
                             ),
@@ -236,12 +240,14 @@ class _SplashScreenState extends State<SplashScreen>
                   children: [
                     AnimatedBuilder(
                       animation: _progressController,
-                      builder: (_, __) {
+                      builder: (_, _) {
                         return ClipRRect(
                           borderRadius: BorderRadius.circular(4),
                           child: LinearProgressIndicator(
                             value: _progressController.value,
-                            backgroundColor: Colors.white.withOpacity(0.15),
+                            backgroundColor: Colors.white.withValues(
+                              alpha: 0.15,
+                            ),
                             valueColor: const AlwaysStoppedAnimation<Color>(
                               Colors.white,
                             ),
@@ -254,7 +260,7 @@ class _SplashScreenState extends State<SplashScreen>
                     Text(
                       'Loading...',
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.4),
+                        color: Colors.white.withValues(alpha: 0.4),
                         fontSize: 12,
                       ),
                     ),
@@ -275,40 +281,16 @@ class _PlaceholderHome extends StatelessWidget {
   const _PlaceholderHome();
 
   @override
-  Widget build(BuildContext context) => const Scaffold(
-        body: Center(child: Text('Home Screen')),
-      );
+  Widget build(BuildContext context) =>
+      const Scaffold(body: Center(child: Text('Home Screen')));
 }
 
 class _PlaceholderOnboarding extends StatelessWidget {
   const _PlaceholderOnboarding();
 
   @override
-  Widget build(BuildContext context) => const Scaffold(
-        body: Center(child: Text('Onboarding Screen')),
-      );
-}
-```
-
-## Usage
-
-Set `SplashScreen` as the initial route:
-
-```dart
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MyApp',
-      home: const SplashScreen(),
-    );
-  }
+  Widget build(BuildContext context) =>
+      const Scaffold(body: Center(child: Text('Onboarding Screen')));
 }
 ```
 

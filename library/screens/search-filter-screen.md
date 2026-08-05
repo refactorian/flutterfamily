@@ -35,7 +35,11 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
   String _sortBy = 'Popularity';
 
   final List<String> _categories = ['All', 'Fashion', 'Tech', 'Home', 'Beauty'];
-  final List<String> _recentSearches = ['Wireless Earbuds', 'Leather Jacket', 'Smart Watch'];
+  final List<String> _recentSearches = [
+    'Wireless Earbuds',
+    'Leather Jacket',
+    'Smart Watch',
+  ];
 
   @override
   void dispose() {
@@ -61,7 +65,13 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Filter Products', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                    const Text(
+                      'Filter Products',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     TextButton(
                       onPressed: () {
                         setModalState(() {
@@ -78,7 +88,10 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
                 const SizedBox(height: 12),
 
                 // ── Category Filter ─────────────────────────────
-                const Text('Category', style: TextStyle(fontWeight: FontWeight.bold)),
+                const Text(
+                  'Category',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 8),
                 Wrap(
                   spacing: 8,
@@ -87,7 +100,8 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
                     return FilterChip(
                       label: Text(cat),
                       selected: selected,
-                      onSelected: (val) => setModalState(() => _selectedCategory = cat),
+                      onSelected: (val) =>
+                          setModalState(() => _selectedCategory = cat),
                     );
                   }).toList(),
                 ),
@@ -97,10 +111,16 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Price Range', style: TextStyle(fontWeight: FontWeight.bold)),
+                    const Text(
+                      'Price Range',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     Text(
                       '\$${_priceRange.start.round()} - \$${_priceRange.end.round()}',
-                      style: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
                 ),
@@ -109,12 +129,16 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
                   min: 0,
                   max: 500,
                   divisions: 50,
-                  onChanged: (values) => setModalState(() => _priceRange = values),
+                  onChanged: (values) =>
+                      setModalState(() => _priceRange = values),
                 ),
                 const SizedBox(height: 20),
 
                 // ── Rating Filter ───────────────────────────────
-                const Text('Minimum Rating', style: TextStyle(fontWeight: FontWeight.bold)),
+                const Text(
+                  'Minimum Rating',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 8),
                 Row(
                   children: [3.0, 4.0, 4.5].map((r) {
@@ -125,7 +149,11 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
                         label: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(Icons.star, size: 14, color: Colors.amber),
+                            const Icon(
+                              Icons.star,
+                              size: 14,
+                              color: Colors.amber,
+                            ),
                             const SizedBox(width: 4),
                             Text('$r+'),
                           ],
@@ -203,7 +231,10 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Recent Searches', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                const Text(
+                  'Recent Searches',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
                 TextButton(
                   onPressed: () => setState(() => _recentSearches.clear()),
                   child: const Text('Clear'),
@@ -227,14 +258,22 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
               children: [
                 Text(
                   'Results for "${_searchController.text}"',
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
                 DropdownButton<String>(
                   value: _sortBy,
                   underline: const SizedBox(),
                   icon: const Icon(Icons.sort_rounded, size: 18),
                   items: ['Popularity', 'Price Low to High', 'Newest']
-                      .map((s) => DropdownMenuItem(value: s, child: Text(s, style: const TextStyle(fontSize: 13))))
+                      .map(
+                        (s) => DropdownMenuItem(
+                          value: s,
+                          child: Text(s, style: const TextStyle(fontSize: 13)),
+                        ),
+                      )
                       .toList(),
                   onChanged: (val) => setState(() => _sortBy = val!),
                 ),
@@ -256,7 +295,9 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
               itemBuilder: (context, index) {
                 return Card(
                   clipBehavior: Clip.antiAlias,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -272,9 +313,20 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Product Item ${index + 1}', style: const TextStyle(fontWeight: FontWeight.bold)),
+                            Text(
+                              'Product Item ${index + 1}',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             const SizedBox(height: 2),
-                            const Text('\$89.99', style: TextStyle(color: Colors.indigo, fontWeight: FontWeight.w600)),
+                            const Text(
+                              '\$89.99',
+                              style: TextStyle(
+                                color: Colors.indigo,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
                           ],
                         ),
                       ),

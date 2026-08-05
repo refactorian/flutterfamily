@@ -166,7 +166,7 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen>
                           Text(
                             'Placed on Jul 24, 2025',
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.8),
+                              color: Colors.white.withValues(alpha: 0.8),
                               fontSize: 13,
                             ),
                           ),
@@ -174,9 +174,11 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen>
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
@@ -195,13 +197,16 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen>
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      const Icon(Icons.calendar_today_outlined,
-                          color: Colors.white70, size: 16),
+                      const Icon(
+                        Icons.calendar_today_outlined,
+                        color: Colors.white70,
+                        size: 16,
+                      ),
                       const SizedBox(width: 6),
                       Text(
                         'Estimated delivery: Jul 27, 2025',
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withValues(alpha: 0.9),
                           fontSize: 13,
                         ),
                       ),
@@ -217,15 +222,15 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen>
               borderRadius: BorderRadius.circular(16),
               child: Container(
                 height: 140,
-                decoration: BoxDecoration(
-                  color: cs.surfaceContainerHighest,
-                ),
+                decoration: BoxDecoration(color: cs.surfaceContainerHighest),
                 child: Stack(
                   children: [
                     // Fake map grid
                     CustomPaint(
                       size: const Size(double.infinity, 140),
-                      painter: _MapGridPainter(color: cs.outline.withOpacity(0.3)),
+                      painter: _MapGridPainter(
+                        color: cs.outline.withValues(alpha: 0.3),
+                      ),
                     ),
                     Center(
                       child: Column(
@@ -237,8 +242,11 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen>
                               color: cs.primary,
                               shape: BoxShape.circle,
                             ),
-                            child: const Icon(Icons.local_shipping_rounded,
-                                color: Colors.white, size: 24),
+                            child: const Icon(
+                              Icons.local_shipping_rounded,
+                              color: Colors.white,
+                              size: 24,
+                            ),
                           ),
                           const SizedBox(height: 10),
                           ElevatedButton.icon(
@@ -247,10 +255,11 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen>
                             label: const Text('Track on Map'),
                             style: ElevatedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 8),
+                                horizontal: 16,
+                                vertical: 8,
+                              ),
                               minimumSize: Size.zero,
-                              tapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -276,7 +285,7 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen>
             Container(
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
-                border: Border.all(color: cs.outline.withOpacity(0.4)),
+                border: Border.all(color: cs.outline.withValues(alpha: 0.4)),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Row(
@@ -330,11 +339,12 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen>
               final current = _isCurrentStep(step.status);
               final isLast = index == _steps.length - 1;
 
-              final delay = index / _steps.length;
+              final begin = (index * 0.12).clamp(0.0, 1.0);
+              final end = (begin + 0.4).clamp(0.0, 1.0);
               final itemAnimation = Tween<double>(begin: 0, end: 1).animate(
                 CurvedAnimation(
                   parent: _controller,
-                  curve: Interval(delay, delay + 0.4, curve: Curves.easeOut),
+                  curve: Interval(begin, end, curve: Curves.easeOut),
                 ),
               );
 
@@ -387,7 +397,9 @@ class _TrackingStepTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
-    final activeColor = isCurrent ? cs.primary : (isDone ? Colors.green : cs.outline);
+    final activeColor = isCurrent
+        ? cs.primary
+        : (isDone ? Colors.green : cs.outline);
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -402,10 +414,7 @@ class _TrackingStepTile extends StatelessWidget {
               decoration: BoxDecoration(
                 color: isDone ? activeColor : cs.surface,
                 shape: BoxShape.circle,
-                border: Border.all(
-                  color: activeColor,
-                  width: 2.5,
-                ),
+                border: Border.all(color: activeColor, width: 2.5),
               ),
               child: isDone
                   ? Icon(
@@ -422,7 +431,9 @@ class _TrackingStepTile extends StatelessWidget {
                 duration: const Duration(milliseconds: 400),
                 width: 2,
                 height: 48,
-                color: isDone ? Colors.green.withOpacity(0.5) : cs.outline.withOpacity(0.3),
+                color: isDone
+                    ? Colors.green.withValues(alpha: 0.5)
+                    : cs.outline.withValues(alpha: 0.3),
               ),
           ],
         ),
@@ -462,8 +473,9 @@ class _TrackingStepTile extends StatelessWidget {
                           ? cs.primary
                           : Theme.of(context).colorScheme.onSurfaceVariant,
                       fontSize: 12,
-                      fontWeight:
-                          isCurrent ? FontWeight.w600 : FontWeight.normal,
+                      fontWeight: isCurrent
+                          ? FontWeight.w600
+                          : FontWeight.normal,
                     ),
                   ),
                 ],

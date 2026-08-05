@@ -114,7 +114,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
   }
 
   Widget _buildEmailStep(
-      BuildContext context, ThemeData theme, ColorScheme cs) {
+    BuildContext context,
+    ThemeData theme,
+    ColorScheme cs,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -159,12 +162,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                 borderRadius: BorderRadius.circular(12),
               ),
               filled: true,
-              fillColor: cs.surfaceContainerHighest.withOpacity(0.4),
+              fillColor: cs.surfaceContainerHighest.withValues(alpha: 0.4),
             ),
             validator: (v) {
               if (v == null || v.trim().isEmpty) return 'Email is required';
-              if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                  .hasMatch(v.trim())) {
+              if (!RegExp(
+                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+              ).hasMatch(v.trim())) {
                 return 'Enter a valid email address';
               }
               return null;
@@ -209,7 +213,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
   }
 
   Widget _buildSuccessStep(
-      BuildContext context, ThemeData theme, ColorScheme cs) {
+    BuildContext context,
+    ThemeData theme,
+    ColorScheme cs,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -269,10 +276,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
               'Didn\'t receive the email? ',
               style: TextStyle(color: cs.onSurfaceVariant),
             ),
-            TextButton(
-              onPressed: _resendEmail,
-              child: const Text('Resend'),
-            ),
+            TextButton(onPressed: _resendEmail, child: const Text('Resend')),
           ],
         ),
       ],

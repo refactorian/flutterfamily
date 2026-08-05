@@ -42,7 +42,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     _nameController = TextEditingController(text: 'Alex Johnson');
     _emailController = TextEditingController(text: 'alex.johnson@example.com');
     _phoneController = TextEditingController(text: '+1 (555) 234-5678');
-    _bioController = TextEditingController(text: 'Flutter developer & UI designer crafting clean mobile experiences.');
+    _bioController = TextEditingController(
+      text:
+          'Flutter developer & UI designer crafting clean mobile experiences.',
+    );
   }
 
   @override
@@ -70,9 +73,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Delete Account?'),
-        content: const Text('This action is permanent and cannot be undone. All your data will be wiped.'),
+        content: const Text(
+          'This action is permanent and cannot be undone. All your data will be wiped.',
+        ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
           FilledButton(
             style: FilledButton.styleFrom(backgroundColor: Colors.red),
             onPressed: () => Navigator.pop(context),
@@ -87,11 +95,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Profile', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text(
+          'Edit Profile',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         actions: [
           TextButton(
             onPressed: _saveProfile,
-            child: const Text('Save', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            child: const Text(
+              'Save',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
           ),
         ],
       ),
@@ -106,7 +120,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 children: [
                   const CircleAvatar(
                     radius: 50,
-                    backgroundImage: NetworkImage('https://i.pravatar.cc/300?img=11'),
+                    backgroundImage: NetworkImage(
+                      'https://i.pravatar.cc/300?img=11',
+                    ),
                   ),
                   Positioned(
                     right: 0,
@@ -117,7 +133,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         color: Colors.indigo,
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(Icons.camera_alt_rounded, color: Colors.white, size: 18),
+                      child: const Icon(
+                        Icons.camera_alt_rounded,
+                        color: Colors.white,
+                        size: 18,
+                      ),
                     ),
                   ),
                 ],
@@ -126,14 +146,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             const SizedBox(height: 24),
 
             // ── Personal Info Form ───────────────────────────────
-            const Text('Personal Information', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            const Text(
+              'Personal Information',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             const SizedBox(height: 14),
             TextFormField(
               controller: _nameController,
               decoration: InputDecoration(
                 labelText: 'Full Name',
                 prefixIcon: const Icon(Icons.person_outline_rounded),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
               validator: (v) => v == null || v.isEmpty ? 'Required' : null,
             ),
@@ -144,9 +169,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               decoration: InputDecoration(
                 labelText: 'Email Address',
                 prefixIcon: const Icon(Icons.email_outlined),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
-              validator: (v) => v == null || !v.contains('@') ? 'Invalid Email' : null,
+              validator: (v) =>
+                  v == null || !v.contains('@') ? 'Invalid Email' : null,
             ),
             const SizedBox(height: 14),
             TextFormField(
@@ -155,7 +183,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               decoration: InputDecoration(
                 labelText: 'Phone Number',
                 prefixIcon: const Icon(Icons.phone_outlined),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
             const SizedBox(height: 14),
@@ -165,13 +195,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               decoration: InputDecoration(
                 labelText: 'Bio',
                 prefixIcon: const Icon(Icons.info_outline_rounded),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
             const SizedBox(height: 28),
 
             // ── Security & Preferences ──────────────────────────
-            const Text('Preferences', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            const Text(
+              'Preferences',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             SwitchListTile(
               contentPadding: EdgeInsets.zero,
               title: const Text('Push Notifications'),
@@ -189,13 +224,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             const SizedBox(height: 20),
 
             // ── Danger Zone ──────────────────────────────────────
-            const Text('Danger Zone', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+            const Text(
+              'Danger Zone',
+              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+            ),
             const SizedBox(height: 8),
             OutlinedButton.icon(
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.red,
                 side: const BorderSide(color: Colors.red),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
               onPressed: _showDeleteAccountDialog,
               icon: const Icon(Icons.delete_forever_rounded),

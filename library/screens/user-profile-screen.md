@@ -34,7 +34,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
 
   final _nameController = TextEditingController(text: 'Alex Johnson');
   final _bioController = TextEditingController(
-      text: 'Flutter developer & UI/UX enthusiast. Building beautiful apps.');
+    text: 'Flutter developer & UI/UX enthusiast. Building beautiful apps.',
+  );
   final _locationController = TextEditingController(text: 'San Francisco, CA');
   final _websiteController = TextEditingController(text: 'alexj.dev');
 
@@ -55,9 +56,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       _isSaving = false;
       _isEditing = false;
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Profile updated!')),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Profile updated!')));
   }
 
   @override
@@ -94,10 +95,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [
-                          cs.primary,
-                          cs.primaryContainer,
-                        ],
+                        colors: [cs.primary, cs.primaryContainer],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
@@ -112,7 +110,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       height: 180,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.white.withOpacity(0.08),
+                        color: Colors.white.withValues(alpha: 0.08),
                       ),
                     ),
                   ),
@@ -124,7 +122,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       height: 120,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.white.withOpacity(0.06),
+                        color: Colors.white.withValues(alpha: 0.06),
                       ),
                     ),
                   ),
@@ -148,10 +146,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             height: 100,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border: Border.all(
-                                color: cs.surface,
-                                width: 4,
-                              ),
+                              border: Border.all(color: cs.surface, width: 4),
                               color: cs.primaryContainer,
                             ),
                             child: ClipOval(
@@ -167,7 +162,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               bottom: 0,
                               right: 0,
                               child: GestureDetector(
-                                onTap: () {/* Pick image */},
+                                onTap: () {
+                                  /* Pick image */
+                                },
                                 child: Container(
                                   width: 32,
                                   height: 32,
@@ -281,10 +278,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   }
 
   Widget _buildEditForm(ThemeData theme, ColorScheme cs) {
-    final border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-    );
-    final fill = cs.surfaceContainerHighest.withOpacity(0.4);
+    final border = OutlineInputBorder(borderRadius: BorderRadius.circular(12));
+    final fill = cs.surfaceContainerHighest.withValues(alpha: 0.4);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -355,8 +350,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   )
                 : const Text(
                     'Save Changes',
-                    style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
           ),
         ),
@@ -415,11 +409,7 @@ class _InfoRow extends StatelessWidget {
   final String text;
   final bool isLink;
 
-  const _InfoRow({
-    required this.icon,
-    required this.text,
-    this.isLink = false,
-  });
+  const _InfoRow({required this.icon, required this.text, this.isLink = false});
 
   @override
   Widget build(BuildContext context) {

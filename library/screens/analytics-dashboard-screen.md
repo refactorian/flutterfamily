@@ -19,7 +19,6 @@ A data-rich analytics dashboard with KPI metric cards, a custom bar chart drawn 
 ## Flutter Code
 
 ```dart
-import 'dart:math';
 import 'package:flutter/material.dart';
 
 // ── Models ─────────────────────────────────────────────────────────────────
@@ -113,7 +112,15 @@ class _AnalyticsDashboardScreenState extends State<AnalyticsDashboardScreen>
 
   // Bar chart data (7 bars = Mon–Sun)
   final List<double> _chartData = [0.4, 0.6, 0.5, 0.8, 0.7, 0.9, 0.65];
-  final List<String> _chartLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  final List<String> _chartLabels = [
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat',
+    'Sun',
+  ];
 
   final List<ActivityItem> _activities = const [
     ActivityItem(
@@ -239,7 +246,7 @@ class _AnalyticsDashboardScreenState extends State<AnalyticsDashboardScreen>
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: cs.surfaceContainerHighest.withOpacity(0.4),
+                color: cs.surfaceContainerHighest.withValues(alpha: 0.4),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
@@ -254,36 +261,44 @@ class _AnalyticsDashboardScreenState extends State<AnalyticsDashboardScreen>
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      const SizedBox(width: 8),
                       // Range chips
-                      Row(
-                        children: List.generate(_ranges.length, (i) {
-                          final selected = i == _selectedRange;
-                          return GestureDetector(
-                            onTap: () => _changeRange(i),
-                            child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 200),
-                              margin: const EdgeInsets.only(left: 6),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 4),
-                              decoration: BoxDecoration(
-                                color: selected
-                                    ? cs.primary
-                                    : Colors.transparent,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Text(
-                                _ranges[i],
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w600,
-                                  color: selected
-                                      ? Colors.white
-                                      : cs.onSurfaceVariant,
+                      Flexible(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: List.generate(_ranges.length, (i) {
+                              final selected = i == _selectedRange;
+                              return GestureDetector(
+                                onTap: () => _changeRange(i),
+                                child: AnimatedContainer(
+                                  duration: const Duration(milliseconds: 200),
+                                  margin: const EdgeInsets.only(left: 6),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: 4,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: selected
+                                        ? cs.primary
+                                        : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Text(
+                                    _ranges[i],
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w600,
+                                      color: selected
+                                          ? Colors.white
+                                          : cs.onSurfaceVariant,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          );
-                        }),
+                              );
+                            }),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -339,9 +354,9 @@ class _MetricCardWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: metric.color.withOpacity(0.08),
+        color: metric.color.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: metric.color.withOpacity(0.15)),
+        border: Border.all(color: metric.color.withValues(alpha: 0.15)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -353,7 +368,7 @@ class _MetricCardWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
-                  color: metric.color.withOpacity(0.15),
+                  color: metric.color.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(metric.icon, color: metric.color, size: 18),
@@ -362,8 +377,8 @@ class _MetricCardWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
                   color: metric.isPositive
-                      ? Colors.green.withOpacity(0.12)
-                      : Colors.red.withOpacity(0.12),
+                      ? Colors.green.withValues(alpha: 0.12)
+                      : Colors.red.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
@@ -423,7 +438,8 @@ class _BarChartPainter extends CustomPainter {
     const labelHeight = 20.0;
     const barSpacing = 8.0;
     final chartHeight = size.height - labelHeight;
-    final barWidth = (size.width - barSpacing * (data.length - 1)) / data.length;
+    final barWidth =
+        (size.width - barSpacing * (data.length - 1)) / data.length;
     final paint = Paint();
 
     final labelStyle = TextStyle(color: labelColor, fontSize: 11);
@@ -434,9 +450,15 @@ class _BarChartPainter extends CustomPainter {
       final y = chartHeight - barH;
 
       // Bar background
-      paint.color = barColor.withOpacity(0.1);
+      paint.color = barColor.withValues(alpha: 0.1);
       canvas.drawRRect(
-        RRect.fromLTRBR(x, 0, x + barWidth, chartHeight, const Radius.circular(4)),
+        RRect.fromLTRBR(
+          x,
+          0,
+          x + barWidth,
+          chartHeight,
+          const Radius.circular(4),
+        ),
         paint,
       );
 
@@ -444,12 +466,18 @@ class _BarChartPainter extends CustomPainter {
       paint.color = barColor;
       final gradient = Paint()
         ..shader = LinearGradient(
-          colors: [barColor.withOpacity(0.6), barColor],
+          colors: [barColor.withValues(alpha: 0.6), barColor],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ).createShader(Rect.fromLTWH(x, y, barWidth, barH));
       canvas.drawRRect(
-        RRect.fromLTRBR(x, y, x + barWidth, chartHeight, const Radius.circular(4)),
+        RRect.fromLTRBR(
+          x,
+          y,
+          x + barWidth,
+          chartHeight,
+          const Radius.circular(4),
+        ),
         gradient,
       );
 
@@ -460,10 +488,7 @@ class _BarChartPainter extends CustomPainter {
       )..layout();
       textPainter.paint(
         canvas,
-        Offset(
-          x + (barWidth - textPainter.width) / 2,
-          chartHeight + 4,
-        ),
+        Offset(x + (barWidth - textPainter.width) / 2, chartHeight + 4),
       );
     }
   }
@@ -489,7 +514,7 @@ class _ActivityTile extends StatelessWidget {
             width: 42,
             height: 42,
             decoration: BoxDecoration(
-              color: item.color.withOpacity(0.12),
+              color: item.color.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(item.icon, color: item.color, size: 20),

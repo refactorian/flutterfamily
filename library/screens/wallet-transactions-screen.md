@@ -24,7 +24,8 @@ class WalletTransactionsScreen extends StatefulWidget {
   const WalletTransactionsScreen({super.key});
 
   @override
-  State<WalletTransactionsScreen> createState() => _WalletTransactionsScreenState();
+  State<WalletTransactionsScreen> createState() =>
+      _WalletTransactionsScreenState();
 }
 
 class _WalletTransactionsScreenState extends State<WalletTransactionsScreen> {
@@ -94,10 +95,18 @@ class _WalletTransactionsScreenState extends State<WalletTransactionsScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('My Wallet', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        title: const Text(
+          'My Wallet',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
         actions: [
           IconButton(
-            icon: Icon(_hideBalance ? Icons.visibility_off_outlined : Icons.visibility_outlined, color: Colors.black),
+            icon: Icon(
+              _hideBalance
+                  ? Icons.visibility_off_outlined
+                  : Icons.visibility_outlined,
+              color: Colors.black,
+            ),
             onPressed: () => setState(() => _hideBalance = !_hideBalance),
           ),
         ],
@@ -110,7 +119,8 @@ class _WalletTransactionsScreenState extends State<WalletTransactionsScreen> {
             height: 190,
             child: PageView.builder(
               controller: PageController(viewportFraction: 0.88),
-              onPageChanged: (index) => setState(() => _activeCardIndex = index),
+              onPageChanged: (index) =>
+                  setState(() => _activeCardIndex = index),
               itemCount: _cards.length,
               itemBuilder: (context, index) {
                 final card = _cards[index];
@@ -120,11 +130,15 @@ class _WalletTransactionsScreenState extends State<WalletTransactionsScreen> {
                   margin: const EdgeInsets.symmetric(horizontal: 6),
                   padding: const EdgeInsets.all(22),
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: colors, begin: Alignment.topLeft, end: Alignment.bottomRight),
+                    gradient: LinearGradient(
+                      colors: colors,
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
                     borderRadius: BorderRadius.circular(24),
                     boxShadow: [
                       BoxShadow(
-                        color: colors.first.withOpacity(0.35),
+                        color: colors.first.withValues(alpha: 0.35),
                         blurRadius: 16,
                         offset: const Offset(0, 8),
                       ),
@@ -137,19 +151,46 @@ class _WalletTransactionsScreenState extends State<WalletTransactionsScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(card['bank'] as String, style: const TextStyle(color: Colors.white70, fontSize: 13)),
-                          const Icon(Icons.contactless_rounded, color: Colors.white, size: 26),
+                          Text(
+                            card['bank'] as String,
+                            style: const TextStyle(
+                              color: Colors.white70,
+                              fontSize: 13,
+                            ),
+                          ),
+                          const Icon(
+                            Icons.contactless_rounded,
+                            color: Colors.white,
+                            size: 26,
+                          ),
                         ],
                       ),
                       Text(
                         _hideBalance ? '••••••••' : card['balance'] as String,
-                        style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(card['number'] as String, style: const TextStyle(color: Colors.white, fontSize: 14, letterSpacing: 1)),
-                          Text(card['expiry'] as String, style: const TextStyle(color: Colors.white70, fontSize: 12)),
+                          Text(
+                            card['number'] as String,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              letterSpacing: 1,
+                            ),
+                          ),
+                          Text(
+                            card['expiry'] as String,
+                            style: const TextStyle(
+                              color: Colors.white70,
+                              fontSize: 12,
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -165,9 +206,15 @@ class _WalletTransactionsScreenState extends State<WalletTransactionsScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: const [
               _ActionButton(icon: Icons.send_rounded, label: 'Send'),
-              _ActionButton(icon: Icons.call_received_rounded, label: 'Request'),
+              _ActionButton(
+                icon: Icons.call_received_rounded,
+                label: 'Request',
+              ),
               _ActionButton(icon: Icons.add_card_rounded, label: 'Top-Up'),
-              _ActionButton(icon: Icons.pie_chart_outline_rounded, label: 'Analytics'),
+              _ActionButton(
+                icon: Icons.pie_chart_outline_rounded,
+                label: 'Analytics',
+              ),
             ],
           ),
           const SizedBox(height: 28),
@@ -178,7 +225,10 @@ class _WalletTransactionsScreenState extends State<WalletTransactionsScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Transactions', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                const Text(
+                  'Transactions',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
                 TextButton(onPressed: () {}, child: const Text('See All')),
               ],
             ),
@@ -202,23 +252,45 @@ class _WalletTransactionsScreenState extends State<WalletTransactionsScreen> {
                 child: Row(
                   children: [
                     CircleAvatar(
-                      backgroundColor: (tx['color'] as Color).withOpacity(0.12),
-                      child: Icon(tx['icon'] as IconData, color: tx['color'] as Color, size: 20),
+                      backgroundColor: (tx['color'] as Color).withValues(
+                        alpha: 0.12,
+                      ),
+                      child: Icon(
+                        tx['icon'] as IconData,
+                        color: tx['color'] as Color,
+                        size: 20,
+                      ),
                     ),
                     const SizedBox(width: 14),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(tx['title'] as String, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                          Text(
+                            tx['title'] as String,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                          ),
                           const SizedBox(height: 2),
-                          Text(tx['date'] as String, style: TextStyle(color: Colors.grey.shade500, fontSize: 12)),
+                          Text(
+                            tx['date'] as String,
+                            style: TextStyle(
+                              color: Colors.grey.shade500,
+                              fontSize: 12,
+                            ),
+                          ),
                         ],
                       ),
                     ),
                     Text(
                       _hideBalance ? '••••' : tx['amount'] as String,
-                      style: TextStyle(color: amountColor, fontWeight: FontWeight.bold, fontSize: 15),
+                      style: TextStyle(
+                        color: amountColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
                     ),
                   ],
                 ),
@@ -249,16 +321,23 @@ class _ActionButton extends StatelessWidget {
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.06),
+                color: Colors.black.withValues(alpha: 0.06),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
             ],
           ),
-          child: Icon(icon, color: Theme.of(context).colorScheme.primary, size: 22),
+          child: Icon(
+            icon,
+            color: Theme.of(context).colorScheme.primary,
+            size: 22,
+          ),
         ),
         const SizedBox(height: 8),
-        Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+        Text(
+          label,
+          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+        ),
       ],
     );
   }

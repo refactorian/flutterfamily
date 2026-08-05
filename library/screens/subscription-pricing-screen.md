@@ -24,7 +24,8 @@ class SubscriptionPricingScreen extends StatefulWidget {
   const SubscriptionPricingScreen({super.key});
 
   @override
-  State<SubscriptionPricingScreen> createState() => _SubscriptionPricingScreenState();
+  State<SubscriptionPricingScreen> createState() =>
+      _SubscriptionPricingScreenState();
 }
 
 class _SubscriptionPricingScreenState extends State<SubscriptionPricingScreen> {
@@ -37,21 +38,35 @@ class _SubscriptionPricingScreenState extends State<SubscriptionPricingScreen> {
       'monthlyPrice': '\$4.99',
       'yearlyPrice': '\$3.99',
       'isPopular': false,
-      'features': ['Access to basic features', '2 GB cloud storage', 'Standard support'],
+      'features': [
+        'Access to basic features',
+        '2 GB cloud storage',
+        'Standard support',
+      ],
     },
     {
       'name': 'Pro Unlimited',
       'monthlyPrice': '\$12.99',
       'yearlyPrice': '\$9.99',
       'isPopular': true,
-      'features': ['All Starter features', '100 GB cloud storage', 'AI assistant enabled', 'Priority 24/7 support'],
+      'features': [
+        'All Starter features',
+        '100 GB cloud storage',
+        'AI assistant enabled',
+        'Priority 24/7 support',
+      ],
     },
     {
       'name': 'Team / Enterprise',
       'monthlyPrice': '\$29.99',
       'yearlyPrice': '\$24.99',
       'isPopular': false,
-      'features': ['Unlimited cloud storage', 'Dedicated account manager', 'Custom API integrations', 'Team admin dashboard'],
+      'features': [
+        'Unlimited cloud storage',
+        'Dedicated account manager',
+        'Custom API integrations',
+        'Team admin dashboard',
+      ],
     },
   ];
 
@@ -61,7 +76,10 @@ class _SubscriptionPricingScreenState extends State<SubscriptionPricingScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Upgrade Plan', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text(
+          'Upgrade Plan',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: Column(
         children: [
@@ -73,7 +91,7 @@ class _SubscriptionPricingScreenState extends State<SubscriptionPricingScreen> {
                 const Text(
                   'Unlock Full Power',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 26, FontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 6),
                 const Text(
@@ -88,7 +106,7 @@ class _SubscriptionPricingScreenState extends State<SubscriptionPricingScreen> {
                   child: Container(
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      color: cs.surfaceContainerHighest.withOpacity(0.4),
+                      color: cs.surfaceContainerHighest.withValues(alpha: 0.4),
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: Row(
@@ -116,7 +134,9 @@ class _SubscriptionPricingScreenState extends State<SubscriptionPricingScreen> {
                   final tier = _tiers[index];
                   final isSelected = index == _selectedTierIndex;
                   final isPopular = tier['isPopular'] as bool;
-                  final price = _isYearly ? tier['yearlyPrice'] : tier['monthlyPrice'];
+                  final price = _isYearly
+                      ? tier['yearlyPrice']
+                      : tier['monthlyPrice'];
 
                   return GestureDetector(
                     onTap: () => setState(() => _selectedTierIndex = index),
@@ -124,7 +144,9 @@ class _SubscriptionPricingScreenState extends State<SubscriptionPricingScreen> {
                       margin: const EdgeInsets.only(bottom: 14),
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: isSelected ? cs.primaryContainer.withOpacity(0.2) : cs.surface,
+                        color: isSelected
+                            ? cs.primaryContainer.withValues(alpha: 0.2)
+                            : cs.surface,
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
                           color: isSelected ? cs.primary : cs.outlineVariant,
@@ -137,15 +159,31 @@ class _SubscriptionPricingScreenState extends State<SubscriptionPricingScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(tier['name'] as String, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                              Text(
+                                tier['name'] as String,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                               if (isPopular)
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: 4,
+                                  ),
                                   decoration: BoxDecoration(
                                     color: Colors.amber,
                                     borderRadius: BorderRadius.circular(12),
                                   ),
-                                  child: const Text('POPULAR', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.black)),
+                                  child: const Text(
+                                    'POPULAR',
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
                                 ),
                             ],
                           ),
@@ -154,8 +192,18 @@ class _SubscriptionPricingScreenState extends State<SubscriptionPricingScreen> {
                             crossAxisAlignment: CrossAxisAlignment.baseline,
                             textBaseline: TextBaseline.alphabetic,
                             children: [
-                              Text(price as String, style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: cs.primary)),
-                              const Text(' / month', style: TextStyle(color: Colors.grey)),
+                              Text(
+                                price as String,
+                                style: TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                  color: cs.primary,
+                                ),
+                              ),
+                              const Text(
+                                ' / month',
+                                style: TextStyle(color: Colors.grey),
+                              ),
                             ],
                           ),
                           const SizedBox(height: 14),
@@ -166,9 +214,16 @@ class _SubscriptionPricingScreenState extends State<SubscriptionPricingScreen> {
                               padding: const EdgeInsets.only(bottom: 6),
                               child: Row(
                                 children: [
-                                  const Icon(Icons.check_circle_rounded, color: Colors.green, size: 16),
+                                  const Icon(
+                                    Icons.check_circle_rounded,
+                                    color: Colors.green,
+                                    size: 16,
+                                  ),
                                   const SizedBox(width: 8),
-                                  Text(feat, style: const TextStyle(fontSize: 13)),
+                                  Text(
+                                    feat,
+                                    style: const TextStyle(fontSize: 13),
+                                  ),
                                 ],
                               ),
                             );
@@ -195,11 +250,20 @@ class _SubscriptionPricingScreenState extends State<SubscriptionPricingScreen> {
                       onPressed: () {
                         // Launch subscription workflow
                       },
-                      child: const Text('Start 7-Day Free Trial', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                      child: const Text(
+                        'Start 7-Day Free Trial',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 8),
-                  const Text('Cancel anytime in App Store. Auto-renews after trial.', style: TextStyle(fontSize: 11, color: Colors.grey)),
+                  const Text(
+                    'Cancel anytime in App Store. Auto-renews after trial.',
+                    style: TextStyle(fontSize: 11, color: Colors.grey),
+                  ),
                 ],
               ),
             ),

@@ -57,7 +57,7 @@ class _ChatScreenState extends State<ChatScreen>
   final _scrollController = ScrollController();
   final _focusNode = FocusNode();
   bool _isTyping = false;
-  bool _showTypingIndicator = true; // Set false to hide
+  final bool _showTypingIndicator = true; // Set false to hide
 
   late AnimationController _typingController;
 
@@ -77,7 +77,8 @@ class _ChatScreenState extends State<ChatScreen>
     ),
     Message(
       id: '3',
-      text: 'Was thinking we could check out that new Flutter conference downtown. I heard the talks are really good this year.',
+      text:
+          'Was thinking we could check out that new Flutter conference downtown. I heard the talks are really good this year.',
       isMe: false,
       time: DateTime.now().subtract(const Duration(hours: 1, minutes: 55)),
     ),
@@ -128,13 +129,15 @@ class _ChatScreenState extends State<ChatScreen>
     final text = _textController.text.trim();
     if (text.isEmpty) return;
     setState(() {
-      _messages.add(Message(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        text: text,
-        isMe: true,
-        time: DateTime.now(),
-        status: MessageStatus.sent,
-      ));
+      _messages.add(
+        Message(
+          id: DateTime.now().millisecondsSinceEpoch.toString(),
+          text: text,
+          isMe: true,
+          time: DateTime.now(),
+          status: MessageStatus.sent,
+        ),
+      );
     });
     _textController.clear();
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -175,7 +178,13 @@ class _ChatScreenState extends State<ChatScreen>
                 CircleAvatar(
                   radius: 18,
                   backgroundColor: cs.primaryContainer,
-                  child: Text('S', style: TextStyle(color: cs.primary, fontWeight: FontWeight.bold)),
+                  child: Text(
+                    'S',
+                    style: TextStyle(
+                      color: cs.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Positioned(
                   right: 0,
@@ -210,7 +219,10 @@ class _ChatScreenState extends State<ChatScreen>
         ),
         actions: [
           IconButton(icon: const Icon(Icons.call_outlined), onPressed: () {}),
-          IconButton(icon: const Icon(Icons.videocam_outlined), onPressed: () {}),
+          IconButton(
+            icon: const Icon(Icons.videocam_outlined),
+            onPressed: () {},
+          ),
           const SizedBox(width: 4),
         ],
       ),
@@ -227,10 +239,7 @@ class _ChatScreenState extends State<ChatScreen>
                   return _TypingIndicator(controller: _typingController);
                 }
                 final msg = _messages[index];
-                return _MessageBubble(
-                  message: msg,
-                  formatTime: _formatTime,
-                );
+                return _MessageBubble(message: msg, formatTime: _formatTime);
               },
             ),
           ),
@@ -246,7 +255,7 @@ class _ChatScreenState extends State<ChatScreen>
             decoration: BoxDecoration(
               color: cs.surface,
               border: Border(
-                top: BorderSide(color: cs.outline.withOpacity(0.2)),
+                top: BorderSide(color: cs.outline.withValues(alpha: 0.2)),
               ),
             ),
             child: Row(
@@ -263,7 +272,7 @@ class _ChatScreenState extends State<ChatScreen>
                   child: Container(
                     constraints: const BoxConstraints(maxHeight: 120),
                     decoration: BoxDecoration(
-                      color: cs.surfaceContainerHighest.withOpacity(0.5),
+                      color: cs.surfaceContainerHighest.withValues(alpha: 0.5),
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: TextField(
@@ -275,10 +284,14 @@ class _ChatScreenState extends State<ChatScreen>
                         hintText: 'Type a message...',
                         border: InputBorder.none,
                         contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 10),
+                          horizontal: 16,
+                          vertical: 10,
+                        ),
                         suffixIcon: IconButton(
                           icon: Icon(
-                            _isTyping ? Icons.emoji_emotions_outlined : Icons.emoji_emotions_outlined,
+                            _isTyping
+                                ? Icons.emoji_emotions_outlined
+                                : Icons.emoji_emotions_outlined,
                             color: cs.onSurfaceVariant,
                           ),
                           onPressed: () {},
@@ -291,10 +304,8 @@ class _ChatScreenState extends State<ChatScreen>
                 // Send / Mic button
                 AnimatedSwitcher(
                   duration: const Duration(milliseconds: 200),
-                  transitionBuilder: (child, anim) => ScaleTransition(
-                    scale: anim,
-                    child: child,
-                  ),
+                  transitionBuilder: (child, anim) =>
+                      ScaleTransition(scale: anim, child: child),
                   child: _isTyping
                       ? GestureDetector(
                           key: const ValueKey('send'),
@@ -353,9 +364,17 @@ class _MessageBubble extends StatelessWidget {
       case MessageStatus.sent:
         return const Icon(Icons.check_rounded, size: 12, color: Colors.white70);
       case MessageStatus.delivered:
-        return const Icon(Icons.done_all_rounded, size: 12, color: Colors.white70);
+        return const Icon(
+          Icons.done_all_rounded,
+          size: 12,
+          color: Colors.white70,
+        );
       case MessageStatus.read:
-        return const Icon(Icons.done_all_rounded, size: 12, color: Colors.lightBlueAccent);
+        return const Icon(
+          Icons.done_all_rounded,
+          size: 12,
+          color: Colors.lightBlueAccent,
+        );
     }
   }
 
@@ -382,7 +401,7 @@ class _MessageBubble extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),
@@ -459,13 +478,13 @@ class _TypingIndicator extends StatelessWidget {
             );
             return AnimatedBuilder(
               animation: bounce,
-              builder: (_, __) => Container(
+              builder: (_, _) => Container(
                 margin: const EdgeInsets.symmetric(horizontal: 2),
                 width: 8,
                 height: 8,
                 transform: Matrix4.translationValues(0, bounce.value, 0),
                 decoration: BoxDecoration(
-                  color: cs.onSurfaceVariant.withOpacity(0.6),
+                  color: cs.onSurfaceVariant.withValues(alpha: 0.6),
                   shape: BoxShape.circle,
                 ),
               ),

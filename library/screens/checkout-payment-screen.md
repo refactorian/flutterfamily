@@ -75,7 +75,10 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Checkout', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text(
+          'Checkout',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: Column(
         children: [
@@ -84,12 +87,15 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
               padding: const EdgeInsets.all(20),
               children: [
                 // ── Shipping Address Section ───────────────────────
-                const Text('Shipping Address', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                const Text(
+                  'Shipping Address',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 10),
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: cs.surfaceContainerHighest.withOpacity(0.3),
+                    color: cs.surfaceContainerHighest.withValues(alpha: 0.3),
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: cs.outlineVariant),
                   ),
@@ -101,16 +107,32 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                           color: cs.primaryContainer,
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(Icons.location_on_rounded, color: cs.primary, size: 20),
+                        child: Icon(
+                          Icons.location_on_rounded,
+                          color: cs.primary,
+                          size: 20,
+                        ),
                       ),
                       const SizedBox(width: 14),
                       const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Home Address', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                            Text(
+                              'Home Address',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
                             SizedBox(height: 2),
-                            Text('742 Evergreen Terrace, Springfield', style: TextStyle(color: Colors.grey, fontSize: 12)),
+                            Text(
+                              '742 Evergreen Terrace, Springfield',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -121,7 +143,10 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                 const SizedBox(height: 24),
 
                 // ── Payment Methods Selector ──────────────────────
-                const Text('Payment Method', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                const Text(
+                  'Payment Method',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 12),
                 Row(
                   children: [
@@ -130,7 +155,9 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                       icon: Icons.credit_card_rounded,
                       label: 'Card',
                       selected: _selectedMethod == PaymentMethod.creditCard,
-                      onTap: () => setState(() => _selectedMethod = PaymentMethod.creditCard),
+                      onTap: () => setState(
+                        () => _selectedMethod = PaymentMethod.creditCard,
+                      ),
                     ),
                     const SizedBox(width: 10),
                     _PaymentTile(
@@ -138,7 +165,9 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                       icon: Icons.apple_rounded,
                       label: 'Apple Pay',
                       selected: _selectedMethod == PaymentMethod.applePay,
-                      onTap: () => setState(() => _selectedMethod = PaymentMethod.applePay),
+                      onTap: () => setState(
+                        () => _selectedMethod = PaymentMethod.applePay,
+                      ),
                     ),
                     const SizedBox(width: 10),
                     _PaymentTile(
@@ -146,7 +175,9 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                       icon: Icons.account_balance_wallet_rounded,
                       label: 'PayPal',
                       selected: _selectedMethod == PaymentMethod.paypal,
-                      onTap: () => setState(() => _selectedMethod = PaymentMethod.paypal),
+                      onTap: () => setState(
+                        () => _selectedMethod = PaymentMethod.paypal,
+                      ),
                     ),
                   ],
                 ),
@@ -162,10 +193,15 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                           controller: _nameController,
                           decoration: InputDecoration(
                             labelText: 'Cardholder Name',
-                            prefixIcon: const Icon(Icons.person_outline_rounded),
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                            prefixIcon: const Icon(
+                              Icons.person_outline_rounded,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                           ),
-                          validator: (v) => v == null || v.isEmpty ? 'Required' : null,
+                          validator: (v) =>
+                              v == null || v.isEmpty ? 'Required' : null,
                         ),
                         const SizedBox(height: 14),
                         TextFormField(
@@ -178,9 +214,13 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                           decoration: InputDecoration(
                             labelText: 'Card Number',
                             prefixIcon: const Icon(Icons.credit_card),
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                           ),
-                          validator: (v) => v == null || v.length < 16 ? 'Invalid Card Number' : null,
+                          validator: (v) => v == null || v.length < 16
+                              ? 'Invalid Card Number'
+                              : null,
                         ),
                         const SizedBox(height: 14),
                         Row(
@@ -191,10 +231,15 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   labelText: 'Expiry (MM/YY)',
-                                  prefixIcon: const Icon(Icons.calendar_month_rounded),
-                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                                  prefixIcon: const Icon(
+                                    Icons.calendar_month_rounded,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
                                 ),
-                                validator: (v) => v == null || v.isEmpty ? 'Required' : null,
+                                validator: (v) =>
+                                    v == null || v.isEmpty ? 'Required' : null,
                               ),
                             ),
                             const SizedBox(width: 12),
@@ -209,10 +254,16 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                                 ],
                                 decoration: InputDecoration(
                                   labelText: 'CVV',
-                                  prefixIcon: const Icon(Icons.lock_outline_rounded),
-                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                                  prefixIcon: const Icon(
+                                    Icons.lock_outline_rounded,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
                                 ),
-                                validator: (v) => v == null || v.length < 3 ? 'Invalid' : null,
+                                validator: (v) => v == null || v.length < 3
+                                    ? 'Invalid'
+                                    : null,
                               ),
                             ),
                           ],
@@ -220,7 +271,10 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                         const SizedBox(height: 10),
                         SwitchListTile(
                           contentPadding: EdgeInsets.zero,
-                          title: const Text('Save card for future purchases', style: TextStyle(fontSize: 13)),
+                          title: const Text(
+                            'Save card for future purchases',
+                            style: TextStyle(fontSize: 13),
+                          ),
                           value: _saveCard,
                           onChanged: (v) => setState(() => _saveCard = v),
                         ),
@@ -234,7 +288,7 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: cs.surfaceContainerHighest.withOpacity(0.2),
+                    color: cs.surfaceContainerHighest.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const Column(
@@ -245,7 +299,11 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                       SizedBox(height: 8),
                       _SummaryRow(label: 'Tax (8%)', value: '\$15.20'),
                       Divider(height: 20),
-                      _SummaryRow(label: 'Total', value: '\$210.19', isTotal: true),
+                      _SummaryRow(
+                        label: 'Total',
+                        value: '\$210.19',
+                        isTotal: true,
+                      ),
                     ],
                   ),
                 ),
@@ -263,20 +321,31 @@ class _CheckoutPaymentScreenState extends State<CheckoutPaymentScreen> {
                 child: FilledButton(
                   onPressed: _isProcessing ? null : _handlePay,
                   style: FilledButton.styleFrom(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                   ),
                   child: _isProcessing
                       ? const SizedBox(
                           width: 24,
                           height: 24,
-                          child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2.5),
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                            strokeWidth: 2.5,
+                          ),
                         )
                       : const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.lock_rounded, size: 18),
                             SizedBox(width: 8),
-                            Text('Pay \$210.19', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                            Text(
+                              'Pay \$210.19',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
                 ),
@@ -347,7 +416,11 @@ class _SummaryRow extends StatelessWidget {
   final String value;
   final bool isTotal;
 
-  const _SummaryRow({required this.label, required this.value, this.isTotal = false});
+  const _SummaryRow({
+    required this.label,
+    required this.value,
+    this.isTotal = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -367,7 +440,9 @@ class _SummaryRow extends StatelessWidget {
           style: TextStyle(
             fontSize: isTotal ? 18 : 14,
             fontWeight: isTotal ? FontWeight.bold : FontWeight.w600,
-            color: isTotal ? Theme.of(context).colorScheme.primary : Colors.black,
+            color: isTotal
+                ? Theme.of(context).colorScheme.primary
+                : Colors.black,
           ),
         ),
       ],
@@ -387,13 +462,27 @@ class _PaymentSuccessSheet extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.all(16),
-            decoration: const BoxDecoration(color: Colors.green, shape: BoxShape.circle),
-            child: const Icon(Icons.check_rounded, color: Colors.white, size: 40),
+            decoration: const BoxDecoration(
+              color: Colors.green,
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.check_rounded,
+              color: Colors.white,
+              size: 40,
+            ),
           ),
           const SizedBox(height: 16),
-          const Text('Payment Successful!', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+          const Text(
+            'Payment Successful!',
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
           const SizedBox(height: 8),
-          const Text('Order #94820 confirmed. We will notify you once shipped.', textAlign: TextAlign.center, style: TextStyle(color: Colors.grey)),
+          const Text(
+            'Order #94820 confirmed. We will notify you once shipped.',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.grey),
+          ),
           const SizedBox(height: 24),
           SizedBox(
             width: double.infinity,

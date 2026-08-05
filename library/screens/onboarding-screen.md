@@ -144,10 +144,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                 duration: const Duration(milliseconds: 300),
                 child: TextButton(
                   onPressed: isLast ? null : _skip,
-                  child: Text(
-                    'Skip',
-                    style: TextStyle(color: currentColor),
-                  ),
+                  child: Text('Skip', style: TextStyle(color: currentColor)),
                 ),
               ),
             ),
@@ -176,14 +173,10 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                             width: 140,
                             height: 140,
                             decoration: BoxDecoration(
-                              color: page.color.withOpacity(0.12),
+                              color: page.color.withValues(alpha: 0.12),
                               shape: BoxShape.circle,
                             ),
-                            child: Icon(
-                              page.icon,
-                              size: 64,
-                              color: page.color,
-                            ),
+                            child: Icon(page.icon, size: 64, color: page.color),
                           ),
                         ),
                         const SizedBox(height: 48),
@@ -227,7 +220,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                       borderRadius: BorderRadius.circular(4),
                       color: _currentPage == index
                           ? currentColor
-                          : currentColor.withOpacity(0.25),
+                          : currentColor.withValues(alpha: 0.25),
                     ),
                   );
                 }),
@@ -262,7 +255,9 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                       ),
                       const SizedBox(width: 8),
                       Icon(
-                        isLast ? Icons.check_rounded : Icons.arrow_forward_rounded,
+                        isLast
+                            ? Icons.check_rounded
+                            : Icons.arrow_forward_rounded,
                         color: Colors.white,
                         size: 20,
                       ),
@@ -277,20 +272,6 @@ class _OnboardingScreenState extends State<OnboardingScreen>
     );
   }
 }
-```
-
-## Usage
-
-```dart
-// In your main app or splash screen, show onboarding if first launch:
-OnboardingScreen(
-  onComplete: () {
-    // Mark onboarding as seen, navigate to login
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const EmailLoginScreen()),
-    );
-  },
-);
 ```
 
 ## Dependencies

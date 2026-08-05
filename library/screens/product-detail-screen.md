@@ -66,18 +66,18 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
   Future<void> _addToCart() async {
     if (_selectedSize == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select a size')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Please select a size')));
       return;
     }
     setState(() => _isAddingToCart = true);
     await Future.delayed(const Duration(milliseconds: 800));
     if (!mounted) return;
     setState(() => _isAddingToCart = false);
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Added to cart!')),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Added to cart!')));
   }
 
   @override
@@ -95,7 +95,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           icon: Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: cs.surface.withOpacity(0.9),
+              color: cs.surface.withValues(alpha: 0.9),
               shape: BoxShape.circle,
             ),
             child: const Icon(Icons.arrow_back_ios_new_rounded, size: 18),
@@ -107,7 +107,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             icon: Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: cs.surface.withOpacity(0.9),
+                color: cs.surface.withValues(alpha: 0.9),
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.share_outlined, size: 18),
@@ -135,7 +135,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         child: Icon(
                           Icons.checkroom_rounded,
                           size: 120,
-                          color: Colors.white.withOpacity(0.3),
+                          color: Colors.white.withValues(alpha: 0.3),
                         ),
                       ),
                     );
@@ -156,7 +156,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.15),
+                            color: Colors.black.withValues(alpha: 0.15),
                             blurRadius: 8,
                             offset: const Offset(0, 2),
                           ),
@@ -188,7 +188,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         decoration: BoxDecoration(
                           color: i == _currentImage
                               ? Colors.white
-                              : Colors.white.withOpacity(0.4),
+                              : Colors.white.withValues(alpha: 0.4),
                           borderRadius: BorderRadius.circular(3),
                         ),
                       );
@@ -313,14 +313,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             boxShadow: [
                               if (selected)
                                 BoxShadow(
-                                  color: cs.primary.withOpacity(0.4),
+                                  color: cs.primary.withValues(alpha: 0.4),
                                   blurRadius: 8,
                                 ),
                             ],
                           ),
                           child: selected
-                              ? const Icon(Icons.check_rounded,
-                                  color: Colors.white, size: 16)
+                              ? const Icon(
+                                  Icons.check_rounded,
+                                  color: Colors.white,
+                                  size: 16,
+                                )
                               : null,
                         ),
                       );
@@ -435,10 +438,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       // ── Sticky bottom bar ─────────────────────────────────────
       bottomNavigationBar: Container(
         padding: EdgeInsets.fromLTRB(
-            20, 16, 20, 16 + MediaQuery.of(context).padding.bottom),
+          20,
+          16,
+          20,
+          16 + MediaQuery.of(context).padding.bottom,
+        ),
         decoration: BoxDecoration(
           color: cs.surface,
-          border: Border(top: BorderSide(color: cs.outline.withOpacity(0.3))),
+          border: Border(
+            top: BorderSide(color: cs.outline.withValues(alpha: 0.3)),
+          ),
         ),
         child: Row(
           children: [
@@ -448,8 +457,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               children: [
                 Text(
                   'Total price',
-                  style: TextStyle(
-                      color: cs.onSurfaceVariant, fontSize: 12),
+                  style: TextStyle(color: cs.onSurfaceVariant, fontSize: 12),
                 ),
                 Text(
                   '\$${(129.99 * _quantity).toStringAsFixed(2)}',
@@ -522,25 +530,16 @@ class _QuantityStepper extends StatelessWidget {
     final cs = Theme.of(context).colorScheme;
     return Row(
       children: [
-        _StepButton(
-          icon: Icons.remove_rounded,
-          onPressed: onDecrement,
-        ),
+        _StepButton(icon: Icons.remove_rounded, onPressed: onDecrement),
         AnimatedSwitcher(
           duration: const Duration(milliseconds: 200),
           child: Text(
             '$quantity',
             key: ValueKey(quantity),
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
-        _StepButton(
-          icon: Icons.add_rounded,
-          onPressed: onIncrement,
-        ),
+        _StepButton(icon: Icons.add_rounded, onPressed: onIncrement),
       ],
     );
   }

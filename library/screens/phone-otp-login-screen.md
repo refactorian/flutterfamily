@@ -94,11 +94,7 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
                 color: cs.primaryContainer,
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Icon(
-                Icons.phone_outlined,
-                color: cs.primary,
-                size: 28,
-              ),
+              child: Icon(Icons.phone_outlined, color: cs.primary, size: 28),
             ),
             const SizedBox(height: 24),
             Text(
@@ -122,7 +118,7 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: cs.outline),
-                color: cs.surfaceContainerHighest.withOpacity(0.4),
+                color: cs.surfaceContainerHighest.withValues(alpha: 0.4),
               ),
               child: Row(
                 children: [
@@ -149,11 +145,7 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
                       ),
                     ),
                   ),
-                  Container(
-                    width: 1,
-                    height: 28,
-                    color: cs.outline,
-                  ),
+                  Container(width: 1, height: 28, color: cs.outline),
                   Expanded(
                     child: TextField(
                       controller: _phoneController,
@@ -167,8 +159,10 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: '555 000 0000',
-                        contentPadding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 14,
+                        ),
                       ),
                     ),
                   ),
@@ -199,7 +193,9 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
                     : const Text(
                         'Send Verification Code',
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
               ),
             ),
@@ -225,10 +221,14 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   static const int _otpLength = 6;
   static const int _resendSeconds = 60;
 
-  final List<TextEditingController> _controllers =
-      List.generate(_otpLength, (_) => TextEditingController());
-  final List<FocusNode> _focusNodes =
-      List.generate(_otpLength, (_) => FocusNode());
+  final List<TextEditingController> _controllers = List.generate(
+    _otpLength,
+    (_) => TextEditingController(),
+  );
+  final List<FocusNode> _focusNodes = List.generate(
+    _otpLength,
+    (_) => FocusNode(),
+  );
 
   int _secondsLeft = _resendSeconds;
   Timer? _timer;
@@ -283,7 +283,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
   Future<void> _verifyOtp(String otp) async {
     setState(() => _isVerifying = true);
-    await Future.delayed(const Duration(seconds: 1)); // Replace with real verify
+    await Future.delayed(
+      const Duration(seconds: 1),
+    ); // Replace with real verify
     if (!mounted) return;
     setState(() => _isVerifying = false);
     // Navigate to home on success
@@ -352,8 +354,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       filled: true,
-                      fillColor:
-                          cs.surfaceContainerHighest.withOpacity(0.4),
+                      fillColor: cs.surfaceContainerHighest.withValues(
+                        alpha: 0.4,
+                      ),
                     ),
                     onChanged: (v) => _onOtpChanged(v, index),
                   ),
@@ -369,8 +372,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 onPressed: _isVerifying
                     ? null
                     : () {
-                        final otp =
-                            _controllers.map((c) => c.text).join();
+                        final otp = _controllers.map((c) => c.text).join();
                         if (otp.length == _otpLength) _verifyOtp(otp);
                       },
                 style: FilledButton.styleFrom(
@@ -390,7 +392,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     : const Text(
                         'Verify Code',
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
               ),
             ),

@@ -46,7 +46,8 @@ class NotificationsCenterScreen extends StatefulWidget {
   const NotificationsCenterScreen({super.key});
 
   @override
-  State<NotificationsCenterScreen> createState() => _NotificationsCenterScreenState();
+  State<NotificationsCenterScreen> createState() =>
+      _NotificationsCenterScreenState();
 }
 
 class _NotificationsCenterScreenState extends State<NotificationsCenterScreen> {
@@ -116,7 +117,10 @@ class _NotificationsCenterScreenState extends State<NotificationsCenterScreen> {
       appBar: AppBar(
         title: Row(
           children: [
-            const Text('Notifications', style: TextStyle(fontWeight: FontWeight.bold)),
+            const Text(
+              'Notifications',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             if (unreadCount > 0) ...[
               const SizedBox(width: 8),
               Container(
@@ -127,7 +131,11 @@ class _NotificationsCenterScreenState extends State<NotificationsCenterScreen> {
                 ),
                 child: Text(
                   '$unreadCount',
-                  style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],
@@ -171,15 +179,23 @@ class _NotificationsCenterScreenState extends State<NotificationsCenterScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.notifications_none_rounded, size: 64, color: Colors.grey),
+                        Icon(
+                          Icons.notifications_none_rounded,
+                          size: 64,
+                          color: Colors.grey,
+                        ),
                         SizedBox(height: 12),
-                        Text('No notifications', style: TextStyle(color: Colors.grey, fontSize: 16)),
+                        Text(
+                          'No notifications',
+                          style: TextStyle(color: Colors.grey, fontSize: 16),
+                        ),
                       ],
                     ),
                   )
                 : ListView.separated(
                     itemCount: filtered.length,
-                    separatorBuilder: (_, __) => const Divider(height: 1, indent: 68),
+                    separatorBuilder: (_, _) =>
+                        const Divider(height: 1, indent: 68),
                     itemBuilder: (context, index) {
                       final item = filtered[index];
 
@@ -189,19 +205,39 @@ class _NotificationsCenterScreenState extends State<NotificationsCenterScreen> {
                           color: Colors.red,
                           alignment: Alignment.centerRight,
                           padding: const EdgeInsets.only(right: 20),
-                          child: const Icon(Icons.delete_outline, color: Colors.white),
+                          child: const Icon(
+                            Icons.delete_outline,
+                            color: Colors.white,
+                          ),
                         ),
                         onDismissed: (_) {
-                          setState(() => _notifications.removeWhere((n) => n.id == item.id));
+                          setState(
+                            () => _notifications.removeWhere(
+                              (n) => n.id == item.id,
+                            ),
+                          );
                         },
                         child: ListTile(
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                          tileColor: item.isRead ? null : Theme.of(context).colorScheme.primary.withOpacity(0.04),
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          tileColor: item.isRead
+                              ? null
+                              : Theme.of(
+                                  context,
+                                ).colorScheme.primary.withValues(alpha: 0.04),
                           leading: Stack(
                             children: [
                               CircleAvatar(
-                                backgroundColor: item.iconColor.withOpacity(0.15),
-                                child: Icon(item.icon, color: item.iconColor, size: 22),
+                                backgroundColor: item.iconColor.withValues(
+                                  alpha: 0.15,
+                                ),
+                                child: Icon(
+                                  item.icon,
+                                  color: item.iconColor,
+                                  size: 22,
+                                ),
                               ),
                               if (!item.isRead)
                                 Positioned(
@@ -211,9 +247,14 @@ class _NotificationsCenterScreenState extends State<NotificationsCenterScreen> {
                                     width: 10,
                                     height: 10,
                                     decoration: BoxDecoration(
-                                      color: Theme.of(context).colorScheme.primary,
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.primary,
                                       shape: BoxShape.circle,
-                                      border: Border.all(color: Colors.white, width: 2),
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -222,7 +263,9 @@ class _NotificationsCenterScreenState extends State<NotificationsCenterScreen> {
                           title: Text(
                             item.title,
                             style: TextStyle(
-                              fontWeight: item.isRead ? FontWeight.w600 : FontWeight.bold,
+                              fontWeight: item.isRead
+                                  ? FontWeight.w600
+                                  : FontWeight.bold,
                               fontSize: 14,
                             ),
                           ),
@@ -230,9 +273,21 @@ class _NotificationsCenterScreenState extends State<NotificationsCenterScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const SizedBox(height: 4),
-                              Text(item.body, style: TextStyle(color: Colors.grey.shade600, fontSize: 13)),
+                              Text(
+                                item.body,
+                                style: TextStyle(
+                                  color: Colors.grey.shade600,
+                                  fontSize: 13,
+                                ),
+                              ),
                               const SizedBox(height: 6),
-                              Text(item.timeAgo, style: TextStyle(color: Colors.grey.shade400, fontSize: 11)),
+                              Text(
+                                item.timeAgo,
+                                style: TextStyle(
+                                  color: Colors.grey.shade400,
+                                  fontSize: 11,
+                                ),
+                              ),
                             ],
                           ),
                           onTap: () {

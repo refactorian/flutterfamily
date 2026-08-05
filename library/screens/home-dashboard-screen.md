@@ -72,37 +72,57 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
   ];
 
   final List<QuickAction> _quickActions = const [
-    QuickAction(label: 'Analytics', icon: Icons.bar_chart_rounded, color: Color(0xFF6366F1)),
-    QuickAction(label: 'Messages', icon: Icons.chat_bubble_outline_rounded, color: Color(0xFF0EA5E9)),
-    QuickAction(label: 'Calendar', icon: Icons.calendar_month_outlined, color: Color(0xFF10B981)),
-    QuickAction(label: 'Settings', icon: Icons.settings_outlined, color: Color(0xFFF59E0B)),
+    QuickAction(
+      label: 'Analytics',
+      icon: Icons.bar_chart_rounded,
+      color: Color(0xFF6366F1),
+    ),
+    QuickAction(
+      label: 'Messages',
+      icon: Icons.chat_bubble_outline_rounded,
+      color: Color(0xFF0EA5E9),
+    ),
+    QuickAction(
+      label: 'Calendar',
+      icon: Icons.calendar_month_outlined,
+      color: Color(0xFF10B981),
+    ),
+    QuickAction(
+      label: 'Settings',
+      icon: Icons.settings_outlined,
+      color: Color(0xFFF59E0B),
+    ),
   ];
 
   final List<FeedItem> _feedItems = const [
     FeedItem(
       title: 'Building Scalable Flutter Apps',
-      subtitle: 'Learn how to structure your codebase for long-term maintainability with clean architecture.',
+      subtitle:
+          'Learn how to structure your codebase for long-term maintainability with clean architecture.',
       tag: 'Development',
       timeAgo: '2h ago',
       tagColor: Color(0xFF6366F1),
     ),
     FeedItem(
       title: 'Design Systems in 2025',
-      subtitle: 'How top companies build unified design languages that scale across platforms.',
+      subtitle:
+          'How top companies build unified design languages that scale across platforms.',
       tag: 'Design',
       timeAgo: '5h ago',
       tagColor: Color(0xFF0EA5E9),
     ),
     FeedItem(
       title: 'Growth Hacking for SaaS',
-      subtitle: 'Practical strategies to grow from 0 to your first 1,000 paying customers.',
+      subtitle:
+          'Practical strategies to grow from 0 to your first 1,000 paying customers.',
       tag: 'Business',
       timeAgo: '1d ago',
       tagColor: Color(0xFF10B981),
     ),
     FeedItem(
       title: 'AI Tools Changing Marketing',
-      subtitle: 'The top AI-powered tools marketers are using to 10x their output in 2025.',
+      subtitle:
+          'The top AI-powered tools marketers are using to 10x their output in 2025.',
       tag: 'Marketing',
       timeAgo: '2d ago',
       tagColor: Color(0xFFF59E0B),
@@ -217,13 +237,14 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                     itemBuilder: (context, index) {
                       final selected = index == _selectedCategory;
                       return GestureDetector(
-                        onTap: () =>
-                            setState(() => _selectedCategory = index),
+                        onTap: () => setState(() => _selectedCategory = index),
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 200),
                           margin: const EdgeInsets.only(right: 8),
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
                           decoration: BoxDecoration(
                             color: selected ? cs.primary : Colors.transparent,
                             border: Border.all(
@@ -309,7 +330,7 @@ class _QuickActionButton extends StatelessWidget {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: action.color.withOpacity(0.12),
+              color: action.color.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(16),
             ),
             child: Icon(action.icon, color: action.color, size: 26),
@@ -353,7 +374,7 @@ class _FeaturedBanner extends StatelessWidget {
                 height: 120,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.08),
+                  color: Colors.white.withValues(alpha: 0.08),
                 ),
               ),
             ),
@@ -365,7 +386,7 @@ class _FeaturedBanner extends StatelessWidget {
                 height: 80,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.06),
+                  color: Colors.white.withValues(alpha: 0.06),
                 ),
               ),
             ),
@@ -378,9 +399,11 @@ class _FeaturedBanner extends StatelessWidget {
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 4),
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.2),
+                      color: Colors.white.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: const Text(
@@ -411,7 +434,9 @@ class _FeaturedBanner extends StatelessWidget {
                           backgroundColor: Colors.white,
                           foregroundColor: const Color(0xFF6366F1),
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
                           minimumSize: Size.zero,
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           shape: RoundedRectangleBorder(
@@ -421,7 +446,9 @@ class _FeaturedBanner extends StatelessWidget {
                         child: const Text(
                           'Read Now',
                           style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.w600),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ],
@@ -451,7 +478,7 @@ class _FeedCard extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        border: Border.all(color: cs.outline.withOpacity(0.4)),
+        border: Border.all(color: cs.outline.withValues(alpha: 0.4)),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -462,7 +489,7 @@ class _FeedCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: item.tagColor.withOpacity(0.1),
+                  color: item.tagColor.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
@@ -477,10 +504,7 @@ class _FeedCard extends StatelessWidget {
               const Spacer(),
               Text(
                 item.timeAgo,
-                style: TextStyle(
-                  color: cs.onSurfaceVariant,
-                  fontSize: 12,
-                ),
+                style: TextStyle(color: cs.onSurfaceVariant, fontSize: 12),
               ),
             ],
           ),

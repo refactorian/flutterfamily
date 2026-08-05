@@ -92,7 +92,8 @@ class _CartScreenState extends State<CartScreen> {
     final removed = _items[index];
     _listKey.currentState?.removeItem(
       index,
-      (context, animation) => _buildCartTile(context, removed, index, animation),
+      (context, animation) =>
+          _buildCartTile(context, removed, index, animation),
     );
     _items.removeAt(index);
     setState(() {});
@@ -105,13 +106,13 @@ class _CartScreenState extends State<CartScreen> {
         _appliedPromo = code;
         _discount = _subtotal * 0.2;
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Promo applied! 20% off')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Promo applied! 20% off')));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Invalid promo code')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Invalid promo code')));
     }
   }
 
@@ -144,13 +145,17 @@ class _CartScreenState extends State<CartScreen> {
             color: Colors.red.shade50,
             borderRadius: BorderRadius.circular(16),
           ),
-          child: const Icon(Icons.delete_outline_rounded, color: Colors.red, size: 26),
+          child: const Icon(
+            Icons.delete_outline_rounded,
+            color: Colors.red,
+            size: 26,
+          ),
         ),
         child: Container(
           margin: const EdgeInsets.only(bottom: 12),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            border: Border.all(color: cs.outline.withOpacity(0.4)),
+            border: Border.all(color: cs.outline.withValues(alpha: 0.4)),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Row(
@@ -164,7 +169,7 @@ class _CartScreenState extends State<CartScreen> {
                   color: item.imageColor,
                   child: Icon(
                     Icons.checkroom_rounded,
-                    color: Colors.white.withOpacity(0.4),
+                    color: Colors.white.withValues(alpha: 0.4),
                     size: 36,
                   ),
                 ),
@@ -216,10 +221,14 @@ class _CartScreenState extends State<CartScreen> {
                               },
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                              ),
                               child: Text(
                                 '${item.quantity}',
-                                style: const TextStyle(fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                             _SmallStepButton(
@@ -275,7 +284,11 @@ class _CartScreenState extends State<CartScreen> {
                     initialItemCount: _items.length,
                     itemBuilder: (context, index, animation) {
                       return _buildCartTile(
-                          context, _items[index], index, animation);
+                        context,
+                        _items[index],
+                        index,
+                        animation,
+                      );
                     },
                   ),
                 ),
@@ -291,11 +304,11 @@ class _CartScreenState extends State<CartScreen> {
                   decoration: BoxDecoration(
                     color: cs.surface,
                     border: Border(
-                      top: BorderSide(color: cs.outline.withOpacity(0.3)),
+                      top: BorderSide(color: cs.outline.withValues(alpha: 0.3)),
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.04),
+                        color: Colors.black.withValues(alpha: 0.04),
                         blurRadius: 16,
                         offset: const Offset(0, -4),
                       ),
@@ -314,45 +327,61 @@ class _CartScreenState extends State<CartScreen> {
                               decoration: InputDecoration(
                                 hintText: 'Promo code (try FLUTTER20)',
                                 hintStyle: const TextStyle(fontSize: 13),
-                                prefixIcon:
-                                    const Icon(Icons.local_offer_outlined, size: 18),
+                                prefixIcon: const Icon(
+                                  Icons.local_offer_outlined,
+                                  size: 18,
+                                ),
                                 filled: true,
                                 fillColor: cs.surfaceContainerHighest
-                                    .withOpacity(0.4),
+                                    .withValues(alpha: 0.4),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide.none,
                                 ),
                                 contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 12),
+                                  horizontal: 12,
+                                  vertical: 12,
+                                ),
                               ),
                             ),
                           ),
                           const SizedBox(width: 10),
                           ElevatedButton(
-                            onPressed: _appliedPromo != null ? null : _applyPromo,
+                            onPressed: _appliedPromo != null
+                                ? null
+                                : _applyPromo,
                             style: ElevatedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 14),
+                                horizontal: 16,
+                                vertical: 14,
+                              ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            child: Text(_appliedPromo != null ? 'Applied' : 'Apply'),
+                            child: Text(
+                              _appliedPromo != null ? 'Applied' : 'Apply',
+                            ),
                           ),
                         ],
                       ),
                       const SizedBox(height: 16),
 
                       // Summary lines
-                      _SummaryRow(label: 'Subtotal', value: '\$${_subtotal.toStringAsFixed(2)}'),
+                      _SummaryRow(
+                        label: 'Subtotal',
+                        value: '\$${_subtotal.toStringAsFixed(2)}',
+                      ),
                       if (_discount > 0)
                         _SummaryRow(
                           label: 'Discount ($_appliedPromo)',
                           value: '-\$${_discount.toStringAsFixed(2)}',
                           valueColor: Colors.green,
                         ),
-                      _SummaryRow(label: 'Tax (8%)', value: '\$${_tax.toStringAsFixed(2)}'),
+                      _SummaryRow(
+                        label: 'Tax (8%)',
+                        value: '\$${_tax.toStringAsFixed(2)}',
+                      ),
                       const Divider(height: 20),
                       _SummaryRow(
                         label: 'Total',
@@ -363,7 +392,9 @@ class _CartScreenState extends State<CartScreen> {
 
                       // Checkout button
                       FilledButton(
-                        onPressed: () {/* Navigate to checkout */},
+                        onPressed: () {
+                          /* Navigate to checkout */
+                        },
                         style: FilledButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
@@ -373,7 +404,9 @@ class _CartScreenState extends State<CartScreen> {
                         child: const Text(
                           'Proceed to Checkout',
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ],
@@ -393,13 +426,17 @@ class _CartScreenState extends State<CartScreen> {
         children: [
           Icon(Icons.shopping_bag_outlined, size: 80, color: cs.outlineVariant),
           const SizedBox(height: 16),
-          Text('Your cart is empty',
-              style: theme.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              )),
+          Text(
+            'Your cart is empty',
+            style: theme.textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           const SizedBox(height: 8),
-          Text('Add items to get started',
-              style: TextStyle(color: cs.onSurfaceVariant)),
+          Text(
+            'Add items to get started',
+            style: TextStyle(color: cs.onSurfaceVariant),
+          ),
           const SizedBox(height: 32),
           FilledButton(
             onPressed: () => Navigator.pop(context),
@@ -464,10 +501,7 @@ class _SummaryRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(label, style: style),
-          Text(
-            value,
-            style: style.copyWith(color: valueColor ?? style.color),
-          ),
+          Text(value, style: style.copyWith(color: valueColor ?? style.color)),
         ],
       ),
     );

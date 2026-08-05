@@ -80,10 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen>
   Animation<Offset> _staggerSlide(int index) {
     final start = (index * 0.1).clamp(0.0, 0.9);
     final end = (start + 0.4).clamp(0.0, 1.0);
-    return Tween<Offset>(
-      begin: const Offset(0, 0.4),
-      end: Offset.zero,
-    ).animate(
+    return Tween<Offset>(begin: const Offset(0, 0.4), end: Offset.zero).animate(
       CurvedAnimation(
         parent: _animController,
         curve: Interval(start, end, curve: Curves.easeOutCubic),
@@ -103,16 +100,15 @@ class _SignUpScreenState extends State<SignUpScreen>
   }
 
   Widget _animated(int index, Widget child) => FadeTransition(
-        opacity: _staggerFade(index),
-        child: SlideTransition(position: _staggerSlide(index), child: child),
-      );
+    opacity: _staggerFade(index),
+    child: SlideTransition(position: _staggerSlide(index), child: child),
+  );
 
   Future<void> _handleRegister() async {
     if (!_formKey.currentState!.validate()) return;
     if (!_acceptTerms) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Please accept the terms & conditions')),
+        const SnackBar(content: Text('Please accept the terms & conditions')),
       );
       return;
     }
@@ -125,8 +121,7 @@ class _SignUpScreenState extends State<SignUpScreen>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
-    final strength =
-        _getStrength(_passwordController.text);
+    final strength = _getStrength(_passwordController.text);
 
     return Scaffold(
       backgroundColor: cs.surface,
@@ -176,13 +171,13 @@ class _SignUpScreenState extends State<SignUpScreen>
                         borderRadius: BorderRadius.circular(12),
                       ),
                       filled: true,
-                      fillColor:
-                          cs.surfaceContainerHighest.withOpacity(0.4),
+                      fillColor: cs.surfaceContainerHighest.withValues(
+                        alpha: 0.4,
+                      ),
                     ),
-                    validator: (v) =>
-                        (v == null || v.trim().isEmpty)
-                            ? 'Name is required'
-                            : null,
+                    validator: (v) => (v == null || v.trim().isEmpty)
+                        ? 'Name is required'
+                        : null,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -201,15 +196,17 @@ class _SignUpScreenState extends State<SignUpScreen>
                         borderRadius: BorderRadius.circular(12),
                       ),
                       filled: true,
-                      fillColor:
-                          cs.surfaceContainerHighest.withOpacity(0.4),
+                      fillColor: cs.surfaceContainerHighest.withValues(
+                        alpha: 0.4,
+                      ),
                     ),
                     validator: (v) {
                       if (v == null || v.trim().isEmpty) {
                         return 'Email is required';
                       }
-                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                          .hasMatch(v.trim())) {
+                      if (!RegExp(
+                        r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                      ).hasMatch(v.trim())) {
                         return 'Enter a valid email';
                       }
                       return null;
@@ -238,14 +235,16 @@ class _SignUpScreenState extends State<SignUpScreen>
                                   : Icons.visibility_off_outlined,
                             ),
                             onPressed: () => setState(
-                                () => _obscurePassword = !_obscurePassword),
+                              () => _obscurePassword = !_obscurePassword,
+                            ),
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
                           filled: true,
-                          fillColor:
-                              cs.surfaceContainerHighest.withOpacity(0.4),
+                          fillColor: cs.surfaceContainerHighest.withValues(
+                            alpha: 0.4,
+                          ),
                         ),
                         validator: (v) {
                           if (v == null || v.isEmpty) {
@@ -283,15 +282,16 @@ class _SignUpScreenState extends State<SignUpScreen>
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
                         ),
-                        onPressed: () => setState(
-                            () => _obscureConfirm = !_obscureConfirm),
+                        onPressed: () =>
+                            setState(() => _obscureConfirm = !_obscureConfirm),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
                       filled: true,
-                      fillColor:
-                          cs.surfaceContainerHighest.withOpacity(0.4),
+                      fillColor: cs.surfaceContainerHighest.withValues(
+                        alpha: 0.4,
+                      ),
                     ),
                     validator: (v) {
                       if (v == null || v.isEmpty) {
@@ -337,7 +337,9 @@ class _SignUpScreenState extends State<SignUpScreen>
                                     fontWeight: FontWeight.w600,
                                   ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () {/* Open terms */},
+                                    ..onTap = () {
+                                      /* Open terms */
+                                    },
                                 ),
                                 const TextSpan(text: ' and '),
                                 TextSpan(
@@ -347,7 +349,9 @@ class _SignUpScreenState extends State<SignUpScreen>
                                     fontWeight: FontWeight.w600,
                                   ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () {/* Open privacy */},
+                                    ..onTap = () {
+                                      /* Open privacy */
+                                    },
                                 ),
                               ],
                             ),
