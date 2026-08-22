@@ -1,0 +1,10 @@
+{
+  "label": "GetX",
+  "position": 7,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "getx/index"
+  }
+}

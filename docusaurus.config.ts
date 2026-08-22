@@ -86,6 +86,15 @@ const config: Config = {
     [
       '@docusaurus/plugin-content-docs',
       {
+        id: 'state-management',
+        path: 'state-management',
+        routeBasePath: 'state-management',
+        sidebarPath: './sidebarsStateManagement.ts',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
         id: 'library',
         path: 'library',
         routeBasePath: 'library',
@@ -123,6 +132,13 @@ const config: Config = {
           label: 'Library',
           position: 'left',
           activeBaseRegex: `/library/`,
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'stateManagementSidebar',
+          docsPluginId: 'state-management',
+          position: 'left',
+          label: 'State Management',
         },
         {
           href: 'https://github.com/refactorian/flutterfamily',
