@@ -746,3 +746,68 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
+
+/* GitHub Discussions callout strip */
+.discussionsCallout {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background: rgba(1, 117, 194, 0.07);
+  border: 1px solid rgba(1, 117, 194, 0.18);
+  text-align: left;
+  flex-wrap: wrap;
+}
+
+[data-theme='dark'] .discussionsCallout {
+  background: rgba(59, 158, 255, 0.07);
+  border-color: rgba(59, 158, 255, 0.2);
+}
+
+.discussionsIcon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+}
+
+.discussionsCallout div {
+  flex: 1;
+  min-width: 180px;
+}
+
+.discussionsCallout strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.discussionsCallout p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+.discussionsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.discussionsLink:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+  color: #fff !important;
+}
+
