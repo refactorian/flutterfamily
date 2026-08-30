@@ -1,0 +1,42 @@
+.searchIconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--ifm-navbar-link-color);
+  transition:
+    color      0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease,
+    transform  0.15s ease;
+}
+
+.searchIconBtn:hover {
+  color: var(--ifm-color-primary);
+  background: rgba(1, 117, 194, 0.09);
+  box-shadow: 0 0 0 1.5px rgba(1, 117, 194, 0.20);
+  transform: scale(1.08);
+}
+
+[data-theme='dark'] .searchIconBtn:hover {
+  background: rgba(59, 158, 255, 0.10);
+  box-shadow: 0 0 0 1.5px rgba(59, 158, 255, 0.22);
+}
+
+.searchIconBtn:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+.searchIcon {
+  width: 18px;
+  height: 18px;
+  transition: inherit;
+}
+

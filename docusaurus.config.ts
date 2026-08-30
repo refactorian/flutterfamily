@@ -17,7 +17,66 @@ const config: Config = {
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: [
+    '@docusaurus/theme-mermaid',
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      /** @type {import('@easyops-cn/docusaurus-search-local').PluginOptions} */
+      {
+        // ── Indexing scope ──────────────────────────────────────────────────
+        indexDocs: true,
+        indexBlog: true,
+        indexPages: false, // pages (home, etc.) add noise; keep search focused
+
+        // ── Route paths — MUST match routeBasePath in your plugin configs ──
+        docsRouteBasePath: ['dart', 'state-management', 'library'],
+        blogRouteBasePath: '/blog',
+
+        // ── Source dirs — used to compute the content hash ─────────────────
+        docsDir: ['dart', 'state-management', 'library'],
+        blogDir: 'blog',
+
+        // ── Cache busting: hash baked into filename (CDN-friendly) ─────────
+        hashed: 'filename',
+
+        // ── Multi-instance: which docs plugin drives version preference ────
+        docsPluginIdForPreferredVersion: 'default',
+
+        // ── Language ────────────────────────────────────────────────────────
+        language: ['en'],
+
+        // ── UX: highlight matched terms on the destination page ────────────
+        highlightSearchTermsOnTargetPage: true,
+
+        // ── UX: show breadcrumb path in results (e.g. Dart › Variables) ───
+        explicitSearchResultPath: true,
+
+        // ── UX: more context chars around each match (default: 50) ─────────
+        searchResultContextMaxLength: 100,
+
+        // ── UX: show up to 10 results (default: 8) ─────────────────────────
+        searchResultLimits: 10,
+
+        // ── Keyboard shortcut: industry-standard ⌘K / Ctrl+K ──────────────
+        searchBarShortcut: true,
+        searchBarShortcutHint: true,
+        searchBarShortcutKeymap: 'mod+k',
+
+        // ── Programming docs: keep stop words like "as", "is", "in" ────────
+        removeDefaultStopWordFilter: true,
+
+        // ── Ignore nav/sidebar/footer chrome — only index page content ─────
+        ignoreCssSelectors: [
+          '.navbar',
+          '.footer',
+          '.pagination-nav',
+          '.theme-doc-breadcrumbs',
+          '.theme-doc-toc-desktop',
+          '.theme-doc-toc-mobile',
+        ],
+      },
+    ],
+  ],
 
   // Custom fields accessible via useDocusaurusContext()
   customFields: {
@@ -149,12 +208,6 @@ const config: Config = {
           docsPluginId: 'state-management',
           position: 'left',
           label: 'State Management',
-        },
-        {
-          href: 'https://github.com/refactorian/flutterfamily',
-          label: 'GitHub',
-          position: 'right',
-          className: 'header-github-link',
         },
       ],
     },
