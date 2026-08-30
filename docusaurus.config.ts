@@ -127,12 +127,6 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Dart',
-        },
-        {
           to: '/blog',
           label: 'Blog',
           position: 'left',
@@ -142,6 +136,12 @@ const config: Config = {
           label: 'Library',
           position: 'left',
           activeBaseRegex: '^/library',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Dart',
         },
         {
           type: 'docSidebar',
