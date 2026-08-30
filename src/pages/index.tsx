@@ -22,7 +22,7 @@ export default function Home(): ReactNode {
 
   return (
     <Layout
-      title={`${siteConfig.title} — The Flutter & Dart Developer Hub`}
+      title={`${siteConfig.title} — The Dart & Flutter Developer Hub`}
       description="Curated production-ready UI components, architectural blueprints, in-depth Dart guides, and state management patterns for Flutter developers."
     >
       {/* Hero is above the fold — always loaded eagerly */}
