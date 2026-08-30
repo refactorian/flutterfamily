@@ -123,13 +123,11 @@ export default function RelatedBlogPosts(): React.ReactElement | null {
           <Link
             key={post.permalink}
             to={post.permalink}
-            target="_blank"
-            rel="noopener noreferrer"
             className={styles.postCard}
             title={post.title}
           >
             <span className={styles.postTitle}>{post.title}</span>
-            <span className={styles.postArrow}>↗</span>
+            <span className={styles.postArrow}>→</span>
           </Link>
         ))}
       </div>

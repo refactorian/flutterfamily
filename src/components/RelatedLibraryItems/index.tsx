@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './RelatedLibraryItems.module.css';
@@ -106,20 +107,18 @@ export default function RelatedLibraryItems(): React.ReactElement | null {
                 <h2 className={styles.relatedTitle}>
                     More {CATEGORY_LABELS[category]}
                 </h2>
-                <a
-                    href={`/library`}
+                <Link
+                    to="/library"
                     className={styles.viewAllLink}
                 >
                     View All →
-                </a>
+                </Link>
             </div>
             <div className={styles.relatedGrid}>
                 {items.map((item) => (
-                    <a
+                    <Link
                         key={item.id}
-                        href={item.docUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        to={item.docUrl}
                         className={styles.relatedCard}
                     >
                         <div className={styles.imageWrapper}>
@@ -147,7 +146,7 @@ export default function RelatedLibraryItems(): React.ReactElement | null {
                                 ))}
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 ))}
             </div>
         </section>
