@@ -22,6 +22,7 @@ const config: Config = {
   // Custom fields accessible via useDocusaurusContext()
   customFields: {
     libraryRelatedItemsCount: 12,
+    libraryItemsPerPage: 12,
   },
 
   // Set the production url of your site here
