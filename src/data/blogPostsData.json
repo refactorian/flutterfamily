@@ -1,0 +1,141 @@
+[
+  {
+    "title": "Mastering Custom Painters and Canvas in Flutter",
+    "permalink": "/blog/mastering-custom-painters-and-canvas-in-flutter",
+    "date": "",
+    "tags": [
+      "dart",
+      "flutter",
+      "custom-painter",
+      "canvas",
+      "graphics",
+      "rendering"
+    ]
+  },
+  {
+    "title": "Dart 3 Records, Pattern Matching, and Sealed Classes",
+    "permalink": "/blog/dart-3-records-pattern-matching-and-sealed-classes",
+    "date": "",
+    "tags": [
+      "dart",
+      "dart3",
+      "records",
+      "architecture",
+      "language-features"
+    ]
+  },
+  {
+    "title": "Flutter State Management: Architecting Scalable Mobile Applications",
+    "permalink": "/blog/flutter-state-management-architecture",
+    "date": "",
+    "tags": [
+      "flutter",
+      "state-management",
+      "architecture",
+      "mobile",
+      "dart"
+    ]
+  },
+  {
+    "title": "Eliminating Jank: Profiling and Optimizing Flutter Rendering Performance",
+    "permalink": "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
+    "date": "",
+    "tags": [
+      "flutter",
+      "performance",
+      "optimization",
+      "rendering",
+      "devtools"
+    ]
+  },
+  {
+    "title": "Flutter Project Directory Structures: 17 Architectures and When to Use Them",
+    "permalink": "/blog/flutter-project-directory-structures",
+    "date": "",
+    "tags": [
+      "flutter",
+      "architecture",
+      "performance",
+      "optimization"
+    ]
+  },
+  {
+    "title": "State Persistence Made Simple: A Complete Guide to HydratedCubit in Flutter",
+    "permalink": "/blog/hydratedcubit-state-persistence-flutter",
+    "date": "",
+    "tags": [
+      "flutter",
+      "dart",
+      "bloc",
+      "cubit",
+      "state-management"
+    ]
+  },
+  {
+    "title": "Persistent Event-Driven State in Flutter: A Complete Guide to HydratedBloc",
+    "permalink": "/blog/hydratedbloc-persistent-event-driven-state-flutter",
+    "date": "",
+    "tags": [
+      "flutter",
+      "dart",
+      "bloc",
+      "cubit",
+      "state-management"
+    ]
+  },
+  {
+    "title": "Chunking Strings in Dart: Every Practical Approach from Regex to Unicode-Safe Splitting",
+    "permalink": "/blog/dart-string-chunking-techniques-and-best-practices",
+    "date": "",
+    "tags": [
+      "dart",
+      "dart3",
+      "records",
+      "language-features"
+    ]
+  },
+  {
+    "title": "Deep Comparison and Value Equality in Dart: From identical() to equatable and Macros",
+    "permalink": "/blog/dart-deep-comparison-and-value-equality",
+    "date": "",
+    "tags": [
+      "dart",
+      "dart3",
+      "language-features",
+      "architecture"
+    ]
+  },
+  {
+    "title": "Mastering String Manipulation in Dart: UTF-8, Runes, Grapheme Clusters, and Sanitization",
+    "permalink": "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
+    "date": "",
+    "tags": [
+      "dart",
+      "dart3",
+      "language-features",
+      "architecture"
+    ]
+  },
+  {
+    "title": "Dart Collections Mastery: Iterables, Generators, Lazy Evaluation, and Custom Iterators",
+    "permalink": "/blog/dart-collections-iterables-generators-custom-iterators",
+    "date": "",
+    "tags": [
+      "dart",
+      "dart3",
+      "language-features",
+      "architecture"
+    ]
+  },
+  {
+    "title": "Binary Data and Byte Manipulation in Dart: TypedData, ByteBuffer, and Endianness Explained",
+    "permalink": "/blog/dart-binary-data-typed-data-bytebuffer-endianness",
+    "date": "",
+    "tags": [
+      "dart",
+      "dart3",
+      "language-features",
+      "architecture"
+    ]
+  }
+]

@@ -36,6 +36,7 @@ module.exports = function blogTagsPlugin(context, options) {
     const files = getFiles(blogDir);
     const tagCounts = {};
     const tagToPermalinks = {};
+    const allPosts = [];
     let totalPosts = 0;
 
     for (const file of files) {
@@ -54,10 +55,12 @@ module.exports = function blogTagsPlugin(context, options) {
           : undefined;
 
         const tags = parsed.data.tags;
+        const postTagKeys = [];
         if (Array.isArray(tags)) {
           for (const t of tags) {
             const tagKey = typeof t === 'string' ? t : (t.label || t.key || t.permalink);
             if (tagKey) {
+              postTagKeys.push(tagKey);
               tagCounts[tagKey] = (tagCounts[tagKey] || 0) + 1;
               if (postPermalink) {
                 if (!tagToPermalinks[tagKey]) tagToPermalinks[tagKey] = [];
@@ -73,6 +76,15 @@ module.exports = function blogTagsPlugin(context, options) {
               }
             }
           }
+        }
+
+        if (postPermalink) {
+          allPosts.push({
+            title: parsed.data.title || path.basename(file, path.extname(file)),
+            permalink: postPermalink,
+            date: parsed.data.date || '',
+            tags: postTagKeys,
+          });
         }
       } catch (err) {
         console.error(`Error reading frontmatter from ${file}:`, err);
@@ -99,6 +111,7 @@ module.exports = function blogTagsPlugin(context, options) {
       totalPosts,
       tags: tagList,
       tagToPermalinks,
+      posts: allPosts,
     };
   }
 
@@ -119,7 +132,7 @@ module.exports = function blogTagsPlugin(context, options) {
     async contentLoaded({ content, actions }) {
       actions.setGlobalData(content);
 
-      // Also persist to src/data/blogTagsData.json for zero-latency direct import
+      // Also persist to src/data/blogTagsData.json and blogPostsData.json
       const dataDir = path.resolve(context.siteDir, 'src/data');
       if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
@@ -127,6 +140,11 @@ module.exports = function blogTagsPlugin(context, options) {
       fs.writeFileSync(
         path.join(dataDir, 'blogTagsData.json'),
         JSON.stringify(content, null, 2),
+        'utf8'
+      );
+      fs.writeFileSync(
+        path.join(dataDir, 'blogPostsData.json'),
+        JSON.stringify(content.posts, null, 2),
         'utf8'
       );
     },

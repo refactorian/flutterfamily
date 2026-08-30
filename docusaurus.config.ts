@@ -23,6 +23,7 @@ const config: Config = {
   customFields: {
     libraryRelatedItemsCount: 12,
     libraryItemsPerPage: 12,
+    blogRelatedPostsCount: 20,
   },
 
   // Set the production url of your site here
