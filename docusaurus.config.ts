@@ -19,6 +19,11 @@ const config: Config = {
   },
   themes: ['@docusaurus/theme-mermaid'],
 
+  // Custom fields accessible via useDocusaurusContext()
+  customFields: {
+    libraryRelatedItemsCount: 12,
+  },
+
   // Set the production url of your site here
   url: 'https://flutterfamily.com',
   // Set the /<baseUrl>/ pathname under which your site is served

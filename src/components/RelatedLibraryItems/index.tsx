@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './RelatedLibraryItems.module.css';
 
 const CATEGORY_LOADERS = {
@@ -36,7 +37,7 @@ interface TagDef {
     color: string;
 }
 
-const MAX_ITEMS = 24;
+const DEFAULT_ITEMS_COUNT = 8;
 
 function detectCategory(pathname: string): Category | null {
     for (const cat of Object.keys(CATEGORY_LOADERS) as Category[]) {
@@ -60,12 +61,18 @@ const CATEGORY_LABELS: Record<Category, string> = {
 
 export default function RelatedLibraryItems(): React.ReactElement | null {
     const location = useLocation();
+    const { siteConfig } = useDocusaurusContext();
     const [items, setItems] = useState<LibraryItem[]>([]);
     const [tags, setTags] = useState<Record<string, TagDef>>({});
     const [loaded, setLoaded] = useState(false);
 
     const category = detectCategory(location.pathname);
     const currentId = detectCurrentId(location.pathname);
+
+    // Read configured count from docusaurus.config.ts (customFields.libraryRelatedItemsCount)
+    const maxItems =
+        (siteConfig.customFields?.libraryRelatedItemsCount as number) ??
+        DEFAULT_ITEMS_COUNT;
 
     useEffect(() => {
         if (!category) return;
@@ -75,10 +82,10 @@ export default function RelatedLibraryItems(): React.ReactElement | null {
         const timer = setTimeout(() => {
             CATEGORY_LOADERS[category]().then(({ items: all, tags: t }) => {
                 if (!alive) return;
-                // exclude the current page, shuffle a bit (stable sort by id), cap at MAX_ITEMS
+                // exclude the current page, cap at configured maxItems
                 const related = all
                     .filter((item) => item.id !== currentId)
-                    .slice(0, MAX_ITEMS);
+                    .slice(0, maxItems);
                 setItems(related);
                 setTags(t);
                 setLoaded(true);
@@ -89,7 +96,7 @@ export default function RelatedLibraryItems(): React.ReactElement | null {
             alive = false;
             clearTimeout(timer);
         };
-    }, [category, currentId]);
+    }, [category, currentId, maxItems]);
 
     if (!category || !loaded || items.length === 0) return null;
 
