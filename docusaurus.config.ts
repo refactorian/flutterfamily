@@ -55,8 +55,8 @@ const config: Config = {
         },
         blog: {
           showReadingTime: true,
-          blogSidebarCount: 'ALL',
-          blogSidebarTitle: 'All Posts',
+          postsPerPage: 15,
+          blogSidebarCount: 0,
           feedOptions: {
             type: ['rss'],
             xslt: true,
@@ -103,6 +103,7 @@ const config: Config = {
         sidebarPath: false,
       },
     ],
+    './src/plugins/blog-tags-plugin.js',
   ],
 
   themeConfig: {

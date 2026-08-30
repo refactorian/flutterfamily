@@ -1,0 +1,9 @@
+.title {
+  font-size: 2.25rem;
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 1.75rem;
+  }
+}

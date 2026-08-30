@@ -1,0 +1,304 @@
+{
+  "totalPosts": 12,
+  "tags": [
+    {
+      "key": "dart",
+      "label": "Dart",
+      "permalink": "/blog/tags/dart",
+      "count": 10,
+      "description": "Deep dives into Dart language features, type systems, and async programming."
+    },
+    {
+      "key": "architecture",
+      "label": "Architecture",
+      "permalink": "/blog/tags/architecture",
+      "count": 7,
+      "description": "Clean architecture, state management patterns, and app structure."
+    },
+    {
+      "key": "dart3",
+      "label": "Dart 3",
+      "permalink": "/blog/tags/dart3",
+      "count": 6,
+      "description": "Explore the latest language features introduced in Dart 3, including records, pattern matching, sealed classes, switch expressions, and class modifiers."
+    },
+    {
+      "key": "flutter",
+      "label": "Flutter",
+      "permalink": "/blog/tags/flutter",
+      "count": 6,
+      "description": "Tutorials, architecture tips, and UI best practices for Flutter developers."
+    },
+    {
+      "key": "language-features",
+      "label": "Language Features",
+      "permalink": "/blog/tags/language-features",
+      "count": 6,
+      "description": "Modern Dart language capabilities, syntax improvements, and core programming concepts."
+    },
+    {
+      "key": "state-management",
+      "label": "State Management",
+      "permalink": "/blog/tags/state-management",
+      "count": 3,
+      "description": "Managing application state using Provider, Riverpod, Bloc, Cubit, and other Flutter state management solutions."
+    },
+    {
+      "key": "bloc",
+      "label": "BLoC",
+      "permalink": "/blog/tags/bloc",
+      "count": 2,
+      "description": "Business Logic Component (BLoC) and Cubit architecture for scalable Flutter applications."
+    },
+    {
+      "key": "cubit",
+      "label": "Cubit",
+      "permalink": "/blog/tags/cubit",
+      "count": 2,
+      "description": "Lightweight state management using Cubit from the flutter_bloc ecosystem."
+    },
+    {
+      "key": "optimization",
+      "label": "Optimization",
+      "permalink": "/blog/tags/optimization",
+      "count": 2,
+      "description": "Techniques and best practices for improving application performance, reducing resource usage, optimizing rendering, memory, networking, startup time, and overall efficiency in Flutter and Dart applications."
+    },
+    {
+      "key": "performance",
+      "label": "Performance",
+      "permalink": "/blog/tags/performance",
+      "count": 2,
+      "description": "Profiling, memory management, and rendering optimization techniques."
+    },
+    {
+      "key": "records",
+      "label": "Records",
+      "permalink": "/blog/tags/records",
+      "count": 2,
+      "description": "Learn how to use Dart records to return multiple values, improve readability, and reduce boilerplate."
+    },
+    {
+      "key": "rendering",
+      "label": "Rendering",
+      "permalink": "/blog/tags/rendering",
+      "count": 2,
+      "description": "Explore Flutter's rendering pipeline, painting system, compositing, rasterization, and GPU rendering."
+    },
+    {
+      "key": "canvas",
+      "label": "Canvas",
+      "permalink": "/blog/tags/canvas",
+      "count": 1,
+      "description": "Drawing primitives, transformations, clipping, and rendering techniques using Flutter's Canvas API."
+    },
+    {
+      "key": "custom-painter",
+      "label": "Custom Painter",
+      "permalink": "/blog/tags/custom-painter",
+      "count": 1,
+      "description": "Learn how to build custom graphics, animations, and visual components using Flutter's CustomPainter API."
+    },
+    {
+      "key": "devtools",
+      "label": "DevTools",
+      "permalink": "/blog/tags/devtools",
+      "count": 1,
+      "description": "Learn how to profile, debug, inspect, and optimize Flutter applications using Flutter DevTools, including performance analysis, memory profiling, CPU inspection, widget inspection, and network monitoring."
+    },
+    {
+      "key": "graphics",
+      "label": "Graphics",
+      "permalink": "/blog/tags/graphics",
+      "count": 1,
+      "description": "Computer graphics, rendering techniques, visual effects, and custom drawing in Flutter."
+    },
+    {
+      "key": "mobile",
+      "label": "Mobile Development",
+      "permalink": "/blog/tags/mobile-development",
+      "count": 1,
+      "description": "Cross-platform mobile development with Flutter and Dart."
+    }
+  ],
+  "tagToPermalinks": {
+    "dart": [
+      "/blog/mastering-custom-painters-and-canvas-in-flutter",
+      "/blog/dart-3-records-pattern-matching-and-sealed-classes",
+      "/blog/flutter-state-management-architecture",
+      "/blog/hydratedcubit-state-persistence-flutter",
+      "/blog/hydratedbloc-persistent-event-driven-state-flutter",
+      "/blog/dart-string-chunking-techniques-and-best-practices",
+      "/blog/dart-deep-comparison-and-value-equality",
+      "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
+      "/blog/dart-collections-iterables-generators-custom-iterators",
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+    ],
+    "/blog/tags/dart": [
+      "/blog/mastering-custom-painters-and-canvas-in-flutter",
+      "/blog/dart-3-records-pattern-matching-and-sealed-classes",
+      "/blog/flutter-state-management-architecture",
+      "/blog/hydratedcubit-state-persistence-flutter",
+      "/blog/hydratedbloc-persistent-event-driven-state-flutter",
+      "/blog/dart-string-chunking-techniques-and-best-practices",
+      "/blog/dart-deep-comparison-and-value-equality",
+      "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
+      "/blog/dart-collections-iterables-generators-custom-iterators",
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+    ],
+    "flutter": [
+      "/blog/mastering-custom-painters-and-canvas-in-flutter",
+      "/blog/flutter-state-management-architecture",
+      "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
+      "/blog/flutter-project-directory-structures",
+      "/blog/hydratedcubit-state-persistence-flutter",
+      "/blog/hydratedbloc-persistent-event-driven-state-flutter"
+    ],
+    "/blog/tags/flutter": [
+      "/blog/mastering-custom-painters-and-canvas-in-flutter",
+      "/blog/flutter-state-management-architecture",
+      "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
+      "/blog/flutter-project-directory-structures",
+      "/blog/hydratedcubit-state-persistence-flutter",
+      "/blog/hydratedbloc-persistent-event-driven-state-flutter"
+    ],
+    "custom-painter": [
+      "/blog/mastering-custom-painters-and-canvas-in-flutter"
+    ],
+    "/blog/tags/custom-painter": [
+      "/blog/mastering-custom-painters-and-canvas-in-flutter"
+    ],
+    "canvas": [
+      "/blog/mastering-custom-painters-and-canvas-in-flutter"
+    ],
+    "/blog/tags/canvas": [
+      "/blog/mastering-custom-painters-and-canvas-in-flutter"
+    ],
+    "graphics": [
+      "/blog/mastering-custom-painters-and-canvas-in-flutter"
+    ],
+    "/blog/tags/graphics": [
+      "/blog/mastering-custom-painters-and-canvas-in-flutter"
+    ],
+    "rendering": [
+      "/blog/mastering-custom-painters-and-canvas-in-flutter",
+      "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance"
+    ],
+    "/blog/tags/rendering": [
+      "/blog/mastering-custom-painters-and-canvas-in-flutter",
+      "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance"
+    ],
+    "dart3": [
+      "/blog/dart-3-records-pattern-matching-and-sealed-classes",
+      "/blog/dart-string-chunking-techniques-and-best-practices",
+      "/blog/dart-deep-comparison-and-value-equality",
+      "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
+      "/blog/dart-collections-iterables-generators-custom-iterators",
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+    ],
+    "/blog/tags/dart3": [
+      "/blog/dart-3-records-pattern-matching-and-sealed-classes",
+      "/blog/dart-string-chunking-techniques-and-best-practices",
+      "/blog/dart-deep-comparison-and-value-equality",
+      "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
+      "/blog/dart-collections-iterables-generators-custom-iterators",
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+    ],
+    "records": [
+      "/blog/dart-3-records-pattern-matching-and-sealed-classes",
+      "/blog/dart-string-chunking-techniques-and-best-practices"
+    ],
+    "/blog/tags/records": [
+      "/blog/dart-3-records-pattern-matching-and-sealed-classes",
+      "/blog/dart-string-chunking-techniques-and-best-practices"
+    ],
+    "architecture": [
+      "/blog/dart-3-records-pattern-matching-and-sealed-classes",
+      "/blog/flutter-state-management-architecture",
+      "/blog/flutter-project-directory-structures",
+      "/blog/dart-deep-comparison-and-value-equality",
+      "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
+      "/blog/dart-collections-iterables-generators-custom-iterators",
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+    ],
+    "/blog/tags/architecture": [
+      "/blog/dart-3-records-pattern-matching-and-sealed-classes",
+      "/blog/flutter-state-management-architecture",
+      "/blog/flutter-project-directory-structures",
+      "/blog/dart-deep-comparison-and-value-equality",
+      "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
+      "/blog/dart-collections-iterables-generators-custom-iterators",
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+    ],
+    "language-features": [
+      "/blog/dart-3-records-pattern-matching-and-sealed-classes",
+      "/blog/dart-string-chunking-techniques-and-best-practices",
+      "/blog/dart-deep-comparison-and-value-equality",
+      "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
+      "/blog/dart-collections-iterables-generators-custom-iterators",
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+    ],
+    "/blog/tags/language-features": [
+      "/blog/dart-3-records-pattern-matching-and-sealed-classes",
+      "/blog/dart-string-chunking-techniques-and-best-practices",
+      "/blog/dart-deep-comparison-and-value-equality",
+      "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
+      "/blog/dart-collections-iterables-generators-custom-iterators",
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+    ],
+    "state-management": [
+      "/blog/flutter-state-management-architecture",
+      "/blog/hydratedcubit-state-persistence-flutter",
+      "/blog/hydratedbloc-persistent-event-driven-state-flutter"
+    ],
+    "/blog/tags/state-management": [
+      "/blog/flutter-state-management-architecture",
+      "/blog/hydratedcubit-state-persistence-flutter",
+      "/blog/hydratedbloc-persistent-event-driven-state-flutter"
+    ],
+    "mobile": [
+      "/blog/flutter-state-management-architecture"
+    ],
+    "/blog/tags/mobile-development": [
+      "/blog/flutter-state-management-architecture"
+    ],
+    "performance": [
+      "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
+      "/blog/flutter-project-directory-structures"
+    ],
+    "/blog/tags/performance": [
+      "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
+      "/blog/flutter-project-directory-structures"
+    ],
+    "optimization": [
+      "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
+      "/blog/flutter-project-directory-structures"
+    ],
+    "/blog/tags/optimization": [
+      "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
+      "/blog/flutter-project-directory-structures"
+    ],
+    "devtools": [
+      "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance"
+    ],
+    "/blog/tags/devtools": [
+      "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance"
+    ],
+    "bloc": [
+      "/blog/hydratedcubit-state-persistence-flutter",
+      "/blog/hydratedbloc-persistent-event-driven-state-flutter"
+    ],
+    "/blog/tags/bloc": [
+      "/blog/hydratedcubit-state-persistence-flutter",
+      "/blog/hydratedbloc-persistent-event-driven-state-flutter"
+    ],
+    "cubit": [
+      "/blog/hydratedcubit-state-persistence-flutter",
+      "/blog/hydratedbloc-persistent-event-driven-state-flutter"
+    ],
+    "/blog/tags/cubit": [
+      "/blog/hydratedcubit-state-persistence-flutter",
+      "/blog/hydratedbloc-persistent-event-driven-state-flutter"
+    ]
+  }
+}
