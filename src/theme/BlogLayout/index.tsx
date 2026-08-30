@@ -20,8 +20,10 @@ export default function BlogLayout(props: Props): ReactNode {
           <BlogSidebar sidebar={sidebar} />
           <main
             className={clsx('col', {
-              'col--7': hasSidebar,
-              'col--9 col--offset-1': !hasSidebar,
+              'col--7': hasSidebar && toc,
+              'col--9': hasSidebar && !toc,
+              'col--9 col--offset-1': !hasSidebar && toc,
+              'col--12': !hasSidebar && !toc,
             })}>
             {children}
           </main>

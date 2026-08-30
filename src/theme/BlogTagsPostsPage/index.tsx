@@ -1,5 +1,6 @@
 import React, { type ReactNode } from 'react';
 import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import {
   PageMetadata,
   HtmlClassNameProvider,
@@ -12,7 +13,7 @@ import SearchMetadata from '@theme/SearchMetadata';
 import type { Props } from '@theme/BlogTagsPostsPage';
 import BlogPostItems from '@theme/BlogPostItems';
 import Unlisted from '@theme/ContentVisibility/Unlisted';
-import Heading from '@theme/Heading';
+import styles from '../BlogPostItems/BlogPostItems.module.css';
 
 function BlogTagsPostsPageMetadata({ tag }: Props): ReactNode {
   const title = useBlogTagsPostsPageTitle(tag);
@@ -30,15 +31,34 @@ function BlogTagsPostsPageContent({
   sidebar,
   listMetadata,
 }: Props): ReactNode {
-  const title = useBlogTagsPostsPageTitle(tag);
+  const postCount = tag.count ?? items.length;
+  const countText = `${postCount} ${postCount === 1 ? 'Article' : 'Articles'}`;
+
   return (
     <BlogLayout sidebar={sidebar}>
       {tag.unlisted && <Unlisted />}
-      <header className="margin-bottom--lg">
-        <Heading as="h1">{title}</Heading>
-        {tag.description && <p>{tag.description}</p>}
+
+      {/* Modern Compact Tag Page Header */}
+      <header className={styles.tagHeaderBanner}>
+        <div className={styles.tagHeaderTop}>
+          <h1 className={styles.tagTitle}>
+            <span>{tag.label}</span>
+            <span className={styles.tagCountBadge}>{countText}</span>
+          </h1>
+
+          <Link to="/blog" className={styles.backToBlogLink}>
+            <span>←</span>
+            <span>All Articles</span>
+          </Link>
+        </div>
+
+        {tag.description && <p className={styles.tagDescription}>{tag.description}</p>}
       </header>
+
+      {/* Modern Post Cards List */}
       <BlogPostItems items={items} />
+
+      {/* Pagination */}
       <BlogListPaginator metadata={listMetadata} />
     </BlogLayout>
   );
