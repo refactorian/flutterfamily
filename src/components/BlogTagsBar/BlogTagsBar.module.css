@@ -123,10 +123,24 @@
   box-shadow: 0 2px 10px rgba(1, 117, 194, 0.35);
 }
 
+.tagPillActive:hover {
+  background-color: var(--ifm-color-primary-dark, #0168AD) !important;
+  color: #ffffff !important;
+  border-color: var(--ifm-color-primary-dark, #0168AD) !important;
+  box-shadow: 0 4px 14px rgba(1, 117, 194, 0.45);
+}
+
 [data-theme='dark'] .tagPillActive {
   background-color: var(--ifm-color-primary) !important;
   color: #060a11 !important;
   box-shadow: 0 2px 12px rgba(59, 158, 255, 0.4);
+}
+
+[data-theme='dark'] .tagPillActive:hover {
+  background-color: var(--ifm-color-primary-light, #57ACFF) !important;
+  color: #060a11 !important;
+  border-color: var(--ifm-color-primary-light, #57ACFF) !important;
+  box-shadow: 0 4px 16px rgba(59, 158, 255, 0.5);
 }
 
 /* Numeric Post Count Badge */
