@@ -112,7 +112,7 @@ export default function LibraryTabContent({ items = [], tags = {} }) {
                 </div>
             ) : (
                 <>
-                    <div className={styles.cardGrid}>
+                    <div key={`grid-page-${validPage}`} className={styles.cardGrid}>
                         {paginatedItems.map((item) => (
                             <Link
                                 key={item.id}
@@ -122,7 +122,13 @@ export default function LibraryTabContent({ items = [], tags = {} }) {
                                 className={styles.cardLinkWrapper}
                             >
                                 <div className={styles.itemCard}>
-                                    <img src={item.image} alt={item.title} className={styles.cardImage} />
+                                    <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        className={styles.cardImage}
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
                                     <div className={styles.cardBody}>
                                         <h3 className={styles.cardTitle}>{item.title}</h3>
                                         <p className={styles.cardDescription}>{item.description}</p>

@@ -96,6 +96,18 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 1.5rem;
+    animation: cardGridFadeIn 0.25s ease-in-out;
+}
+
+@keyframes cardGridFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Wrapper to make the entire card a clean clickable link */
@@ -131,6 +143,7 @@
     width: 90%;
     margin: 20px auto 0 auto;
     border-radius: 7px;
+    background-color: var(--ifm-background-surface-color);
 }
 
 .cardBody {
