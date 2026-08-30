@@ -180,20 +180,14 @@
     margin-bottom: 1.25rem;
   }
 
+  /* Let tags wrap naturally on mobile — no horizontal scroll */
   .pillsList {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 0.35rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
+    flex-wrap: wrap;
+    overflow-x: unset;
   }
 
-  .pillsList::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  .pillsList::-webkit-scrollbar-thumb {
-    background: var(--ifm-toc-border-color);
-    border-radius: 4px;
+  .tagPill {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
   }
 }
