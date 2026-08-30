@@ -133,7 +133,7 @@ const config: Config = {
           to: '/library',
           label: 'Library',
           position: 'left',
-          activeBaseRegex: `/library/`,
+          activeBaseRegex: '^/library',
         },
         {
           type: 'docSidebar',
