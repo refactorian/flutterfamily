@@ -1,43 +1,49 @@
 import type { ReactNode } from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
+import React, { lazy, Suspense } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
+import Hero from '@site/src/components/Homepage/Hero';
+import styles from '@site/src/components/Homepage/Homepage.module.css';
 
-import styles from './index.module.css';
+// Hero & above-fold content loaded eagerly.
+// Sections below the fold are lazy-loaded to keep the initial bundle lean.
+const EcosystemPillars = lazy(() => import('@site/src/components/Homepage/EcosystemPillars'));
+const LibraryShowcase = lazy(() => import('@site/src/components/Homepage/LibraryShowcase'));
+const LearningRoadmap = lazy(() => import('@site/src/components/Homepage/LearningRoadmap'));
+const FeaturedArticles = lazy(() => import('@site/src/components/Homepage/FeaturedArticles'));
+const CommunityBanner = lazy(() => import('@site/src/components/Homepage/CommunityBanner'));
 
-function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/dart/">
-            Get Started →
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
+function SectionFallback(): ReactNode {
+  return <div style={{ minHeight: '200px' }} aria-hidden="true" />;
 }
 
 export default function Home(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
+
   return (
     <Layout
-      title={`Welcome to ${siteConfig.title}`}
-      description="Flutter Family — a community hub for Flutter developers with tutorials, guides, and resources.">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
+      title={`${siteConfig.title} — The Flutter & Dart Developer Hub`}
+      description="Curated production-ready UI components, architectural blueprints, in-depth Dart guides, and state management patterns for Flutter developers."
+    >
+      {/* Hero is above the fold — always loaded eagerly */}
+      <Hero />
+
+      <main className={styles.pageContainer} style={{ marginTop: '4rem' }}>
+        <Suspense fallback={<SectionFallback />}>
+          <EcosystemPillars />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <LibraryShowcase />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <LearningRoadmap />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <FeaturedArticles />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <CommunityBanner />
+        </Suspense>
       </main>
     </Layout>
   );

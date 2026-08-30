@@ -79,10 +79,14 @@ module.exports = function blogTagsPlugin(context, options) {
         }
 
         if (postPermalink) {
+          const filename = path.basename(file);
+          const dateMatch = filename.match(/^(\d{4}-\d{2}-\d{2})/);
+          const postDate = parsed.data.date || (dateMatch ? dateMatch[1] : '');
+
           allPosts.push({
             title: parsed.data.title || path.basename(file, path.extname(file)),
             permalink: postPermalink,
-            date: parsed.data.date || '',
+            date: postDate,
             tags: postTagKeys,
           });
         }
@@ -90,6 +94,13 @@ module.exports = function blogTagsPlugin(context, options) {
         console.error(`Error reading frontmatter from ${file}:`, err);
       }
     }
+
+    // Sort allPosts by date descending (newest first)
+    allPosts.sort((a, b) => {
+      if (!a.date) return 1;
+      if (!b.date) return -1;
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
 
     const tagList = Object.entries(tagCounts).map(([key, count]) => {
       const ymlDef = tagsYml[key] || {};
