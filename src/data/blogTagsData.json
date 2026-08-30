@@ -1,19 +1,26 @@
 {
-  "totalPosts": 12,
+  "totalPosts": 13,
   "tags": [
     {
       "key": "dart",
       "label": "Dart",
       "permalink": "/blog/tags/dart",
-      "count": 10,
+      "count": 11,
       "description": "Deep dives into Dart language features, type systems, and async programming."
     },
     {
       "key": "architecture",
       "label": "Architecture",
       "permalink": "/blog/tags/architecture",
-      "count": 7,
+      "count": 8,
       "description": "Clean architecture, state management patterns, and app structure."
+    },
+    {
+      "key": "flutter",
+      "label": "Flutter",
+      "permalink": "/blog/tags/flutter",
+      "count": 7,
+      "description": "Tutorials, architecture tips, and UI best practices for Flutter developers."
     },
     {
       "key": "dart3",
@@ -23,18 +30,25 @@
       "description": "Explore the latest language features introduced in Dart 3, including records, pattern matching, sealed classes, switch expressions, and class modifiers."
     },
     {
-      "key": "flutter",
-      "label": "Flutter",
-      "permalink": "/blog/tags/flutter",
-      "count": 6,
-      "description": "Tutorials, architecture tips, and UI best practices for Flutter developers."
-    },
-    {
       "key": "language-features",
       "label": "Language Features",
       "permalink": "/blog/tags/language-features",
       "count": 6,
       "description": "Modern Dart language capabilities, syntax improvements, and core programming concepts."
+    },
+    {
+      "key": "optimization",
+      "label": "Optimization",
+      "permalink": "/blog/tags/optimization",
+      "count": 3,
+      "description": "Techniques and best practices for improving application performance, reducing resource usage, optimizing rendering, memory, networking, startup time, and overall efficiency in Flutter and Dart applications."
+    },
+    {
+      "key": "performance",
+      "label": "Performance",
+      "permalink": "/blog/tags/performance",
+      "count": 3,
+      "description": "Profiling, memory management, and rendering optimization techniques."
     },
     {
       "key": "state-management",
@@ -58,20 +72,6 @@
       "description": "Lightweight state management using Cubit from the flutter_bloc ecosystem."
     },
     {
-      "key": "optimization",
-      "label": "Optimization",
-      "permalink": "/blog/tags/optimization",
-      "count": 2,
-      "description": "Techniques and best practices for improving application performance, reducing resource usage, optimizing rendering, memory, networking, startup time, and overall efficiency in Flutter and Dart applications."
-    },
-    {
-      "key": "performance",
-      "label": "Performance",
-      "permalink": "/blog/tags/performance",
-      "count": 2,
-      "description": "Profiling, memory management, and rendering optimization techniques."
-    },
-    {
       "key": "records",
       "label": "Records",
       "permalink": "/blog/tags/records",
@@ -84,6 +84,13 @@
       "permalink": "/blog/tags/rendering",
       "count": 2,
       "description": "Explore Flutter's rendering pipeline, painting system, compositing, rasterization, and GPU rendering."
+    },
+    {
+      "key": "async",
+      "label": "Async Programming",
+      "permalink": "/blog/tags/async",
+      "count": 1,
+      "description": "Futures, Streams, isolates, concurrency, and asynchronous programming in Dart."
     },
     {
       "key": "canvas",
@@ -132,7 +139,8 @@
       "/blog/dart-deep-comparison-and-value-equality",
       "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
       "/blog/dart-collections-iterables-generators-custom-iterators",
-      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness",
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
     ],
     "/blog/tags/dart": [
       "/blog/mastering-custom-painters-and-canvas-in-flutter",
@@ -144,7 +152,8 @@
       "/blog/dart-deep-comparison-and-value-equality",
       "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
       "/blog/dart-collections-iterables-generators-custom-iterators",
-      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness",
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
     ],
     "flutter": [
       "/blog/mastering-custom-painters-and-canvas-in-flutter",
@@ -152,7 +161,8 @@
       "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
       "/blog/flutter-project-directory-structures",
       "/blog/hydratedcubit-state-persistence-flutter",
-      "/blog/hydratedbloc-persistent-event-driven-state-flutter"
+      "/blog/hydratedbloc-persistent-event-driven-state-flutter",
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
     ],
     "/blog/tags/flutter": [
       "/blog/mastering-custom-painters-and-canvas-in-flutter",
@@ -160,7 +170,8 @@
       "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
       "/blog/flutter-project-directory-structures",
       "/blog/hydratedcubit-state-persistence-flutter",
-      "/blog/hydratedbloc-persistent-event-driven-state-flutter"
+      "/blog/hydratedbloc-persistent-event-driven-state-flutter",
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
     ],
     "custom-painter": [
       "/blog/mastering-custom-painters-and-canvas-in-flutter"
@@ -219,7 +230,8 @@
       "/blog/dart-deep-comparison-and-value-equality",
       "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
       "/blog/dart-collections-iterables-generators-custom-iterators",
-      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness",
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
     ],
     "/blog/tags/architecture": [
       "/blog/dart-3-records-pattern-matching-and-sealed-classes",
@@ -228,7 +240,8 @@
       "/blog/dart-deep-comparison-and-value-equality",
       "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
       "/blog/dart-collections-iterables-generators-custom-iterators",
-      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness",
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
     ],
     "language-features": [
       "/blog/dart-3-records-pattern-matching-and-sealed-classes",
@@ -264,19 +277,23 @@
     ],
     "performance": [
       "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
-      "/blog/flutter-project-directory-structures"
+      "/blog/flutter-project-directory-structures",
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
     ],
     "/blog/tags/performance": [
       "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
-      "/blog/flutter-project-directory-structures"
+      "/blog/flutter-project-directory-structures",
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
     ],
     "optimization": [
       "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
-      "/blog/flutter-project-directory-structures"
+      "/blog/flutter-project-directory-structures",
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
     ],
     "/blog/tags/optimization": [
       "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
-      "/blog/flutter-project-directory-structures"
+      "/blog/flutter-project-directory-structures",
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
     ],
     "devtools": [
       "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance"
@@ -299,9 +316,28 @@
     "/blog/tags/cubit": [
       "/blog/hydratedcubit-state-persistence-flutter",
       "/blog/hydratedbloc-persistent-event-driven-state-flutter"
+    ],
+    "async": [
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
+    ],
+    "/blog/tags/async": [
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
     ]
   },
   "posts": [
+    {
+      "title": "Complete Guide to Dart Isolates: Background Workflows, Two-Way Ports, and Isolate.run()",
+      "permalink": "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run",
+      "date": "2026-05-10",
+      "tags": [
+        "dart",
+        "async",
+        "performance",
+        "architecture",
+        "optimization",
+        "flutter"
+      ]
+    },
     {
       "title": "Binary Data and Byte Manipulation in Dart: TypedData, ByteBuffer, and Endianness Explained",
       "permalink": "/blog/dart-binary-data-typed-data-bytebuffer-endianness",
