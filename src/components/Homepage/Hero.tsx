@@ -19,7 +19,7 @@ export default function Hero(): React.ReactElement {
       <div className={styles.heroContent}>
         <div className={styles.heroBadge}>
           <span>🚀</span>
-          <span>The Complete Flutter & Dart Engineering Hub</span>
+          <span>The Complete Dart & Flutter Engineering Hub</span>
         </div>
 
         <h1 className={styles.heroTitle}>
