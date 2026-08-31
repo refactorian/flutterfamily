@@ -2,7 +2,7 @@
 slug: mastering-custom-painters-and-canvas-in-flutter
 title: Mastering Custom Painters and Canvas in Flutter
 authors: [admin]
-tags: [dart, flutter, custom-painter, canvas, graphics, rendering]
+tags: [dart, flutter, custom-painter, canvas, graphics, rendering, paint-api, custom-widgets, ui, animation]
 ---
 
 # Mastering Custom Painters and Canvas in Flutter

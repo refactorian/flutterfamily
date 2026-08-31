@@ -2,7 +2,7 @@
 slug: dart-functional-error-handling-result-either-types
 title: "Functional Error Handling in Dart: Moving from Exceptions to Result and Either Types"
 authors: [admin]
-tags: [dart, dart3, architecture, best-practices, functional-programming, flutter]
+tags: [dart, dart3, functional-programming, error-handling, sealed-classes, pattern-matching, type-safety, architecture, best-practices, flutter]
 ---
 
 # Functional Error Handling in Dart: Moving from Exceptions to Result and Either Types

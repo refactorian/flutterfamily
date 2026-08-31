@@ -2,7 +2,7 @@
 slug: dart-collections-iterables-generators-custom-iterators
 title: "Dart Collections Mastery: Iterables, Generators, Lazy Evaluation, and Custom Iterators"
 authors: [admin]
-tags: [dart, dart3, language-features, architecture]
+tags: [dart, dart3, language-features, collections, data-structures, functional-programming, performance, optimization, best-practices, testing]
 ---
 
 # Dart Collections Mastery: Iterables, Generators, Lazy Evaluation, and Custom Iterators

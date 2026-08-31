@@ -2,7 +2,7 @@
 slug: dart-3-records-pattern-matching-and-sealed-classes
 title: Dart 3 Records, Pattern Matching, and Sealed Classes
 authors: [admin]
-tags: [dart, dart3, records, architecture, language-features]
+tags: [dart, dart3, records, pattern-matching, sealed-classes, switch-expressions, class-modifiers, language-features, type-safety]
 ---
 
 # Dart 3 Records, Pattern Matching, and Sealed Classes

@@ -2,7 +2,7 @@
 slug: dart-string-manipulation-utf8-runes-graphemes-sanitization
 title: "Mastering String Manipulation in Dart: UTF-8, Runes, Grapheme Clusters, and Sanitization"
 authors: [admin]
-tags: [dart, dart3, language-features, architecture]
+tags: [dart, dart3, language-features, strings, unicode, performance, optimization, best-practices, testing]
 ---
 
 # Mastering String Manipulation in Dart: UTF-8, Runes, Grapheme Clusters, and Sanitization

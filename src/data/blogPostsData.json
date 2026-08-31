@@ -6,9 +6,13 @@
     "tags": [
       "dart",
       "dart3",
+      "functional-programming",
+      "error-handling",
+      "sealed-classes",
+      "pattern-matching",
+      "type-safety",
       "architecture",
       "best-practices",
-      "functional-programming",
       "flutter"
     ]
   },
@@ -18,10 +22,13 @@
     "date": "2026-05-20",
     "tags": [
       "dart",
-      "async",
-      "performance",
-      "architecture",
       "flutter",
+      "async",
+      "concurrency",
+      "error-handling",
+      "performance",
+      "optimization",
+      "architecture",
       "best-practices"
     ]
   },
@@ -31,10 +38,13 @@
     "date": "2026-05-15",
     "tags": [
       "dart",
-      "async",
-      "performance",
-      "architecture",
       "flutter",
+      "async",
+      "reactive-programming",
+      "functional-programming",
+      "performance",
+      "optimization",
+      "architecture",
       "best-practices"
     ]
   },
@@ -44,11 +54,14 @@
     "date": "2026-05-10",
     "tags": [
       "dart",
+      "flutter",
       "async",
+      "concurrency",
       "performance",
-      "architecture",
       "optimization",
-      "flutter"
+      "architecture",
+      "scalability",
+      "best-practices"
     ]
   },
   {
@@ -59,7 +72,12 @@
       "dart",
       "dart3",
       "language-features",
-      "architecture"
+      "binary-data",
+      "typed-data",
+      "performance",
+      "optimization",
+      "best-practices",
+      "testing"
     ]
   },
   {
@@ -70,7 +88,13 @@
       "dart",
       "dart3",
       "language-features",
-      "architecture"
+      "collections",
+      "data-structures",
+      "functional-programming",
+      "performance",
+      "optimization",
+      "best-practices",
+      "testing"
     ]
   },
   {
@@ -81,7 +105,12 @@
       "dart",
       "dart3",
       "language-features",
-      "architecture"
+      "strings",
+      "unicode",
+      "performance",
+      "optimization",
+      "best-practices",
+      "testing"
     ]
   },
   {
@@ -92,6 +121,12 @@
       "dart",
       "dart3",
       "language-features",
+      "records",
+      "immutability",
+      "object-oriented-programming",
+      "type-safety",
+      "testing",
+      "best-practices",
       "architecture"
     ]
   },
@@ -102,8 +137,13 @@
     "tags": [
       "dart",
       "dart3",
-      "records",
-      "language-features"
+      "language-features",
+      "strings",
+      "unicode",
+      "performance",
+      "optimization",
+      "best-practices",
+      "testing"
     ]
   },
   {
@@ -115,7 +155,11 @@
       "dart",
       "bloc",
       "cubit",
-      "state-management"
+      "state-management",
+      "state-persistence",
+      "architecture",
+      "best-practices",
+      "mobile"
     ]
   },
   {
@@ -127,7 +171,11 @@
       "dart",
       "bloc",
       "cubit",
-      "state-management"
+      "state-management",
+      "state-persistence",
+      "architecture",
+      "best-practices",
+      "mobile"
     ]
   },
   {
@@ -136,9 +184,14 @@
     "date": "2026-04-20",
     "tags": [
       "flutter",
+      "dart",
       "architecture",
-      "performance",
-      "optimization"
+      "clean-architecture",
+      "software-engineering",
+      "scalability",
+      "enterprise",
+      "best-practices",
+      "mobile"
     ]
   },
   {
@@ -147,10 +200,14 @@
     "date": "2026-04-15",
     "tags": [
       "flutter",
+      "dart",
       "performance",
       "optimization",
       "rendering",
-      "devtools"
+      "devtools",
+      "ui",
+      "best-practices",
+      "mobile"
     ]
   },
   {
@@ -159,10 +216,17 @@
     "date": "2026-04-01",
     "tags": [
       "flutter",
+      "dart",
       "state-management",
       "architecture",
+      "clean-architecture",
+      "bloc",
+      "riverpod",
+      "provider",
+      "scalability",
+      "enterprise",
       "mobile",
-      "dart"
+      "best-practices"
     ]
   },
   {
@@ -173,8 +237,12 @@
       "dart",
       "dart3",
       "records",
-      "architecture",
-      "language-features"
+      "pattern-matching",
+      "sealed-classes",
+      "switch-expressions",
+      "class-modifiers",
+      "language-features",
+      "type-safety"
     ]
   },
   {
@@ -187,7 +255,11 @@
       "custom-painter",
       "canvas",
       "graphics",
-      "rendering"
+      "rendering",
+      "paint-api",
+      "custom-widgets",
+      "ui",
+      "animation"
     ]
   }
 ]

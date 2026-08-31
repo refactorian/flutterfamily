@@ -2,7 +2,7 @@
 slug: hydratedbloc-persistent-event-driven-state-flutter
 title: "Persistent Event-Driven State in Flutter: A Complete Guide to HydratedBloc"
 authors: [admin]
-tags: [flutter, dart, bloc, cubit, state-management]
+tags: [flutter, dart, bloc, cubit, state-management, state-persistence, architecture, best-practices, mobile]
 ---
 
 State management becomes significantly more interesting once an application needs to remember what happened before it was closed.

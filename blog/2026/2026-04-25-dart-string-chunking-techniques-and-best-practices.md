@@ -2,7 +2,7 @@
 slug: dart-string-chunking-techniques-and-best-practices
 title: "Chunking Strings in Dart: Every Practical Approach from Regex to Unicode-Safe Splitting"
 authors: [admin]
-tags: [dart, dart3, records, language-features]
+tags: [dart, dart3, language-features, strings, unicode, performance, optimization, best-practices, testing]
 ---
 
 # Chunking Strings in Dart: Every Practical Approach from Regex to Unicode-Safe Splitting

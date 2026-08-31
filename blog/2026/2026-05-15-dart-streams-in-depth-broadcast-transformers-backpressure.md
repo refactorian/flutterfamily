@@ -2,7 +2,7 @@
 slug: dart-streams-in-depth-broadcast-transformers-backpressure
 title: "Dart Streams in Depth: Broadcast Streams, Transformers, and Backpressure Handling"
 authors: [admin]
-tags: [dart, async, performance, architecture, flutter, best-practices]
+tags: [dart, flutter, async, reactive-programming, functional-programming, performance, optimization, architecture, best-practices]
 ---
 
 # Dart Streams in Depth: Broadcast Streams, Transformers, and Backpressure Handling

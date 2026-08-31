@@ -2,7 +2,7 @@
 slug: complete-guide-to-dart-isolates-background-workflows-ports-isolate-run
 title: "Complete Guide to Dart Isolates: Background Workflows, Two-Way Ports, and Isolate.run()"
 authors: [admin]
-tags: [dart, async, performance, architecture, optimization, flutter]
+tags: [dart, flutter, async, concurrency, performance, optimization, architecture, scalability, best-practices]
 ---
 
 # Complete Guide to Dart Isolates: Background Workflows, Two-Way Ports, and Isolate.run()

@@ -2,7 +2,7 @@
 slug: dart-deep-comparison-and-value-equality
 title: "Deep Comparison and Value Equality in Dart: From identical() to equatable and Macros"
 authors: [admin]
-tags: [dart, dart3, language-features, architecture]
+tags: [dart, dart3, language-features, records, immutability, object-oriented-programming, type-safety, testing, best-practices, architecture]
 ---
 
 # Deep Comparison and Value Equality in Dart: From identical() to equatable and Macros

@@ -2,7 +2,7 @@
 slug: flutter-state-management-architecture
 title: "Flutter State Management: Architecting Scalable Mobile Applications"
 authors: [admin]
-tags: [flutter, state-management, architecture, mobile, dart]
+tags: [flutter, dart, state-management, architecture, clean-architecture, bloc, riverpod, provider, scalability, enterprise, mobile, best-practices]
 ---
 
 # Flutter State Management: Architecting Scalable Mobile Applications

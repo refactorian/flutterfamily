@@ -2,7 +2,7 @@
 slug: dart-async-await-gotchas-zones-microtasks-error-handling
 title: "Async/Await Gotchas in Dart: Unhandled Errors, Zone Traps, and Microtasks vs Event Queue"
 authors: [admin]
-tags: [dart, async, performance, architecture, flutter, best-practices]
+tags: [dart, flutter, async, concurrency, error-handling, performance, optimization, architecture, best-practices]
 ---
 
 # Async/Await Gotchas in Dart: Unhandled Errors, Zone Traps, and Microtasks vs Event Queue

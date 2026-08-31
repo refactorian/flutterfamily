@@ -2,7 +2,7 @@
 slug: hydratedcubit-state-persistence-flutter
 title: "State Persistence Made Simple: A Complete Guide to HydratedCubit in Flutter"
 authors: [admin]
-tags: [flutter, dart, bloc, cubit, state-management]
+tags: [flutter, dart, bloc, cubit, state-management, state-persistence, architecture, best-practices, mobile]
 ---
 
 A Flutter application often needs to remember things after the user closes and reopens it.

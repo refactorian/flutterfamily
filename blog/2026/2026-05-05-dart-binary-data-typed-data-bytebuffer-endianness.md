@@ -2,7 +2,7 @@
 slug: dart-binary-data-typed-data-bytebuffer-endianness
 title: "Binary Data and Byte Manipulation in Dart: TypedData, ByteBuffer, and Endianness Explained"
 authors: [admin]
-tags: [dart, dart3, language-features, architecture]
+tags: [dart, dart3, language-features, binary-data, typed-data, performance, optimization, best-practices, testing]
 ---
 
 # Binary Data and Byte Manipulation in Dart: TypedData, ByteBuffer, and Endianness Explained

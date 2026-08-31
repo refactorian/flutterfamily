@@ -2,7 +2,7 @@
 slug: flutter-project-directory-structures
 title: "Flutter Project Directory Structures: 17 Architectures and When to Use Them"
 authors: [admin]
-tags: [flutter, architecture, performance, optimization]
+tags: [flutter, dart, architecture, clean-architecture, software-engineering, scalability, enterprise, best-practices, mobile]
 ---
 
 # Flutter Project Directory Structures

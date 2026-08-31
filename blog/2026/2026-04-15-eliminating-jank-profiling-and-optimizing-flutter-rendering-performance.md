@@ -2,7 +2,7 @@
 slug: eliminating-jank-profiling-and-optimizing-flutter-rendering-performance
 title: "Eliminating Jank: Profiling and Optimizing Flutter Rendering Performance"
 authors: [admin]
-tags: [flutter, performance, optimization, rendering, devtools]
+tags: [flutter, dart, performance, optimization, rendering, devtools, ui, best-practices, mobile]
 ---
 
 # Eliminating Jank: Profiling and Optimizing Flutter Rendering Performance
