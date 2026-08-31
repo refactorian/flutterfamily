@@ -595,12 +595,12 @@ Should you replace every `throw` statement with `Result`? **No.** Both patterns 
 | **Control Flow** | 🛤️ Linear, composable, functional (ROP) | 💥 Jump-based (GOTO equivalent) |
 | **Best Used At** | Domain, Repository, and Presentation layers | Low-level drivers, assertions, fatal panics |
 
-### Production Checklist
+### Production Best Practices & Architectural Guidelines
 
-- [ ] **Type-Safe Contracts:** Model all repository and use case return types as `Future<Result<Data, AppFailure>>`.
-- [ ] **Encapsulate Third-Party APIs:** Wrap libraries that throw exceptions with `runCatching` / `runCatchingAsync` at the infrastructure boundary.
-- [ ] **Avoid Generic Errors:** Replace `String` and `Exception` failure types with strongly-typed `sealed class AppFailure` hierarchies.
-- [ ] **Eliminate Nested Conditionals:** Use `map`, `flatMap`, and `fold` to chain dependent operations cleanly.
-- [ ] **Exhaustive UI Mapping:** Use Dart 3 `switch` expressions in Flutter widget builders to guarantee all loading, success, and failure states are rendered without missing edge cases.
+- 🛡️ **Explicit Error Contracts:** Model all repository methods and use case returns as `Future<Result<Data, AppFailure>>`. Never rely on undocumented exception bubbling for expected domain failures.
+- 🧱 **Infrastructure Isolation:** Contain third-party libraries and framework APIs that `throw` at the data-source boundary using `runCatching` and `runCatchingAsync`. Keep your domain layer 100% pure.
+- 🏷️ **Strongly-Typed Domain Failures:** Avoid generic `String` error messages or unstructured `Exception` objects. Define exhaustive `sealed class AppFailure` hierarchies with context-rich payload fields.
+- ⛓️ **Railway-Oriented Pipelines:** Chain multi-step async workflows using `flatMap`, `map`, and `fold`. This completely eliminates nested conditional checks and pyramid-of-doom `if/else` ladders.
+- 🎯 **Exhaustive UI State Rendering:** Use Dart 3 `switch` expressions in widget builders to guarantee every possible success, failure, and edge case is handled at compile time.
 
 By adopting functional error handling with Dart 3's sealed classes and pattern matching, you transform hidden, brittle runtime crashes into explicit, self-documenting, and compile-time verified architecture.

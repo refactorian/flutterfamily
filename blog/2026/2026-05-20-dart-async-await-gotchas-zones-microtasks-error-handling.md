@@ -859,13 +859,13 @@ void processUser(CacheRepository repo) {
                                         Captures Success + Failure                               (Default: eagerError: false)
 ```
 
-### Production Checklist
+### Production Best Practices & Architectural Guidelines
 
-- [ ] **No `forEach` with `async`:** Always replace `items.forEach((e) async {...})` with `for (final e in items)` or `Future.wait()`.
-- [ ] **Handle Unawaited Futures:** Wrap intentionally unawaited futures in `unawaited(future.catchError(...))` to prevent unhandled zone errors.
-- [ ] **Error Boundaries:** Use `PlatformDispatcher.instance.onError` for global async error logging instead of legacy `runZonedGuarded` wrappers around `ensureInitialized()`.
-- [ ] **Event Queue Health:** Never execute recursive microtask loops; yield to the Event Queue via `Future.delayed(Duration.zero)` or isolates to prevent UI starvation.
-- [ ] **Cancellation & Disposed States:** Check `mounted` in Flutter `State` objects after every `await` boundary, or utilize `CancelableOperation` and `CancellationToken`.
-- [ ] **Synchronous State Invariants:** Protect shared mutable state spanning across `await` statements with an asynchronous mutex lock to eliminate re-entrancy bugs.
+- 🚫 **Ban `forEach` with `async`:** Always replace `items.forEach((item) async {...})` with standard `for (final item in items)` for sequential execution, or `Future.wait()` / `waitSettled()` for concurrent execution.
+- 🛡️ **Guarded Fire-and-Forget:** When launching background tasks with `unawaited()`, always attach a `.catchError(...)` handler or use an explicit zone boundary to prevent unhandled asynchronous exceptions.
+- 🌐 **Modern Global Error Routing:** Use `PlatformDispatcher.instance.onError` for top-level uncaught async error telemetry rather than wrapping `WidgetsFlutterBinding.ensureInitialized()` in `runZonedGuarded`.
+- ⚡ **Preserve Event Loop Responsiveness:** Avoid chaining microtasks or running heavy computations on `scheduleMicrotask()`. Yield back to the Event Queue with `Future.delayed(Duration.zero)` or offload CPU-heavy work to an isolate.
+- 🔒 **Guard Across Suspension Points:** Verify `mounted` in Flutter widgets immediately after every `await` statement, or bind cancellable network requests to lifecycle-aware `CancellationToken` / `CancelableOperation` instances.
+- 🧱 **Prevent Async Re-Entrancy:** Protect mutable shared state spanning across multiple `await` calls using asynchronous locks/mutexes or atomic state machines to eliminate race conditions.
 
 Mastering the event loop, zone error boundaries, and cancellation patterns gives you total control over Dart's concurrency model—ensuring your applications remain responsive, error-resilient, and leak-free.
