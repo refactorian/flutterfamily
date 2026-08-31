@@ -1,32 +1,32 @@
 {
-  "totalPosts": 13,
+  "totalPosts": 16,
   "tags": [
     {
       "key": "dart",
       "label": "Dart",
       "permalink": "/blog/tags/dart",
-      "count": 11,
+      "count": 14,
       "description": "Deep dives into Dart language features, type systems, and async programming."
     },
     {
       "key": "architecture",
       "label": "Architecture",
       "permalink": "/blog/tags/architecture",
-      "count": 8,
+      "count": 11,
       "description": "Clean architecture, state management patterns, and app structure."
     },
     {
       "key": "flutter",
       "label": "Flutter",
       "permalink": "/blog/tags/flutter",
-      "count": 7,
+      "count": 10,
       "description": "Tutorials, architecture tips, and UI best practices for Flutter developers."
     },
     {
       "key": "dart3",
       "label": "Dart 3",
       "permalink": "/blog/tags/dart3",
-      "count": 6,
+      "count": 7,
       "description": "Explore the latest language features introduced in Dart 3, including records, pattern matching, sealed classes, switch expressions, and class modifiers."
     },
     {
@@ -37,18 +37,32 @@
       "description": "Modern Dart language capabilities, syntax improvements, and core programming concepts."
     },
     {
+      "key": "performance",
+      "label": "Performance",
+      "permalink": "/blog/tags/performance",
+      "count": 5,
+      "description": "Profiling, memory management, and rendering optimization techniques."
+    },
+    {
+      "key": "async",
+      "label": "Async Programming",
+      "permalink": "/blog/tags/async",
+      "count": 3,
+      "description": "Futures, Streams, isolates, concurrency, and asynchronous programming in Dart."
+    },
+    {
+      "key": "best-practices",
+      "label": "Best Practices",
+      "permalink": "/blog/tags/best-practices",
+      "count": 3,
+      "description": "Production-ready coding standards, architecture, and development best practices."
+    },
+    {
       "key": "optimization",
       "label": "Optimization",
       "permalink": "/blog/tags/optimization",
       "count": 3,
       "description": "Techniques and best practices for improving application performance, reducing resource usage, optimizing rendering, memory, networking, startup time, and overall efficiency in Flutter and Dart applications."
-    },
-    {
-      "key": "performance",
-      "label": "Performance",
-      "permalink": "/blog/tags/performance",
-      "count": 3,
-      "description": "Profiling, memory management, and rendering optimization techniques."
     },
     {
       "key": "state-management",
@@ -86,13 +100,6 @@
       "description": "Explore Flutter's rendering pipeline, painting system, compositing, rasterization, and GPU rendering."
     },
     {
-      "key": "async",
-      "label": "Async Programming",
-      "permalink": "/blog/tags/async",
-      "count": 1,
-      "description": "Futures, Streams, isolates, concurrency, and asynchronous programming in Dart."
-    },
-    {
       "key": "canvas",
       "label": "Canvas",
       "permalink": "/blog/tags/canvas",
@@ -112,6 +119,13 @@
       "permalink": "/blog/tags/devtools",
       "count": 1,
       "description": "Learn how to profile, debug, inspect, and optimize Flutter applications using Flutter DevTools, including performance analysis, memory profiling, CPU inspection, widget inspection, and network monitoring."
+    },
+    {
+      "key": "functional-programming",
+      "label": "Functional Programming",
+      "permalink": "/blog/tags/functional-programming",
+      "count": 1,
+      "description": "Functional programming techniques including immutable data, pattern matching, expressions, and declarative programming."
     },
     {
       "key": "graphics",
@@ -140,7 +154,10 @@
       "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
       "/blog/dart-collections-iterables-generators-custom-iterators",
       "/blog/dart-binary-data-typed-data-bytebuffer-endianness",
-      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run",
+      "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "/blog/dart-async-await-gotchas-zones-microtasks-error-handling",
+      "/blog/dart-functional-error-handling-result-either-types"
     ],
     "/blog/tags/dart": [
       "/blog/mastering-custom-painters-and-canvas-in-flutter",
@@ -153,7 +170,10 @@
       "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
       "/blog/dart-collections-iterables-generators-custom-iterators",
       "/blog/dart-binary-data-typed-data-bytebuffer-endianness",
-      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run",
+      "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "/blog/dart-async-await-gotchas-zones-microtasks-error-handling",
+      "/blog/dart-functional-error-handling-result-either-types"
     ],
     "flutter": [
       "/blog/mastering-custom-painters-and-canvas-in-flutter",
@@ -162,7 +182,10 @@
       "/blog/flutter-project-directory-structures",
       "/blog/hydratedcubit-state-persistence-flutter",
       "/blog/hydratedbloc-persistent-event-driven-state-flutter",
-      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run",
+      "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "/blog/dart-async-await-gotchas-zones-microtasks-error-handling",
+      "/blog/dart-functional-error-handling-result-either-types"
     ],
     "/blog/tags/flutter": [
       "/blog/mastering-custom-painters-and-canvas-in-flutter",
@@ -171,7 +194,10 @@
       "/blog/flutter-project-directory-structures",
       "/blog/hydratedcubit-state-persistence-flutter",
       "/blog/hydratedbloc-persistent-event-driven-state-flutter",
-      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run",
+      "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "/blog/dart-async-await-gotchas-zones-microtasks-error-handling",
+      "/blog/dart-functional-error-handling-result-either-types"
     ],
     "custom-painter": [
       "/blog/mastering-custom-painters-and-canvas-in-flutter"
@@ -205,7 +231,8 @@
       "/blog/dart-deep-comparison-and-value-equality",
       "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
       "/blog/dart-collections-iterables-generators-custom-iterators",
-      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness",
+      "/blog/dart-functional-error-handling-result-either-types"
     ],
     "/blog/tags/dart3": [
       "/blog/dart-3-records-pattern-matching-and-sealed-classes",
@@ -213,7 +240,8 @@
       "/blog/dart-deep-comparison-and-value-equality",
       "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
       "/blog/dart-collections-iterables-generators-custom-iterators",
-      "/blog/dart-binary-data-typed-data-bytebuffer-endianness"
+      "/blog/dart-binary-data-typed-data-bytebuffer-endianness",
+      "/blog/dart-functional-error-handling-result-either-types"
     ],
     "records": [
       "/blog/dart-3-records-pattern-matching-and-sealed-classes",
@@ -231,7 +259,10 @@
       "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
       "/blog/dart-collections-iterables-generators-custom-iterators",
       "/blog/dart-binary-data-typed-data-bytebuffer-endianness",
-      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run",
+      "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "/blog/dart-async-await-gotchas-zones-microtasks-error-handling",
+      "/blog/dart-functional-error-handling-result-either-types"
     ],
     "/blog/tags/architecture": [
       "/blog/dart-3-records-pattern-matching-and-sealed-classes",
@@ -241,7 +272,10 @@
       "/blog/dart-string-manipulation-utf8-runes-graphemes-sanitization",
       "/blog/dart-collections-iterables-generators-custom-iterators",
       "/blog/dart-binary-data-typed-data-bytebuffer-endianness",
-      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run",
+      "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "/blog/dart-async-await-gotchas-zones-microtasks-error-handling",
+      "/blog/dart-functional-error-handling-result-either-types"
     ],
     "language-features": [
       "/blog/dart-3-records-pattern-matching-and-sealed-classes",
@@ -278,12 +312,16 @@
     "performance": [
       "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
       "/blog/flutter-project-directory-structures",
-      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run",
+      "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "/blog/dart-async-await-gotchas-zones-microtasks-error-handling"
     ],
     "/blog/tags/performance": [
       "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
       "/blog/flutter-project-directory-structures",
-      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run",
+      "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "/blog/dart-async-await-gotchas-zones-microtasks-error-handling"
     ],
     "optimization": [
       "/blog/eliminating-jank-profiling-and-optimizing-flutter-rendering-performance",
@@ -318,13 +356,72 @@
       "/blog/hydratedbloc-persistent-event-driven-state-flutter"
     ],
     "async": [
-      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run",
+      "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "/blog/dart-async-await-gotchas-zones-microtasks-error-handling"
     ],
     "/blog/tags/async": [
-      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run"
+      "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run",
+      "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "/blog/dart-async-await-gotchas-zones-microtasks-error-handling"
+    ],
+    "best-practices": [
+      "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "/blog/dart-async-await-gotchas-zones-microtasks-error-handling",
+      "/blog/dart-functional-error-handling-result-either-types"
+    ],
+    "/blog/tags/best-practices": [
+      "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "/blog/dart-async-await-gotchas-zones-microtasks-error-handling",
+      "/blog/dart-functional-error-handling-result-either-types"
+    ],
+    "functional-programming": [
+      "/blog/dart-functional-error-handling-result-either-types"
+    ],
+    "/blog/tags/functional-programming": [
+      "/blog/dart-functional-error-handling-result-either-types"
     ]
   },
   "posts": [
+    {
+      "title": "Functional Error Handling in Dart: Moving from Exceptions to Result and Either Types",
+      "permalink": "/blog/dart-functional-error-handling-result-either-types",
+      "date": "2026-05-25",
+      "tags": [
+        "dart",
+        "dart3",
+        "architecture",
+        "best-practices",
+        "functional-programming",
+        "flutter"
+      ]
+    },
+    {
+      "title": "Async/Await Gotchas in Dart: Unhandled Errors, Zone Traps, and Microtasks vs Event Queue",
+      "permalink": "/blog/dart-async-await-gotchas-zones-microtasks-error-handling",
+      "date": "2026-05-20",
+      "tags": [
+        "dart",
+        "async",
+        "performance",
+        "architecture",
+        "flutter",
+        "best-practices"
+      ]
+    },
+    {
+      "title": "Dart Streams in Depth: Broadcast Streams, Transformers, and Backpressure Handling",
+      "permalink": "/blog/dart-streams-in-depth-broadcast-transformers-backpressure",
+      "date": "2026-05-15",
+      "tags": [
+        "dart",
+        "async",
+        "performance",
+        "architecture",
+        "flutter",
+        "best-practices"
+      ]
+    },
     {
       "title": "Complete Guide to Dart Isolates: Background Workflows, Two-Way Ports, and Isolate.run()",
       "permalink": "/blog/complete-guide-to-dart-isolates-background-workflows-ports-isolate-run",
